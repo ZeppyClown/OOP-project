@@ -10,4 +10,15 @@ public interface GameIO {
 
     /** Shows why a choice was rejected. */
     void showInvalidAction(String message);
+
+    default void showTurnStart(GameView.TurnState state) { }
+
+    /** Updates the display after the waiter acts and at turn end. */
+    default void showActionState(GameView.TurnState state) { }
+
+    default void showTurnEnd(GameView.TurnSummary summary) { }
+
+    default void showFinalResult(GameView.FinalReport report) { }
+
+    default void showInterrupted(String message) { }
 }
