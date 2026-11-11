@@ -2,11 +2,14 @@ package restaurantrush.control;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import restaurantrush.domain.Customer;
 import restaurantrush.domain.CustomerStatus;
+import restaurantrush.domain.GameResult;
 import restaurantrush.domain.MenuItem;
+import restaurantrush.domain.Money;
 import restaurantrush.domain.Order;
 import restaurantrush.domain.OrderStatus;
 import restaurantrush.domain.Restaurant;
@@ -121,5 +124,23 @@ public final class GameController {
     private static GameView.CustomerLine customerLine(Customer customer) {
         return new GameView.CustomerLine(customer.getId(), customer.getTypeLabel(),
                 customer.getSatisfaction(), customer.getStatus().name());
+    }
+
+    private GameView.TurnSummary summary(int turn) {
+        return new GameView.TurnSummary(turn, MAX_TURNS, restaurant.getServedCount(), restaurant.getPaidCount(),
+                restaurant.getUnhappyDepartureCount(), restaurant.getRevenueCents(),
+                restaurant.getAveragePaidSatisfaction());
+    }
+
+    private GameView.FinalReport finalReport() {
+        int paid = restaurant.getPaidCount();
+        String average = restaurant.getAveragePaidSatisfaction().isPresent()
+                ? String.format(Locale.ROOT, "%.1f", restaurant.getAveragePaidSatisfaction().getAsDouble()) : "N/A";
+        return new GameView.FinalReport(restaurant.evaluateResult() == GameResult.VICTORY, summary(MAX_TURNS),
+                List.of(new GameView.TargetLine("Paid customers", "4", Integer.toString(paid), paid >= 4),
+                        new GameView.TargetLine("Revenue", Money.format(4500),
+                                Money.format(restaurant.getRevenueCents()), restaurant.getRevenueCents() >= 4500),
+                        new GameView.TargetLine("Average paid satisfaction", "60", average,
+                                paid > 0 && restaurant.getPaidSatisfactionTotal() >= 60L * paid)));
     }
 }
