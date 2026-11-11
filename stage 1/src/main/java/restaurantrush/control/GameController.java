@@ -12,6 +12,7 @@ import restaurantrush.domain.MenuItem;
 import restaurantrush.domain.Money;
 import restaurantrush.domain.Order;
 import restaurantrush.domain.OrderStatus;
+import restaurantrush.domain.RegularCustomer;
 import restaurantrush.domain.Restaurant;
 import restaurantrush.domain.Table;
 
@@ -24,6 +25,43 @@ public final class GameController {
     public GameController(Restaurant restaurant, GameIO io) {
         this.restaurant = Objects.requireNonNull(restaurant, "restaurant");
         this.io = Objects.requireNonNull(io, "io");
+    }
+
+    public void run() {
+        int turn = 1;
+        String role = "Waiter";
+        try {
+            for (; turn <= MAX_TURNS; turn++) {
+                if ((turn - 1) % 3 == 0) {
+                    restaurant.registerArrival(new RegularCustomer((turn - 1) / 3 + 1));
+                }
+                io.showTurnStart(state(turn, true, true, "available; payments follow staff choices"));
+
+                role = "Waiter";
+                chooseWaiter(turn);
+                io.showActionState(state(turn, false, true, "available; payments follow staff choices"));
+
+                role = "Chef";
+                chooseChef(turn);
+                restaurant.advanceEating(turn);
+                Customer payer = restaurant.oldestEligiblePayer(turn);
+                String cashierStatus = "no eligible payment this turn";
+                if (payer != null) {
+                    String refusal = restaurant.collectPayment(payer, turn);
+                    if (refusal != null) {
+                        throw new IllegalStateException("Eligible automatic payment failed: " + refusal);
+                    }
+                    cashierStatus = "collected " + Money.format(payer.getOrder().getBillCents())
+                            + " from C" + payer.getId() + "; customer and order PAID, table released";
+                }
+                restaurant.applyWaitingLoss();
+                io.showActionState(state(turn, false, false, cashierStatus));
+                io.showTurnEnd(summary(turn));
+            }
+            io.showFinalResult(finalReport());
+        } catch (InputEndedException ended) {
+            io.showInterrupted("Input ended during turn " + turn + ", " + role + " choice. Game interrupted.");
+        }
     }
 
     private void chooseWaiter(int turn) {
