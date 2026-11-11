@@ -53,4 +53,20 @@ public final class GameController {
         MenuItem item = customer.chooseItem(restaurant.getMenu());
         return restaurant.getWaiter().takeOrder(customer, item, item.getPriceCents(), turn);
     }
+
+    private void chooseChef(int turn) {
+        while (true) {
+            int orderId = io.chooseChefOrder();
+            if (orderId == 0) {
+                return;
+            }
+            Order order = restaurant.findOrder(orderId);
+            String refusal = order == null ? "Order " + orderId + " does not exist; use 'wait' to Wait"
+                    : restaurant.getChef().prepare(order, turn);
+            if (refusal == null) {
+                return;
+            }
+            io.showInvalidAction(refusal);
+        }
+    }
 }
