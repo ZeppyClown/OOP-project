@@ -17,8 +17,24 @@ import restaurantrush.control.WaiterAction;
 /** ConsoleUI: parsing, retries, end of input and output. */
 public final class ConsoleTests {
 
-    /** Paths are relative to the repo root. */
-    static final Path FIXTURES = Path.of(System.getProperty("stage1.fixtures"));
+    /**
+     * Fixture directory: -Dstage1.fixtures wins; otherwise look relative to
+     * the repository root or to the "stage 1" folder.
+     */
+    static final Path FIXTURES = locateFixtures();
+
+    private static Path locateFixtures() {
+        String configured = System.getProperty("stage1.fixtures");
+        if (configured != null) {
+            return Path.of(configured);
+        }
+        for (Path candidate : List.of(Path.of("stage 1", "test-fixtures"), Path.of("test-fixtures"))) {
+            if (Files.isDirectory(candidate)) {
+                return candidate.toAbsolutePath();
+            }
+        }
+        return Path.of("stage 1", "test-fixtures").toAbsolutePath();
+    }
 
     private ConsoleTests() {
     }
@@ -34,6 +50,10 @@ public final class ConsoleTests {
         r.add("Console: start-of-turn display shows every required field", ConsoleTests::displaysTurnState);
         r.add("Console: no paid customers shows N/A and free tables", ConsoleTests::displaysEmptyState);
         r.add("Console: end-of-turn and final result lines", ConsoleTests::displaysSummaries);
+        r.add("Console: defeat verdict prints FAIL targets", ConsoleTests::displaysDefeat);
+        r.add("Console: lists every Waiter verb and Chef order with IDs", ConsoleTests::listsAllOptions);
+        r.add("Console: mid-turn state update, invalid action and interruption lines", ConsoleTests::displaysNotices);
+        r.add("Console: accepts large IDs and rejects null Chef input", ConsoleTests::idBoundaries);
         r.add("Fixtures: victory/defeat are 18 valid Waiter+Chef turns", ConsoleTests::fixturesParse);
         r.add("Fixtures: invalid-input file reaches the same choices via retries", ConsoleTests::invalidFixtureRecovers);
     }
@@ -154,6 +174,69 @@ public final class ConsoleTests {
         Check.contains(text, "Turns used: 18 / 18", "turns");
         Check.contains(text, "===== VICTORY =====", "verdict");
         Check.contains(text, "[PASS] Revenue: required >= $45.00, actual $66.00", "target line");
+    }
+
+    private static void displaysDefeat() {
+        GameView.TurnSummary end = new GameView.TurnSummary(18, 18, 1, 1, 4, 1200, OptionalDouble.of(52.0));
+        GameView.FinalReport report = new GameView.FinalReport(false, end, List.of(
+                new GameView.TargetLine("Revenue", ">= $45.00", "$12.00", false),
+                new GameView.TargetLine("Departures", "<= 1", "4", false)));
+        Console c = console("");
+        c.ui.showFinalResult(report);
+        String text = c.output();
+        Check.contains(text, "===== DEFEAT =====", "verdict");
+        Check.contains(text, "Unhappy departures: 4", "departures");
+        Check.contains(text, "[FAIL] Revenue: required >= $45.00, actual $12.00", "revenue target");
+        Check.contains(text, "[FAIL] Departures: required <= 1, actual 4", "departure target");
+        Check.isTrue(!text.contains("VICTORY"), "defeat must not mention VICTORY");
+    }
+
+    private static void listsAllOptions() {
+        GameView.CustomerLine c1 = new GameView.CustomerLine(1, "Regular", 90, "WAITING");
+        GameView.CustomerLine c2 = new GameView.CustomerLine(2, "Regular", 95, "WAITING");
+        GameView.CustomerLine c3 = new GameView.CustomerLine(3, "Regular", 80, "SEATED");
+        GameView.TurnState state = new GameView.TurnState(1, 6, 18,
+                1200, 1, OptionalDouble.of(88.0),
+                List.of(c1, c2),
+                List.of(new GameView.TableLine(1, c3), new GameView.TableLine(2, null)),
+                List.of(new GameView.OrderLine(4, "Burger", 2, 2, "READY", 1200),
+                        new GameView.OrderLine(5, "Salad", 0, 1, "PLACED", 800)),
+                List.of(1, 2), List.of(3), List.of(4), List.of(5, 6),
+                "no eligible payment");
+        Console c = console("");
+        c.ui.showTurnStart(state);
+        String text = c.output();
+        Check.contains(text, "Waiting: C1 Regular (satisfaction 90, WAITING), C2 Regular (satisfaction 95, WAITING)",
+                "queue keeps arrival order");
+        Check.contains(text, "Waiter options: seat C1, C2 | order C3 | serve O4 | wait", "all Waiter verbs");
+        Check.contains(text, "Chef options: O5, O6", "all Chef orders");
+        Check.contains(text, "O4: Burger | $12.00 locked | 2/2 units | READY", "ready order");
+        Check.isTrue(!text.contains("Orders: none"), "orders present, no 'none' line");
+    }
+
+    private static void displaysNotices() {
+        GameView.TurnState state = new GameView.TurnState(1, 4, 18,
+                0, 0, OptionalDouble.empty(),
+                List.of(), List.of(new GameView.TableLine(1, null)), List.of(),
+                List.of(), List.of(), List.of(), List.of(), "no eligible payment");
+        Console c = console("");
+        c.ui.showActionState(state);
+        c.ui.showInvalidAction("C9 is not waiting");
+        c.ui.showInterrupted("Input ended before the game finished");
+        String text = c.output();
+        Check.contains(text, "State update for turn 4", "state update header");
+        Check.isTrue(!text.contains("Stage 1 - Turn"), "state update is not a new turn header");
+        Check.contains(text, "Not allowed: C9 is not waiting - choose again.", "invalid action line");
+        Check.contains(text, "Interrupted: Input ended before the game finished", "interruption line");
+    }
+
+    private static void idBoundaries() {
+        Check.equal(WaiterAction.serve(Integer.MAX_VALUE),
+                ConsoleUI.parseWaiterAction("serve " + Integer.MAX_VALUE), "largest int ID");
+        Check.equal(Integer.MAX_VALUE, ConsoleUI.parseChefChoice(String.valueOf(Integer.MAX_VALUE)), "largest Chef ID");
+        Check.throwsType(IllegalArgumentException.class, () -> ConsoleUI.parseChefChoice(null), "null Chef input");
+        Check.throwsType(IllegalArgumentException.class,
+                () -> ConsoleUI.parseChefChoice(String.valueOf(Integer.MAX_VALUE + 1L)), "overflowing Chef ID");
     }
 
     // ---- fixtures --------------------------------------------------------
