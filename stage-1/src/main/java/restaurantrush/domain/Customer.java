@@ -51,14 +51,12 @@ public abstract class Customer {
 
     protected abstract int waitingLossPerTurn();
 
-    /** Deterministic choice by ID so replays are repeatable. */
     public MenuItem chooseItem(Menu menu) {
         if (menu == null) { throw new IllegalArgumentException("Menu cannot be null"); }
         List<MenuItem> choices = menu.getItems();
         return choices.get((id - 1) % 3);
     }
 
-    /** Registration is permanent, including after payment or departure. */
     void bindTo(Restaurant restaurant) {
         if (restaurant == null) {
             throw new IllegalArgumentException("Owning restaurant cannot be null");
