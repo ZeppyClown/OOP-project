@@ -1,11 +1,16 @@
 package restaurantrush.control;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import restaurantrush.domain.Customer;
+import restaurantrush.domain.CustomerStatus;
 import restaurantrush.domain.MenuItem;
 import restaurantrush.domain.Order;
+import restaurantrush.domain.OrderStatus;
 import restaurantrush.domain.Restaurant;
+import restaurantrush.domain.Table;
 
 public final class GameController {
     public static final int MAX_TURNS = 18;
@@ -68,5 +73,53 @@ public final class GameController {
             }
             io.showInvalidAction(refusal);
         }
+    }
+
+    private GameView.TurnState state(int turn, boolean waiterAvailable, boolean chefAvailable,
+                                    String cashierStatus) {
+        List<GameView.CustomerLine> waiting = new ArrayList<>();
+        List<GameView.TableLine> tables = new ArrayList<>();
+        List<GameView.OrderLine> orders = new ArrayList<>();
+        List<Integer> seatable = new ArrayList<>();
+        List<Integer> orderable = new ArrayList<>();
+        List<Integer> servable = new ArrayList<>();
+        List<Integer> preparable = new ArrayList<>();
+        for (Customer customer : restaurant.getWaitingQueue()) {
+            waiting.add(customerLine(customer));
+            if (waiterAvailable && restaurant.findFreeTable() != null) {
+                seatable.add(customer.getId());
+            }
+        }
+        for (Table table : restaurant.getTables()) {
+            Customer occupant = table.getOccupant();
+            tables.add(new GameView.TableLine(table.getId(), occupant == null ? null : customerLine(occupant)));
+            if (waiterAvailable && occupant != null && occupant.getStatus() == CustomerStatus.SEATED) {
+                orderable.add(occupant.getId());
+            }
+        }
+        for (Customer customer : restaurant.getCustomers()) {
+            Order order = customer.getOrder();
+            if (order == null) {
+                continue;
+            }
+            orders.add(new GameView.OrderLine(order.getId(), order.getItem().getName(),
+                    order.getCompletedPreparationUnits(), order.getItem().getPreparationUnits(),
+                    order.getStatus().name(), order.getBillCents()));
+            if (waiterAvailable && order.canBeServedAt(turn)) {
+                servable.add(order.getId());
+            }
+            if (chefAvailable && (order.getStatus() == OrderStatus.PLACED
+                    || order.getStatus() == OrderStatus.PREPARING)) {
+                preparable.add(order.getId());
+            }
+        }
+        return new GameView.TurnState(1, turn, MAX_TURNS, restaurant.getRevenueCents(),
+                restaurant.getPaidCount(), restaurant.getAveragePaidSatisfaction(), waiting, tables, orders,
+                seatable, orderable, servable, preparable, cashierStatus);
+    }
+
+    private static GameView.CustomerLine customerLine(Customer customer) {
+        return new GameView.CustomerLine(customer.getId(), customer.getTypeLabel(),
+                customer.getSatisfaction(), customer.getStatus().name());
     }
 }
