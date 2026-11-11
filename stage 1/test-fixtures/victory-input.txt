@@ -1,0 +1,36 @@
+seat 1
+wait
+order 1
+1
+serve 1
+wait
+seat 2
+wait
+order 2
+2
+serve 2
+wait
+seat 3
+wait
+order 3
+3
+wait
+3
+serve 3
+wait
+seat 4
+wait
+order 4
+4
+serve 4
+wait
+seat 5
+wait
+order 5
+5
+serve 5
+wait
+seat 6
+wait
+order 6
+6
