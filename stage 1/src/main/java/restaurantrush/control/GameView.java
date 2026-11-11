@@ -37,4 +37,18 @@ public final class GameView {
             preparableOrderIds = List.copyOf(preparableOrderIds);
         }
     }
+
+    /* Running totals at the end of a turn. */
+    public record TurnSummary(int turn, int maxTurns, int servedCount, int paidCount, int departures,
+                              int revenueCents, OptionalDouble averagePaidSatisfaction) {
+    }
+
+    public record TargetLine(String name, String required, String actual, boolean met) {
+    }
+
+    public record FinalReport(boolean victory, TurnSummary totals, List<TargetLine> targets) {
+        public FinalReport {
+            targets = List.copyOf(targets);
+        }
+    }
 }
