@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 
 /**
  * Runs every Stage 1 test and exits nonzero if any fail.
- *   java -ea -cp build/test-classes restaurantrush.AllTests
+ *   sh "stage 1/run-tests.sh"
  */
 public final class AllTests {
 
@@ -18,6 +18,7 @@ public final class AllTests {
             r -> r.add("Restaurant domain", restaurantrush.domain.RestaurantTests::runAll),
             r -> r.add("Order domain", restaurantrush.domain.OrderTests::runAll),
             r -> r.add("Staff domain", restaurantrush.domain.StaffTests::runAll),
+            r -> r.add("Control records and GameIO", () -> restaurantrush.control.ControlTests.main(new String[0])),
             r -> r.add("Controller turns", TurnTests::runAll),
             r -> r.add("Launcher arguments and script errors", LauncherTests::runAll),
             ReplayTests::register
