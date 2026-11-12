@@ -19,7 +19,7 @@ public final class ConsoleTests {
 
     /**
      * Fixture directory: -Dstage1.fixtures wins; otherwise look relative to
-     * the repository root or to the "stage 1" folder.
+     * the repository root or to the "stage 2" folder.
      */
     static final Path FIXTURES = locateFixtures();
 
@@ -28,12 +28,12 @@ public final class ConsoleTests {
         if (configured != null) {
             return Path.of(configured);
         }
-        for (Path candidate : List.of(Path.of("stage 1", "test-fixtures"), Path.of("test-fixtures"))) {
+        for (Path candidate : List.of(Path.of("stage 2", "test-fixtures"), Path.of("test-fixtures"))) {
             if (Files.isDirectory(candidate)) {
                 return candidate.toAbsolutePath();
             }
         }
-        return Path.of("stage 1", "test-fixtures").toAbsolutePath();
+        return Path.of("stage 2", "test-fixtures").toAbsolutePath();
     }
 
     private ConsoleTests() {
@@ -48,13 +48,14 @@ public final class ConsoleTests {
         r.add("Console: re-prompts on syntax error in the same request", ConsoleTests::retriesUntilValid);
         r.add("Console: EOF throws instead of choosing Wait", ConsoleTests::eofThrows);
         r.add("Console: start-of-turn display shows every required field", ConsoleTests::displaysTurnState);
+        r.add("Console: Stage 2 header and supplied subtype labels", ConsoleTests::displaysSubtypeLabels);
         r.add("Console: no paid customers shows N/A and free tables", ConsoleTests::displaysEmptyState);
         r.add("Console: end-of-turn and final result lines", ConsoleTests::displaysSummaries);
         r.add("Console: defeat verdict prints FAIL targets", ConsoleTests::displaysDefeat);
         r.add("Console: lists every Waiter verb and Chef order with IDs", ConsoleTests::listsAllOptions);
         r.add("Console: mid-turn state update, invalid action and interruption lines", ConsoleTests::displaysNotices);
         r.add("Console: accepts large IDs and rejects null Chef input", ConsoleTests::idBoundaries);
-        r.add("Fixtures: victory/defeat are 18 valid Waiter+Chef turns", ConsoleTests::fixturesParse);
+        r.add("Fixtures: four retry-free files are 18 valid Waiter+Chef turns", ConsoleTests::fixturesParse);
         r.add("Fixtures: invalid-input file reaches the same choices via retries", ConsoleTests::invalidFixtureRecovers);
     }
 
@@ -135,6 +136,22 @@ public final class ConsoleTests {
         Check.contains(text, "Waiter options: wait", "waiter options");
         Check.contains(text, "Chef options: O3", "chef options");
         Check.contains(text, "Cashier: automatic, no eligible payment", "cashier");
+    }
+
+    private static void displaysSubtypeLabels() {
+        GameView.TurnState state = new GameView.TurnState(2, 7, 18,
+                1500, 1, OptionalDouble.of(84.0),
+                List.of(new GameView.CustomerLine(3, "Critic", 100, "WAITING")),
+                List.of(new GameView.TableLine(1,
+                        new GameView.CustomerLine(2, "VIP", 90, "READY_TO_PAY"))),
+                List.of(new GameView.OrderLine(2, "Salad", 1, 1, "SERVED", 810)),
+                List.of(), List.of(), List.of(), List.of(), "no eligible payment");
+        Console c = console("");
+        c.ui.showTurnStart(state);
+        Check.contains(c.output(), "Stage 2 - Turn 7 / 18", "injected stage label");
+        Check.contains(c.output(), "C3 Critic (satisfaction 100, WAITING)", "waiting type label");
+        Check.contains(c.output(), "C2 VIP (satisfaction 90, READY_TO_PAY)", "table type label");
+        Check.contains(c.output(), "O2: Salad | $8.10 locked", "already-dispatched bill");
     }
 
     private static void displaysEmptyState() {
@@ -242,7 +259,8 @@ public final class ConsoleTests {
     // ---- fixtures --------------------------------------------------------
 
     private static void fixturesParse() {
-        for (String name : List.of("victory-input.txt", "defeat-input.txt")) {
+        for (String name : List.of("victory-input.txt", "defeat-input.txt",
+                "vip-priority-input.txt", "regular-priority-input.txt")) {
             List<String> lines = fixture(name);
             Check.equal(36, lines.size(), name + " line count");
             ScriptedGameIO io = ScriptedGameIO.alternating(lines);
