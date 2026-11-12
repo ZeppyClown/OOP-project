@@ -13,7 +13,7 @@ SC2002 group project. Restaurant Rush is a turn-based console restaurant game wr
 | Talon | [`Talon`](https://github.com/ZeppyClown/OOP-project/tree/Talon) | [Talon/ai-history](https://github.com/ZeppyClown/OOP-project/tree/Talon/ai-history) |
 | Victor | [`Victor`](https://github.com/ZeppyClown/OOP-project/tree/Victor) | [Victor/ai-history](https://github.com/ZeppyClown/OOP-project/tree/Victor/ai-history) |
 
-Each member keeps AI history for test-case work in an `ai-history/` folder on their own branch. Selected excerpts are labelled with their scope.
+Each member keeps AI conversation records in an `ai-history/` folder on their own branch.
 
 ## Requirements
 
