@@ -1,11 +1,11 @@
 #!/bin/sh
 # Compile Stage 1 into a temp dir and run every registered check (java -ea).
-# Usage (from anywhere): sh "stage 1/run-tests.sh"
+# Usage (from anywhere): sh "stage 2/run-tests.sh"
 # Needs JDK 17+. Uses $JAVA_HOME/bin if JAVA_HOME is set, otherwise javac/java on PATH.
 set -eu
 STAGE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 BIN=${JAVA_HOME:+$JAVA_HOME/bin/}
-OUT=$(mktemp -d "${TMPDIR:-/tmp}/stage1-tests.XXXXXX")
+OUT=$(mktemp -d "${TMPDIR:-/tmp}/stage2-tests.XXXXXX")
 trap 'rm -rf "$OUT"' EXIT
 
 find "$STAGE/src/main/java" -name '*.java' -type f | sed 's/.*/"&"/' > "$OUT/main.txt"
