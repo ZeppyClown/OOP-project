@@ -2,11 +2,13 @@
 
 Raw console input, one line per prompt, in the order the controller asks: **Waiter, then Chef, every turn** (including when only Wait is useful). The same files drive both the real CLI and, for retry-free files, `ScriptedGameIO.alternating(...)`.
 
+Run a fixture from the repository root (JDK 17; see the root [README](../../README.md)):
+
 ```sh
-scripts/run.sh < "stage 1/test-fixtures/victory-input.txt"
+sh "stage 1/run.sh" --script "stage 1/test-fixtures/victory-input.txt"
 ```
 
-| File | Lines | Expected result (from [Stage 1 plan](../PLAN.md)) |
+| File | Lines | Expected result |
 |---|---:|---|
 | `victory-input.txt` | 36 (18 × 2) | Victory after 18: 5 paid, 5 served, $66.00, paid satisfaction [84,84,76,76,76] = 396, average 79.2, 0 departures |
 | `defeat-input.txt` | 36, all `wait` | Defeat at 18: 0 paid, 0 served, $0.00, average N/A, 2 departures (C1 leaves on 13, C2 on 16), C3 ends at 4 |
@@ -47,4 +49,4 @@ Turns 1–3 only; turns 4–18 are identical to the victory file.
 | 10 | 2 Waiter | `serve 1` (O1 does not exist yet) | Controller semantic retry |
 | 14 | 3 Chef | `1` (O1 was served by the Waiter earlier this turn) | Controller semantic retry |
 
-ConsoleTests checks syntax recovery; ReplayTests runs all three files through the real controller and checks both semantic retries and final totals. See [EVIDENCE.md](../EVIDENCE.md) for actual results.
+ConsoleTests checks syntax recovery; ReplayTests runs all three files through the real controller and checks both semantic retries and final totals. Run them all with `sh "stage 1/run-tests.sh"`. See [EVIDENCE.md](../EVIDENCE.md) for the actual recorded results.
