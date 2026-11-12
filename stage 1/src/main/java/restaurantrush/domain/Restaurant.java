@@ -45,12 +45,12 @@ public class Restaurant {
         return menu;
     }
 
-    /** GameController calls takeOrder/serve on this Waiter directly. */
+    /** Used by GameController to take orders and serve. */
     public Waiter getWaiter() {
         return waiter;
     }
 
-    /** GameController calls prepare on this Chef directly. */
+    /** Used by GameController to cook. */
     public Chef getChef() {
         return chef;
     }
@@ -124,7 +124,7 @@ public class Restaurant {
         return null;
     }
 
-    /** Waiter seats a queued customer; the queue entry is removed only on success. */
+    /** Seats a queued customer. They leave the queue only if it works. */
     public String seatCustomer(Customer customer, int turn) {
         if (customer == null || findCustomer(customer.getId()) != customer) {
             return "Customer is not registered in this restaurant";

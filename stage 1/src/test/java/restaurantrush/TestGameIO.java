@@ -12,9 +12,8 @@ import restaurantrush.control.InputEndedException;
 import restaurantrush.control.WaiterAction;
 
 /**
- * GameIO for TurnTests: answers from preset Waiter and Chef choices, records
- * every call in order, and throws InputEndedException when a list runs out,
- * the same as real EOF. Never falls back to Wait.
+ * Fake GameIO for turn tests. Plays back preset Waiter and Chef choices,
+ * records every call, and throws InputEndedException when it runs out.
  */
 public final class TestGameIO implements GameIO {
     private final Deque<WaiterAction> waiterChoices = new ArrayDeque<>();
@@ -36,7 +35,7 @@ public final class TestGameIO implements GameIO {
         return this;
     }
 
-    /** Adds the same Waiter action several times, e.g. Wait for every turn. */
+    /** Repeats one Waiter action, e.g. Wait every turn. */
     public TestGameIO waiterRepeated(WaiterAction action, int times) {
         for (int i = 0; i < times; i++) {
             waiterChoices.addLast(action);
@@ -44,7 +43,7 @@ public final class TestGameIO implements GameIO {
         return this;
     }
 
-    /** Order IDs for the Chef; 0 means Wait. */
+    /** Chef order IDs; 0 means Wait. */
     public TestGameIO chef(int... orderIds) {
         for (int orderId : orderIds) {
             chefChoices.addLast(orderId);
@@ -135,7 +134,7 @@ public final class TestGameIO implements GameIO {
         return Collections.unmodifiableList(interruptions);
     }
 
-    /** Every GameIO call in the order it happened. */
+    /** All GameIO calls, in order. */
     public List<String> calls() {
         return Collections.unmodifiableList(calls);
     }
@@ -152,7 +151,7 @@ public final class TestGameIO implements GameIO {
         return chefRequests;
     }
 
-    /** True when every scripted choice was used, so no planned step was skipped. */
+    /** True if every scripted choice was used. */
     public boolean allChoicesUsed() {
         return waiterChoices.isEmpty() && chefChoices.isEmpty();
     }

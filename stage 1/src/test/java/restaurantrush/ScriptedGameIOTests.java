@@ -7,7 +7,7 @@ import restaurantrush.control.GameView;
 import restaurantrush.control.InputEndedException;
 import restaurantrush.control.WaiterAction;
 
-/** Talon: the replay harness itself must fail loudly (S1-T2). */
+/** Makes sure the replay harness fails loudly when misused. */
 public final class ScriptedGameIOTests {
 
     private ScriptedGameIOTests() {

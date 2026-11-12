@@ -14,10 +14,10 @@ import restaurantrush.control.GameView;
 import restaurantrush.control.InputEndedException;
 import restaurantrush.control.WaiterAction;
 
-/** Talon: ConsoleUI parsing, syntax retry, EOF and display (S1-T1). */
+/** ConsoleUI: parsing, retries, end of input and output. */
 public final class ConsoleTests {
 
-    /** Tests run from the repository root. */
+    /** Paths are relative to the repo root. */
     static final Path FIXTURES = Path.of(System.getProperty("stage1.fixtures"));
 
     private ConsoleTests() {
@@ -93,7 +93,7 @@ public final class ConsoleTests {
 
     // ---- displays --------------------------------------------------------
 
-    /** Values from the reference victory at the start of turn 9. */
+    /** State from the victory run at the start of turn 9. */
     private static void displaysTurnState() {
         GameView.CustomerLine c3 = new GameView.CustomerLine(3, "Regular", 84, "WAITING_FOR_FOOD");
         GameView.TurnState state = new GameView.TurnState(1, 9, 18,
@@ -173,10 +173,9 @@ public final class ConsoleTests {
     }
 
     /**
-     * Feeds the invalid-input fixture through ConsoleUI, accepting each
-     * syntactically valid choice. Lines 10 and 14 are semantic errors the
-     * controller rejects, so they are skipped here the way the controller's
-     * retry would. The remaining choices must equal the clean victory file.
+     * Runs the invalid-input file through ConsoleUI. Lines 10 and 14 parse fine
+     * but the controller would reject them, so we skip them. What's left
+     * should match the clean victory file.
      */
     private static void invalidFixtureRecovers() {
         String all = String.join("\n", fixture("victory-invalid-input.txt")) + "\n";

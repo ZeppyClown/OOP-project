@@ -16,10 +16,8 @@ import restaurantrush.control.InputEndedException;
 import restaurantrush.control.WaiterAction;
 
 /**
- * Text boundary: turns console lines into typed choices and formats the
- * snapshots the controller supplies. It re-prompts on syntax errors only;
- * whether a choice is legal in the game is the controller's decision.
- *
+ * Reads player commands from the console and prints the game state.
+ * Only re-asks on typos; the controller decides if a move is allowed.
  */
 public class ConsoleUI implements GameIO {
 
@@ -90,7 +88,7 @@ public class ConsoleUI implements GameIO {
         return line;
     }
 
-    // ---- parsing (public so tests and fixture loaders share one grammar) --
+    // ---- parsing (public so tests can reuse it) ----------------------------
 
     public static WaiterAction parseWaiterAction(String line) {
         String[] words = words(line);
@@ -110,7 +108,7 @@ public class ConsoleUI implements GameIO {
         return new WaiterAction(type, parseId(words[1]));
     }
 
-    /** Returns an order ID, or 0 for wait. */
+    /** Order ID, or 0 for wait. */
     public static int parseChefChoice(String line) {
         String[] words = words(line);
         requireArgs(words, 1, "enter one order ID or wait");

@@ -5,11 +5,8 @@ import java.util.List;
 import java.util.OptionalDouble;
 
 /**
- * Plain standard-library tests for the Stage 1 control types that do not
- * depend on the domain package: WaiterAction, InputEndedException, GameView
- * and GameIO.
- *
- * Compile and run from "stage 1":
+ * Tests for WaiterAction, InputEndedException, GameView and GameIO.
+ * Run from "stage 1":
  *   javac -d build/test-classes src/main/java/restaurantrush/control/{WaiterAction,InputEndedException,GameView,GameIO}.java src/test/java/restaurantrush/control/ControlTests.java
  *   java -cp build/test-classes restaurantrush.control.ControlTests
  */
@@ -213,7 +210,7 @@ public final class ControlTests {
 
     // ---------- GameIO ----------
 
-    /** Implements only the required methods, leaving every display hook as its default. */
+    /** Minimal GameIO that keeps the default display methods. */
     private static final class MinimalIO implements GameIO {
         @Override
         public WaiterAction chooseWaiterAction() {

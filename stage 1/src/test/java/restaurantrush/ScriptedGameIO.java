@@ -13,14 +13,10 @@ import restaurantrush.control.InputEndedException;
 import restaurantrush.control.WaiterAction;
 
 /**
- * Reproducible GameIO for full replays (ReplayTests); Victor's TestGameIO
- * serves TurnTests. Unlike TestGameIO it keeps Waiter and Chef choices in one
- * ordered script, so it also catches a role asked out of order.
- *
- * Choices are an ordered script of role-tagged steps. A request for the wrong
- * role, or a request after the script is used up, fails immediately: a silent
- * Wait would hide a broken turn loop or an unexpected retry. Every display
- * call is recorded so tests can assert what the player would have seen.
+ * Fake GameIO for full replays. Unlike TestGameIO, Waiter and Chef choices
+ * share one ordered script, so asking the wrong role fails straight away.
+ * Running out of script also fails instead of quietly waiting. Display calls
+ * are recorded so tests can check what the player saw.
  */
 public class ScriptedGameIO implements GameIO {
 
@@ -47,7 +43,7 @@ public class ScriptedGameIO implements GameIO {
         return this;
     }
 
-    /** {@code orderId} 0 means Wait. */
+    /** 0 means Wait. */
     public ScriptedGameIO chef(int orderId) {
         if (orderId < 0) {
             throw new IllegalArgumentException("Chef choice must be an order ID or 0");
@@ -56,15 +52,14 @@ public class ScriptedGameIO implements GameIO {
         return this;
     }
 
-    /** One turn without retries: a Waiter choice then a Chef choice. */
+    /** One turn: a Waiter choice, then a Chef choice. */
     public ScriptedGameIO turn(WaiterAction waiterAction, int chefOrderId) {
         return waiter(waiterAction).chef(chefOrderId);
     }
 
     /**
-     * Builds a script from console fixture lines that contain no retries:
-     * even lines are Waiter commands, odd lines Chef commands, parsed with the
-     * same grammar as ConsoleUI.
+     * Builds a script from fixture lines (no retries). Even lines are Waiter,
+     * odd lines are Chef, parsed the same way ConsoleUI does.
      */
     public static ScriptedGameIO alternating(List<String> lines) {
         if (lines.size() % 2 != 0) {
@@ -157,7 +152,7 @@ public class ScriptedGameIO implements GameIO {
         return script.size();
     }
 
-    /** Fails unless the game ended with every scripted choice consumed. */
+    /** Fails if any scripted choice was left unused. */
     public void requireFinished() {
         if (finalReport == null) {
             throw new AssertionError("Game ended without showing a final result");

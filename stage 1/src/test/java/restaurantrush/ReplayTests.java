@@ -9,7 +9,7 @@ import restaurantrush.boundary.ConsoleUI;
 import restaurantrush.control.GameController;
 import restaurantrush.domain.*;
 
-/** Exercises actual fixture bytes through the production parser and controller. */
+/** Plays the fixture files through the real parser and controller. */
 public final class ReplayTests {
     private ReplayTests() { }
 

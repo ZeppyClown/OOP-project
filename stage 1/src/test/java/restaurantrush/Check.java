@@ -2,7 +2,7 @@ package restaurantrush;
 
 import java.util.Objects;
 
-/** Assertion helpers that work whether or not -ea is enabled. */
+/** Assertions that work even without -ea. */
 public final class Check {
 
     private Check() {

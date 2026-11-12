@@ -5,11 +5,8 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Plain standard-library test runner for Stage 1:
- *   java -ea -cp build/stage-1/test-classes restaurantrush.AllTests
- *
- * Registers parser/harness/replay checks and wraps the domain/controller
- * public runAll methods. Failures are collected before returning nonzero.
+ * Runs every Stage 1 test and exits nonzero if any fail.
+ *   java -ea -cp build/test-classes restaurantrush.AllTests
  */
 public final class AllTests {
 

@@ -3,7 +3,7 @@
 Raw console input, one line per prompt, in the order the controller asks: **Waiter, then Chef, every turn** (including when only Wait is useful). The same files drive both the real CLI and, for retry-free files, `ScriptedGameIO.alternating(...)`.
 
 ```sh
-scripts/run.sh < stage-1/test-fixtures/victory-input.txt
+scripts/run.sh < "stage 1/test-fixtures/victory-input.txt"
 ```
 
 | File | Lines | Expected result (from [Stage 1 plan](../PLAN.md)) |
