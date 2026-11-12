@@ -1,7 +1,7 @@
 package restaurantrush.control;
 
-/** One waiter action per turn. SEAT and ORDER use a customer ID;
- * SERVE uses an order ID (same as the customer ID). WAIT uses 0. */
+/** The waiter's move for a turn. SEAT and ORDER take a customer ID,
+ * SERVE takes an order ID (same number), WAIT takes 0. */
 public record WaiterAction(Type type, int targetId) {
     public enum Type { SEAT, ORDER, SERVE, WAIT }
 

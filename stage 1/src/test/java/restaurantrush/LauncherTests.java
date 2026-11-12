@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-/** Real JVM checks: Main's exit status and stderr are part of the CLI contract. */
+/** Starts a real JVM to check Main's exit code and error output. */
 public final class LauncherTests {
     private static Path output;
     private static int processes;
@@ -67,7 +67,7 @@ public final class LauncherTests {
     }
 
     private static void unreadableScriptInput() throws IOException, InterruptedException {
-        // Opening a directory can succeed on Unix, but reading its contents as a script fails.
+        // On Unix a directory opens fine but fails when read.
         Result result = launch("restaurantrush.Main", "", "--script", output.toString());
         check(result.exit() == 1 && result.stderr().contains("I/O error:"), "directory is an expected I/O failure");
         conciseError(result);
@@ -168,7 +168,7 @@ public final class LauncherTests {
         }
     }
 
-    /** Installs a failing stream in a child JVM, then exercises the real Main boundary. */
+    /** Runs Main in a child JVM with a broken stream. */
     public static final class FailingInput {
         private FailingInput() { }
 

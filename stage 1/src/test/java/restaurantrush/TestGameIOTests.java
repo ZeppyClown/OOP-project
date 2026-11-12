@@ -5,7 +5,7 @@ import java.util.List;
 import restaurantrush.control.InputEndedException;
 import restaurantrush.control.WaiterAction;
 
-/** Checks the TurnTests test double itself. Run: java -cp <test-classes> restaurantrush.TestGameIOTests */
+/** Tests for TestGameIO itself. */
 public final class TestGameIOTests {
     private static int passed;
 

@@ -8,11 +8,11 @@ public final class GameView {
     private GameView() {
     }
 
-    /* A waiting or seated customer. */
+    /** A customer in the queue or at a table. */
     public record CustomerLine(int id, String type, int satisfaction, String status) {
     }
 
-    /* A free table has a null occupant. */
+    /** A table; occupant is null when free. */
     public record TableLine(int tableId, CustomerLine occupant) {
     }
 
@@ -20,7 +20,7 @@ public final class GameView {
                             String status, int billCents) {
     }
 
-    /* Current game state and valid target IDs. Empty lists leave only Wait. */
+    /** Game state plus the IDs you can act on. Empty lists mean only Wait. */
     public record TurnState(int stage, int turn, int maxTurns,
                             int revenueCents, int paidCount, OptionalDouble averagePaidSatisfaction,
                             List<CustomerLine> waiting, List<TableLine> tables, List<OrderLine> orders,
@@ -38,7 +38,7 @@ public final class GameView {
         }
     }
 
-    /* Running totals at the end of a turn. */
+    /** Totals so far, at the end of a turn. */
     public record TurnSummary(int turn, int maxTurns, int servedCount, int paidCount, int departures,
                               int revenueCents, OptionalDouble averagePaidSatisfaction) {
     }
