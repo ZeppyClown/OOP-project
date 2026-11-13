@@ -11,6 +11,10 @@ import restaurantrush.boundary.ConsoleUI;
 import restaurantrush.control.GameController;
 import restaurantrush.domain.Cashier;
 import restaurantrush.domain.Chef;
+import restaurantrush.domain.Customer;
+import restaurantrush.domain.CriticCustomer;
+import restaurantrush.domain.RegularCustomer;
+import restaurantrush.domain.VIPCustomer;
 import restaurantrush.domain.Menu;
 import restaurantrush.domain.Restaurant;
 import restaurantrush.domain.Waiter;
@@ -57,6 +61,15 @@ public final class Main {
 
     private static void play(InputStream input) {
         Restaurant restaurant = new Restaurant(new Menu(), new Waiter(), new Chef(), new Cashier());
-        new GameController(restaurant, new ConsoleUI(input, System.out)).run();
+        new GameController(restaurant, new ConsoleUI(input, System.out), Main::createCustomer, 2).run();
+    }
+
+    /** Reproducible six-arrival setup shared with controller tests. */
+    static Customer createCustomer(int id) {
+        return switch (id) {
+            case 2 -> new VIPCustomer(id);
+            case 3 -> new CriticCustomer(id);
+            default -> new RegularCustomer(id);
+        };
     }
 }
