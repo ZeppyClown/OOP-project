@@ -18,7 +18,7 @@ import restaurantrush.domain.RegularCustomer;
 import restaurantrush.domain.Restaurant;
 import restaurantrush.domain.Waiter;
 
-/** Real Stage 2 dispatch and manager-choice integration, alongside unchanged TurnTests. */
+/** Inherited Stage 2 behavior on an explicit base3 menu and No/Host-Wait choices. */
 public final class Stage2ControllerTests {
     private static int passed;
 
@@ -43,7 +43,7 @@ public final class Stage2ControllerTests {
     }
 
     private static Restaurant restaurant() {
-        return new Restaurant(new Menu(), new Waiter(), new Chef(), new Cashier());
+        return new Restaurant(new Menu(false), new Waiter(), new Chef(), new Cashier());
     }
 
     private static TestGameIO waits(int turns) {
@@ -61,11 +61,11 @@ public final class Stage2ControllerTests {
                 () -> new GameController(restaurant(), null, RegularCustomer::new, 2), "null IO");
         Check.throwsType(NullPointerException.class,
                 () -> new GameController(restaurant(), waits(0), null, 2), "null factory");
-        for (int stage : new int[] {Integer.MIN_VALUE, 0, 3, Integer.MAX_VALUE}) {
+        for (int stage : new int[] {Integer.MIN_VALUE, 0, 4, Integer.MAX_VALUE}) {
             Check.throwsType(IllegalArgumentException.class,
                     () -> new GameController(restaurant(), waits(0), RegularCustomer::new, stage), "invalid stage");
         }
-        for (int stage : new int[] {1, 2}) {
+        for (int stage : new int[] {1, 2, 3}) {
             TestGameIO io = waits(1);
             new GameController(restaurant(), io, RegularCustomer::new, stage).run();
             Check.equal(stage, io.turnStarts().get(0).stage(), "injected start stage");
@@ -203,7 +203,7 @@ public final class Stage2ControllerTests {
         Check.equal(1, quotes[0], "discount dispatched once and bill locked");
         Check.equal(1234, r.getRevenueCents(), "unknown subtype discounted payment");
         Check.equal(79, probe.getSatisfactionAtPayment(), "unknown subtype waiting loss dispatched");
-        Check.equal("Probe", io.actionStates().get(0).tables().get(0).occupant().type(), "label dispatched");
+        Check.equal("Probe", io.actionStates().get(1).tables().get(0).occupant().type(), "label dispatched");
         Check.equal(1, io.interruptions().size(), "short trace ends via real EOF");
         Check.isTrue(io.finalReports().isEmpty(), "EOF has no verdict");
         passed++;
@@ -273,10 +273,11 @@ public final class Stage2ControllerTests {
         Check.equal(18, io.finalReports().get(0).totals().turn(), "result only after turn 18");
         List<String> calls = new ArrayList<>();
         for (int turn = 1; turn <= 18; turn++) {
-            calls.addAll(List.of("showTurnStart", "chooseWaiterAction", "showActionState",
+            calls.addAll(List.of("showHappyHour", "chooseHappyHourActivation", "showHappyHour",
+                    "showTurnStart", "chooseHostCustomer", "showActionState", "chooseWaiterAction", "showActionState",
                     "chooseChefOrder", "showActionState", "showTurnEnd"));
         }
         calls.add("showFinalResult");
-        Check.equal(calls, io.calls(), "same inherited phase/display order");
+        Check.equal(calls, io.calls(), "Stage 3 phases with inherited No/Wait choices");
     }
 }

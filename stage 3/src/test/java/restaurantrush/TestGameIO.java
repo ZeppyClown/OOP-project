@@ -12,12 +12,21 @@ import restaurantrush.control.InputEndedException;
 import restaurantrush.control.WaiterAction;
 
 /**
- * Fake GameIO for turn tests. Plays back preset Waiter and Chef choices,
- * records every call, and throws InputEndedException when it runs out.
+ * GameIO for controller tests: answers from preset role choices, records
+ * every call in order, and throws InputEndedException when a list runs out,
+ * the same as real EOF. Unconfigured new roles use the GameIO defaults for
+ * inherited regression scripts. Explicitly configured queues never fall back.
  */
 public final class TestGameIO implements GameIO {
     private final Deque<WaiterAction> waiterChoices = new ArrayDeque<>();
     private final Deque<Integer> chefChoices = new ArrayDeque<>();
+    private final Deque<Boolean> happyHourChoices = new ArrayDeque<>();
+    private final Deque<Integer> hostChoices = new ArrayDeque<>();
+    private boolean scriptHappyHour;
+    private boolean scriptHost;
+    private int happyHourRequests;
+    private int hostRequests;
+    private final List<HappyHourDisplay> happyHourDisplays = new ArrayList<>();
     private final List<String> calls = new ArrayList<>();
     private final List<String> invalidMessages = new ArrayList<>();
     private final List<GameView.TurnState> turnStarts = new ArrayList<>();
@@ -28,6 +37,72 @@ public final class TestGameIO implements GameIO {
     private int waiterRequests;
     private int chefRequests;
 
+    public record HappyHourDisplay(int turn, int remaining, boolean used) { }
+
+    public TestGameIO happyHour(boolean... choices) {
+        scriptHappyHour = true;
+        for (boolean choice : choices) {
+            happyHourChoices.addLast(choice);
+        }
+        return this;
+    }
+
+    public TestGameIO happyHourRepeated(boolean choice, int times) {
+        scriptHappyHour = true;
+        for (int i = 0; i < times; i++) {
+            happyHourChoices.addLast(choice);
+        }
+        return this;
+    }
+
+    public TestGameIO host(int... customerIds) {
+        scriptHost = true;
+        for (int id : customerIds) {
+            hostChoices.addLast(id);
+        }
+        return this;
+    }
+
+    public TestGameIO hostRepeated(int customerId, int times) {
+        scriptHost = true;
+        for (int i = 0; i < times; i++) {
+            hostChoices.addLast(customerId);
+        }
+        return this;
+    }
+
+    @Override
+    public boolean chooseHappyHourActivation() {
+        happyHourRequests++;
+        calls.add("chooseHappyHourActivation");
+        if (!scriptHappyHour) {
+            return false;
+        }
+        if (happyHourChoices.isEmpty()) {
+            throw new InputEndedException("Scripted input ended at a Happy Hour choice");
+        }
+        return happyHourChoices.removeFirst();
+    }
+
+    @Override
+    public int chooseHostCustomer() {
+        hostRequests++;
+        calls.add("chooseHostCustomer");
+        if (!scriptHost) {
+            return 0;
+        }
+        if (hostChoices.isEmpty()) {
+            throw new InputEndedException("Scripted input ended at a Host choice");
+        }
+        return hostChoices.removeFirst();
+    }
+
+    @Override
+    public void showHappyHour(int turn, int remaining, boolean used) {
+        calls.add("showHappyHour");
+        happyHourDisplays.add(new HappyHourDisplay(turn, remaining, used));
+    }
+
     public TestGameIO waiter(WaiterAction... actions) {
         for (WaiterAction action : actions) {
             waiterChoices.addLast(action);
@@ -35,7 +110,7 @@ public final class TestGameIO implements GameIO {
         return this;
     }
 
-    /** Repeats one Waiter action, e.g. Wait every turn. */
+    /** Adds the same Waiter action several times, e.g. Wait for every turn. */
     public TestGameIO waiterRepeated(WaiterAction action, int times) {
         for (int i = 0; i < times; i++) {
             waiterChoices.addLast(action);
@@ -43,7 +118,7 @@ public final class TestGameIO implements GameIO {
         return this;
     }
 
-    /** Chef order IDs; 0 means Wait. */
+    /** Order IDs for the Chef; 0 means Wait. */
     public TestGameIO chef(int... orderIds) {
         for (int orderId : orderIds) {
             chefChoices.addLast(orderId);
@@ -134,7 +209,7 @@ public final class TestGameIO implements GameIO {
         return Collections.unmodifiableList(interruptions);
     }
 
-    /** All GameIO calls, in order. */
+    /** Every GameIO call in the order it happened. */
     public List<String> calls() {
         return Collections.unmodifiableList(calls);
     }
@@ -151,8 +226,17 @@ public final class TestGameIO implements GameIO {
         return chefRequests;
     }
 
-    /** True if every scripted choice was used. */
+    public int happyHourRequests() { return happyHourRequests; }
+
+    public int hostRequests() { return hostRequests; }
+
+    public List<HappyHourDisplay> happyHourDisplays() {
+        return Collections.unmodifiableList(happyHourDisplays);
+    }
+
+    /** True when all four scripted choice queues are empty. */
     public boolean allChoicesUsed() {
-        return waiterChoices.isEmpty() && chefChoices.isEmpty();
+        return waiterChoices.isEmpty() && chefChoices.isEmpty()
+                && happyHourChoices.isEmpty() && hostChoices.isEmpty();
     }
 }

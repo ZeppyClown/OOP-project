@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-/** Starts a real JVM to check Main's exit code and error output. */
+/** Real JVM checks: Main's exit status and stderr are part of the CLI contract. */
 public final class LauncherTests {
     private static Path output;
     private static int processes;
@@ -33,8 +33,9 @@ public final class LauncherTests {
             inputIoFailure();
             programmingFailureEscapes();
             spacedScriptCompletes();
-            defaultStage2Victory();
+            defaultStage3Victory();
             eofRemainsAnInterruption();
+            stage3RoleEofIdentifiesPhase();
             chefAdviceWorksThroughParser();
         } catch (IOException failure) {
             throw new AssertionError("Launcher test infrastructure I/O failed", failure);
@@ -68,7 +69,7 @@ public final class LauncherTests {
     }
 
     private static void unreadableScriptInput() throws IOException, InterruptedException {
-        // On Unix a directory opens fine but fails when read.
+        // Opening a directory can succeed on Unix, but reading its contents as a script fails.
         Result result = launch("restaurantrush.Main", "", "--script", output.toString());
         check(result.exit() == 1 && result.stderr().contains("I/O error:"), "directory is an expected I/O failure");
         conciseError(result);
@@ -94,7 +95,7 @@ public final class LauncherTests {
 
     private static void spacedScriptCompletes() throws IOException, InterruptedException {
         Path script = Files.createDirectories(output.resolve("script folder")).resolve("all wait.txt");
-        Files.writeString(script, "wait\nwait\n".repeat(18), StandardCharsets.UTF_8);
+        Files.writeString(script, "no\nwait\nwait\nwait\n".repeat(18), StandardCharsets.UTF_8);
         Result result = launch("restaurantrush.Main", "", "--script", script.toString());
         check(result.exit() == 0 && result.stderr().isEmpty(), "valid spaced script succeeds");
         check(result.stdout().contains("===== DEFEAT =====")
@@ -105,44 +106,63 @@ public final class LauncherTests {
     private static void eofRemainsAnInterruption() throws IOException, InterruptedException {
         Result result = launch("restaurantrush.Main", "");
         check(result.exit() == 0 && result.stderr().isEmpty(), "EOF remains a normal interruption");
-        check(result.stdout().contains("Input ended during turn 1, Waiter"), "EOF identifies role and turn");
+        check(result.stdout().contains("Input ended during turn 1, Happy Hour"), "EOF identifies role and turn");
         noVerdict(result);
         passed++;
     }
 
-    private static void defaultStage2Victory() throws IOException, InterruptedException {
-        Path fixtures = Path.of(ConsoleTests.FIXTURES.toString());
-        Path script = Files.createDirectories(output.resolve("stage 2 scripts")).resolve("victory input.txt");
+    private static void stage3RoleEofIdentifiesPhase() throws IOException, InterruptedException {
+        String[] inputs = {"no\n", "no\nwait\n", "no\nwait\nwait\n", "no\n999\n"};
+        String[] roles = {"Host", "Waiter", "Chef", "Host"};
+        for (int i = 0; i < inputs.length; i++) {
+            Result result = launch("restaurantrush.Main", inputs[i]);
+            check(result.exit() == 0 && result.stderr().isEmpty(), "role EOF succeeds");
+            check(result.stdout().contains("Input ended during turn 1, " + roles[i]), "current role at EOF");
+            check(!result.stdout().contains("-- End of turn "), "EOF cannot finish partial turn");
+            noVerdict(result);
+        }
+        Result activated = launch("restaurantrush.Main", "yes\n1\norder 1\n1\n");
+        check(activated.exit() == 0 && activated.stderr().isEmpty(), "activation and first turn succeed");
+        check(activated.stdout().contains("-- End of turn 1 --")
+                && activated.stdout().contains("Input ended during turn 2, Host"),
+                "used Happy Hour removes next activation prompt");
+        noVerdict(activated);
+        passed++;
+    }
+
+    private static void defaultStage3Victory() throws IOException, InterruptedException {
+        Path fixtures = Path.of(System.getProperty("stage1.fixtures", "stage 3/test-fixtures"));
+        Path script = Files.createDirectories(output.resolve("stage 3 scripts")).resolve("victory input.txt");
         Files.copy(fixtures.resolve("victory-input.txt"), script);
         Result result = launch("restaurantrush.Main", "", "--script", script.toString());
-        check(result.exit() == 0 && result.stderr().isEmpty(), "Stage 2 victory script succeeds");
-        check(result.stdout().contains("Stage 2 - Turn 1 / 18")
+        check(result.exit() == 0 && result.stderr().isEmpty(), "Stage 3 victory script succeeds");
+        check(result.stdout().contains("Stage 3 - Turn 1 / 18")
                 && result.stdout().contains("C2 VIP") && result.stdout().contains("C3 Critic"),
-                "real Main assembles Stage 2 customer mix");
+                "real Main assembles Stage 3 customer mix");
         check(result.stdout().split("-- End of turn ", -1).length - 1 == 18
                 && result.stdout().split("===== ", -1).length - 1 == 1, "18 turns and one final report");
-        check(result.stdout().contains("===== VICTORY ====="), "Stage 2 victory verdict");
+        check(result.stdout().contains("===== VICTORY ====="), "Stage 3 victory verdict");
         String report = result.stdout().substring(result.stdout().indexOf("===== VICTORY ====="));
-        check(report.contains("Served: 5\n") && report.contains("Paid: 5\n")
-                && report.contains("Revenue: $65.10\n")
-                && report.contains("Average satisfaction of paid customers: 78.0\n")
+        check(report.contains("Served: 6\n") && report.contains("Paid: 5\n")
+                && report.contains("Revenue: $73.38\n")
+                && report.contains("Average satisfaction of paid customers: 89.4\n")
                 && report.contains("Unhappy departures: 0\n") && report.contains("Turns used: 18 / 18"),
-                "default Stage 2 victory totals");
+                "default Stage 3 victory totals");
         check(report.contains("[PASS] Paid customers: required 4, actual 5")
-                && report.contains("[PASS] Revenue: required $45.00, actual $65.10")
-                && report.contains("[PASS] Average paid satisfaction: required 60, actual 78.0"),
+                && report.contains("[PASS] Revenue: required $45.00, actual $73.38")
+                && report.contains("[PASS] Average paid satisfaction: required 60, actual 89.4"),
                 "unchanged victory thresholds");
         passed++;
     }
 
     private static void chefAdviceWorksThroughParser() throws IOException, InterruptedException {
-        Result result = launch("restaurantrush.Main", "wait\n999\nwait\n");
+        Result result = launch("restaurantrush.Main", "no\nwait\nwait\n999\nwait\n");
         check(result.exit() == 0 && result.stderr().isEmpty(), "Chef retry then EOF succeeds");
         check(result.stdout().contains("does not exist; use 'wait' to Wait")
                 && !result.stdout().contains("use 0") && !result.stdout().contains("Invalid Chef command"),
                 "Chef's suggested command is accepted by the real parser");
         check(result.stdout().contains("-- End of turn 1 --")
-                && result.stdout().contains("Input ended during turn 2, Waiter"), "retry completes only the current phase");
+                && result.stdout().contains("Input ended during turn 2, Happy Hour"), "retry completes only the current phase");
         noVerdict(result);
         passed++;
     }
@@ -194,7 +214,7 @@ public final class LauncherTests {
         }
     }
 
-    /** Runs Main in a child JVM with a broken stream. */
+    /** Installs a failing stream in a child JVM, then exercises the real Main boundary. */
     public static final class FailingInput {
         private FailingInput() { }
 

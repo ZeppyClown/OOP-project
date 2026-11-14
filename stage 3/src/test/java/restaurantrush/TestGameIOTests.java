@@ -10,6 +10,11 @@ public final class TestGameIOTests {
     private static int passed;
 
     public static void main(String[] args) {
+        runAll();
+    }
+
+    public static void runAll() {
+        passed = 0;
         returnsWaiterChoicesInOrder();
         returnsChefChoicesInOrderWithZeroAsWait();
         waiterRunOutThrowsInputEnded();
@@ -17,7 +22,33 @@ public final class TestGameIOTests {
         recordsInvalidMessagesAndCallOrder();
         repeatedHelpersQueueEachChoice();
         allChoicesUsedOnlyWhenBothListsEmpty();
+        newRolesDefaultOnlyWhenUnconfigured();
+        explicitNewRoleScriptsExhaustAndRecord();
         System.out.println("TestGameIOTests: " + passed + " passed");
+    }
+
+    private static void newRolesDefaultOnlyWhenUnconfigured() {
+        TestGameIO io = new TestGameIO();
+        check(!io.chooseHappyHourActivation() && io.chooseHostCustomer() == 0, "inherited No/Wait defaults");
+        check(io.happyHourRequests() == 1 && io.hostRequests() == 1, "default requests counted");
+        checkThrowsInputEnded(new TestGameIO().happyHour()::chooseHappyHourActivation, "explicit empty activation");
+        checkThrowsInputEnded(new TestGameIO().host()::chooseHostCustomer, "explicit empty Host");
+        passed++;
+    }
+
+    private static void explicitNewRoleScriptsExhaustAndRecord() {
+        TestGameIO io = new TestGameIO().happyHourRepeated(false, 1).happyHour(true).host(99, 1).hostRepeated(0, 1);
+        check(!io.allChoicesUsed(), "new role choices count as pending input");
+        check(!io.chooseHappyHourActivation() && io.chooseHappyHourActivation(), "activation choices ordered");
+        check(io.chooseHostCustomer() == 99 && io.chooseHostCustomer() == 1 && io.chooseHostCustomer() == 0,
+                "Host choices ordered with zero Wait");
+        io.showHappyHour(4, 2, true);
+        check(io.happyHourDisplays().equals(List.of(new TestGameIO.HappyHourDisplay(4, 2, true))),
+                "duration and used state recorded");
+        check(io.allChoicesUsed(), "all four choice queues consumed");
+        checkThrowsInputEnded(io::chooseHappyHourActivation, "activation exhausted");
+        checkThrowsInputEnded(io::chooseHostCustomer, "Host exhausted");
+        passed++;
     }
 
     private static void returnsWaiterChoicesInOrder() {
