@@ -55,7 +55,11 @@ public abstract class Customer {
 
     protected abstract int waitingLossPerTurn();
 
-    /** Subtype discount hook; called once when the bill is quoted, never again after. */
+    /**
+     * Side-effect-free quote hook. The controller may call it on an attempted
+     * order that is later refused. A successful placement stores the quoted
+     * bill in Order; later attempts do not reprice that existing order.
+     */
     public int applyDiscount(int cents) {
         return cents;
     }
