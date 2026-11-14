@@ -1,5 +1,5 @@
 #!/bin/sh
-# Compile and play Stage 1. Interactive by default; extra arguments go to Main.
+# Compile and play Stage 2. Interactive by default; extra arguments go to Main.
 # Usage: sh "stage 2/run.sh"                                   (play at the keyboard)
 #        sh "stage 2/run.sh" --script "stage 2/test-fixtures/victory-input.txt"
 # Needs JDK 17+. Uses $JAVA_HOME/bin if JAVA_HOME is set, otherwise javac/java on PATH.

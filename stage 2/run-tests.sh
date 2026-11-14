@@ -1,5 +1,5 @@
 #!/bin/sh
-# Compile Stage 1 into a temp dir and run every registered check (java -ea).
+# Compile Stage 2 into a temp dir and run every registered check (java -ea).
 # Usage (from anywhere): sh "stage 2/run-tests.sh"
 # Needs JDK 17+. Uses $JAVA_HOME/bin if JAVA_HOME is set, otherwise javac/java on PATH.
 set -eu
