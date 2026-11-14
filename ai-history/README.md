@@ -13,7 +13,9 @@ AI tool: Claude Code (Anthropic Claude).
 
 ## Stage 2
 
-No chats yet.
+| Chat | Date | What it covers |
+|---|---|---|
+| [chat-03](stage-2/chat-03.md) | 14 Nov 2026 | Stage 2 code review against the assignment brief and evidence rules (no code changes) |
 
 ## Stage 3
 
