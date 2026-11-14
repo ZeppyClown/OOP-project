@@ -52,11 +52,11 @@ public class Restaurant {
         return menu;
     }
 
-    Waiter getWaiter() {
+    public Waiter getWaiter() {
         return waiter;
     }
 
-    Chef getChef() {
+    public Chef getChef() {
         return chef;
     }
 

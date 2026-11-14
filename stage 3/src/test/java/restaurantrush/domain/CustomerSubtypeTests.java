@@ -5,6 +5,7 @@ import java.util.function.IntFunction;
 
 import static restaurantrush.Check.throwsType;
 
+/** The same parent-typed behavioural contract is exercised for all three siblings. */
 public final class CustomerSubtypeTests {
     private static final List<IntFunction<Customer>> FACTORIES = List.of(
             RegularCustomer::new, VIPCustomer::new, CriticCustomer::new);
@@ -25,11 +26,11 @@ public final class CustomerSubtypeTests {
     }
 
     private static Restaurant restaurant() {
-        return new Restaurant(new Menu(false), new Waiter(), new Chef(), new Cashier());
+        return new Restaurant(new Menu(), new Waiter(), new Chef(), new Cashier());
     }
 
     private static void behaviourDispatch() {
-        Menu menu = new Menu(false);
+        Menu menu = new Menu();
         String[][] choices = {{"Burger", "Salad", "Pasta"}, {"Burger", "Salad", "Pasta"},
                 {"Pasta", "Pasta", "Pasta"}};
         int[][] prices = {{1500, 900, 1800}, {1350, 810, 1620}, {1500, 900, 1800}};
@@ -65,8 +66,8 @@ public final class CustomerSubtypeTests {
             throwsType(IllegalArgumentException.class, () -> customer.chooseItem(null), "null menu rejected");
             check(customer.getId() == Integer.MAX_VALUE && customer.getOrder() == null
                     && customer.getStatus() == CustomerStatus.WAITING, "invalid choice leaves state intact");
-            check(new Menu(false).getItems().stream().anyMatch(item -> item.getName()
-                    .equals(customer.chooseItem(new Menu(false)).getName())), "large ID still chooses a menu item");
+            check(new Menu().getItems().stream().anyMatch(item -> item.getName()
+                    .equals(customer.chooseItem(new Menu()).getName())), "large ID still chooses a menu item");
         }
     }
 
@@ -124,7 +125,7 @@ public final class CustomerSubtypeTests {
     private static void invalidTransitions() {
         for (IntFunction<Customer> factory : FACTORIES) {
             Customer customer = factory.apply(1);
-            MenuItem item = customer.chooseItem(new Menu(false));
+            MenuItem item = customer.chooseItem(new Menu());
             int bill = customer.applyDiscount(item.getPriceCents());
             refused(customer.placeOrder(item, bill, 1)); refused(customer.serve(1));
             refused(customer.finishEating(1)); refused(customer.pay(1));

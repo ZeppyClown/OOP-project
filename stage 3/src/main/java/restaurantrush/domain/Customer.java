@@ -59,7 +59,7 @@ public abstract class Customer {
     public MenuItem chooseItem(Menu menu) {
         if (menu == null) { throw new IllegalArgumentException("Menu cannot be null"); }
         List<MenuItem> choices = menu.getItems();
-        return choices.get((id - 1) % choices.size());
+        return choices.get((id - 1) % 3);
     }
 
     void bindTo(Restaurant restaurant) {

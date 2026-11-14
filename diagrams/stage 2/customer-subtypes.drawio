@@ -8,20 +8,20 @@
         <mxCell id="title" value="S2-X – Customer subtype dispatch" style="text;html=1;align=center;fontSize=16;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="360" y="15" width="600" height="35" />
         </mxCell>
-        <mxCell id="C" value="Customer&lt;br&gt;{abstract}" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;html=1;fontSize=12;fontFamily=Helvetica;startSize=26;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="430" y="100" width="440" height="114" />
+        <mxCell id="C" value="&lt;i&gt;Customer&lt;/i&gt;&lt;br&gt;{abstract}" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;html=1;fontSize=12;fontFamily=Helvetica;startSize=44;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="430" y="100" width="440" height="132" />
         </mxCell>
         <mxCell id="C_row0" value="+ getTypeLabel() : String {abstract}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="C">
-          <mxGeometry as="geometry" x="0" y="26" width="440" height="22" />
+          <mxGeometry as="geometry" x="0" y="44" width="440" height="22" />
         </mxCell>
         <mxCell id="C_row1" value="# waitingLossPerTurn() : int {abstract}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="C">
-          <mxGeometry as="geometry" x="0" y="48" width="440" height="22" />
+          <mxGeometry as="geometry" x="0" y="66" width="440" height="22" />
         </mxCell>
         <mxCell id="C_row2" value="+ chooseItem(Menu) : MenuItem" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="C">
-          <mxGeometry as="geometry" x="0" y="70" width="440" height="22" />
+          <mxGeometry as="geometry" x="0" y="88" width="440" height="22" />
         </mxCell>
         <mxCell id="C_row3" value="+ applyDiscount(int) : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="C">
-          <mxGeometry as="geometry" x="0" y="92" width="440" height="22" />
+          <mxGeometry as="geometry" x="0" y="110" width="440" height="22" />
         </mxCell>
         <mxCell id="R" value="RegularCustomer" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;html=1;fontSize=12;fontFamily=Helvetica;startSize=26;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="30" y="400" width="340" height="70" />
@@ -32,8 +32,13 @@
         <mxCell id="R_row1" value="# waitingLossPerTurn() : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="R">
           <mxGeometry as="geometry" x="0" y="48" width="340" height="22" />
         </mxCell>
-        <mxCell id="Rparent" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;labelBackgroundColor=#ffffff;fontSize=12;fontFamily=Helvetica;endArrow=block;endFill=0;dashed=0;" edge="1" parent="1" source="R" target="C">
-          <mxGeometry as="geometry" relative="1" />
+        <mxCell id="Rparent" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.15;entryY=1;rounded=0;" edge="1" parent="1" source="R" target="C">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="200" y="330" />
+              <mxPoint x="496.0" y="330" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="V" value="VIPCustomer" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;html=1;fontSize=12;fontFamily=Helvetica;startSize=26;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="450" y="400" width="340" height="92" />
@@ -47,8 +52,13 @@
         <mxCell id="V_row2" value="+ applyDiscount(int) : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="V">
           <mxGeometry as="geometry" x="0" y="70" width="340" height="22" />
         </mxCell>
-        <mxCell id="Vparent" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;labelBackgroundColor=#ffffff;fontSize=12;fontFamily=Helvetica;endArrow=block;endFill=0;dashed=0;" edge="1" parent="1" source="V" target="C">
-          <mxGeometry as="geometry" relative="1" />
+        <mxCell id="Vparent" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.5;entryY=1;rounded=0;" edge="1" parent="1" source="V" target="C">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="620" y="330" />
+              <mxPoint x="650.0" y="330" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="K" value="CriticCustomer" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;html=1;fontSize=12;fontFamily=Helvetica;startSize=26;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="870" y="400" width="340" height="92" />
@@ -62,8 +72,13 @@
         <mxCell id="K_row2" value="+ chooseItem(Menu) : MenuItem" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;html=1;fontSize=12;fontFamily=Helvetica;" vertex="1" parent="K">
           <mxGeometry as="geometry" x="0" y="70" width="340" height="22" />
         </mxCell>
-        <mxCell id="Kparent" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;rounded=0;labelBackgroundColor=#ffffff;fontSize=12;fontFamily=Helvetica;endArrow=block;endFill=0;dashed=0;" edge="1" parent="1" source="K" target="C">
-          <mxGeometry as="geometry" relative="1" />
+        <mxCell id="Kparent" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.85;entryY=1;rounded=0;" edge="1" parent="1" source="K" target="C">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1040" y="330" />
+              <mxPoint x="804.0" y="330" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="Money" value="Money" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;html=1;fontSize=12;fontFamily=Helvetica;startSize=26;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="450" y="680" width="430" height="48" />
