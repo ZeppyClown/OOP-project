@@ -36,7 +36,7 @@ public class ConsoleUI implements GameIO {
     @Override
     public void showActionState(GameView.TurnState state) {
         out.println("State update for turn " + state.turn());
-        printState(state);
+        printState(state, false);
     }
 
     @Override
@@ -46,6 +46,30 @@ public class ConsoleUI implements GameIO {
     }
 
     // ---- requests ---------------------------------------------------------
+
+    @Override
+    public boolean chooseHappyHourActivation() {
+        while (true) {
+            String line = prompt("Happy Hour (yes/no)> ");
+            try {
+                return parseHappyHourActivation(line);
+            } catch (IllegalArgumentException e) {
+                out.println("Invalid Happy Hour command: " + e.getMessage());
+            }
+        }
+    }
+
+    @Override
+    public int chooseHostCustomer() {
+        while (true) {
+            String line = prompt("Host (<customer ID> or wait)> ");
+            try {
+                return parseHostChoice(line);
+            } catch (IllegalArgumentException e) {
+                out.println("Invalid Host command: " + e.getMessage());
+            }
+        }
+    }
 
     @Override
     public WaiterAction chooseWaiterAction() {
@@ -118,6 +142,27 @@ public class ConsoleUI implements GameIO {
         return parseId(words[0]);
     }
 
+    public static boolean parseHappyHourActivation(String line) {
+        String[] words = words(line);
+        requireArgs(words, 1, "enter yes or no");
+        if (words[0].equalsIgnoreCase("yes")) return true;
+        if (words[0].equalsIgnoreCase("no")) return false;
+        throw new IllegalArgumentException("enter yes or no");
+    }
+
+    /** Returns a customer ID, or 0 for wait. */
+    public static int parseHostChoice(String line) {
+        String[] words = words(line);
+        requireArgs(words, 1, "enter one customer ID or wait");
+        return words[0].equalsIgnoreCase("wait") ? 0 : parseId(words[0]);
+    }
+
+    @Override
+    public void showHappyHour(int turn, int remaining, boolean used) {
+        out.printf("Happy Hour: turn %d | remaining %d | used %s%n", turn, remaining, used);
+        out.flush();
+    }
+
     private static String[] words(String line) {
         String trimmed = line == null ? "" : line.trim();
         if (trimmed.isEmpty()) {
@@ -151,10 +196,10 @@ public class ConsoleUI implements GameIO {
     public void showTurnStart(GameView.TurnState s) {
         out.println();
         out.printf("Stage %d - Turn %d / %d%n", s.stage(), s.turn(), s.maxTurns());
-        printState(s);
+        printState(s, true);
     }
 
-    private void printState(GameView.TurnState s) {
+    private void printState(GameView.TurnState s, boolean hostAvailable) {
         out.printf("Revenue: %s | Paid: %d | Average paid satisfaction: %s%n",
                 formatCents(s.revenueCents()), s.paidCount(), formatAverage(s.averagePaidSatisfaction()));
 
@@ -171,6 +216,8 @@ public class ConsoleUI implements GameIO {
                     formatCents(o.billCents()), o.completedUnits(), o.totalUnits(), o.status());
         }
 
+        out.println(hostAvailable ? "Host options: " + options(s.seatableCustomerIds(), "C")
+                : "Host: choice completed for this turn");
         out.println("Waiter options: " + waiterOptions(s));
         out.println("Chef options: " + options(s.preparableOrderIds(), "O"));
         out.println("Cashier: automatic, " + s.cashierStatus());
