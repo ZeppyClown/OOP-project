@@ -1,0 +1,17 @@
+{
+  "class-control": 1,
+  "class-diagram": 1,
+  "class-entities": 1,
+  "class-menu": 1,
+  "class-overview": 1,
+  "class-staff": 1,
+  "sequence-1-start-host": 3,
+  "sequence-2-waiter-chef": 3,
+  "sequence-3-serve-pay": 2,
+  "sequence-4-result": 1,
+  "sequence-diagram": 2,
+  "sequence-outcome-flip-1": 4,
+  "sequence-outcome-flip-2": 3,
+  "sequence-outcome-flip-3": 2,
+  "sequence-outcome-flip": 8
+}
