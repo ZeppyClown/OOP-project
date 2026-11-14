@@ -7,10 +7,7 @@ import java.util.Deque;
 import java.util.List;
 import java.util.OptionalDouble;
 
-/**
- * Aggregate root: staff actions go through these methods so queue, table and
- * ownership checks stay in one place; the controller still decides turn phase.
- */
+
 public class Restaurant {
     private final List<Table> tables;
     private final Deque<Customer> waitingQueue;
@@ -55,27 +52,22 @@ public class Restaurant {
         return menu;
     }
 
-    /** Package-private: domain tests only; game code uses takeOrder/serveOrder instead. */
     Waiter getWaiter() {
         return waiter;
     }
 
-    /** Package-private: domain tests only; game code uses prepareOrder instead. */
     Chef getChef() {
         return chef;
     }
 
-    /** Cashier actions stay package-private; callers use collectPayment. */
     public Cashier getCashier() {
         return cashier;
     }
 
-    /** Host seating stays package-private; callers use seatCustomerWithHost. */
     public Host getHost() {
         return host;
     }
 
-    /** Binds a new WAITING customer permanently; duplicate IDs or another owner are rejected. */
     public void registerArrival(Customer customer) {
         if (customer == null) {
             throw new IllegalArgumentException("Arriving customer cannot be null");
@@ -142,12 +134,10 @@ public class Restaurant {
         return null;
     }
 
-    /** Waiter seats a queued customer; the queue entry is removed only on success. */
     public String seatCustomer(Customer customer, int turn) {
         return seatCustomer(customer, turn, false);
     }
 
-    /** Same guards as seatCustomer, but uses the Host's task instead of the Waiter's. */
     public String seatCustomerWithHost(Customer customer, int turn) {
         return seatCustomer(customer, turn, true);
     }
@@ -164,10 +154,6 @@ public class Restaurant {
         return reason;
     }
 
-    /**
-     * Waiter takes a seated customer's order: the customer picks from this
-     * restaurant's menu and the bill is locked at the supplied policy's quote.
-     */
     public String takeOrder(Customer customer, PricingPolicy pricing, int turn) {
         if (pricing == null) {
             throw new IllegalArgumentException("Pricing policy cannot be null");
@@ -175,7 +161,6 @@ public class Restaurant {
         if (customer == null || findCustomer(customer.getId()) != customer) {
             return "Customer is not registered in this restaurant";
         }
-        // Checked before Waiter capacity so the refusal names the customer's state first.
         if (customer.getStatus() != CustomerStatus.SEATED) {
             return "Customer " + customer.getId() + " must be SEATED to order; currently " + customer.getStatus();
         }
@@ -183,7 +168,6 @@ public class Restaurant {
         return waiter.takeOrder(customer, item, pricing.priceFor(customer, item), turn);
     }
 
-    /** Waiter serves one of this restaurant's orders to its customer. */
     public String serveOrder(Order order, int turn) {
         if (order == null || findOrder(order.getId()) != order) {
             return "Order is not registered in this restaurant";
@@ -191,7 +175,6 @@ public class Restaurant {
         return waiter.serve(order.getCustomer(), turn);
     }
 
-    /** Chef advances one preparation unit of one of this restaurant's orders. */
     public String prepareOrder(Order order, int turn) {
         if (order == null || findOrder(order.getId()) != order) {
             return "Order is not registered in this restaurant";
@@ -199,7 +182,6 @@ public class Restaurant {
         return chef.prepare(order, turn);
     }
 
-    /** Cashier collects from a seated customer and frees the table on success. */
     public String collectPayment(Customer customer, int turn) {
         if (customer == null || findCustomer(customer.getId()) != customer) {
             return "Customer is not registered in this restaurant";
@@ -211,7 +193,6 @@ public class Restaurant {
         return reason;
     }
 
-    // Callers release only PAID or LEFT occupants, so a refusal means a broken invariant.
     private static void release(Table table) {
         String refusal = table.release();
         if (refusal != null) {
@@ -219,7 +200,6 @@ public class Restaurant {
         }
     }
 
-    /** Moves customers served on an earlier turn to READY_TO_PAY. */
     public void advanceEating(int turn) {
         for (Customer c : customers) {
             if (c.getStatus() == CustomerStatus.SERVED && c.getServedTurn() < turn) {
@@ -231,7 +211,6 @@ public class Restaurant {
         }
     }
 
-    /** Selects by readiness turn then ID; collectPayment does not enforce this priority. */
     public Customer oldestEligiblePayer(int turn) {
         Customer oldest = null;
         for (Customer c : customers) {
@@ -248,7 +227,6 @@ public class Restaurant {
         return oldest;
     }
 
-    /** One waiting-loss step; not idempotent, so call it once per turn. Departures leave queue and table. */
     public void applyWaitingLoss() {
         for (Customer c : customers) {
             if (c.isWaitingUnserved()) {
@@ -264,7 +242,6 @@ public class Restaurant {
         }
     }
 
-    /** Eligibility and the 100 cap are decided by each Customer. */
     public void recoverWaitingSatisfaction(int amount) {
         if (amount < 0) {
             throw new IllegalArgumentException("Recovery amount cannot be negative");
