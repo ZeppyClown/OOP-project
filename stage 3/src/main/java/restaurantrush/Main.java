@@ -19,7 +19,7 @@ import restaurantrush.domain.Restaurant;
 import restaurantrush.domain.VIPCustomer;
 import restaurantrush.domain.Waiter;
 
-/** Offline Stage 2 entry point. Script files use the same parser as interactive input. */
+/** Offline Stage 3 entry point. Script files use the same parser as interactive input. */
 public final class Main {
     private Main() { }
 
@@ -62,7 +62,7 @@ public final class Main {
 
     private static void play(InputStream input) {
         Restaurant restaurant = new Restaurant(new Menu(), new Waiter(), new Chef(), new Cashier());
-        new GameController(restaurant, new ConsoleUI(input, System.out), Main::createCustomer, 2).run();
+        new GameController(restaurant, new ConsoleUI(input, System.out), Main::createCustomer, 3).run();
     }
 
     /** Reproducible six-arrival setup shared with controller tests. */

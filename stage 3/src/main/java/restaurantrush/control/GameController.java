@@ -9,15 +9,17 @@ import java.util.function.IntFunction;
 import restaurantrush.domain.Customer;
 import restaurantrush.domain.CustomerStatus;
 import restaurantrush.domain.GameResult;
-import restaurantrush.domain.MenuItem;
+import restaurantrush.domain.HappyHourPricingPolicy;
 import restaurantrush.domain.Money;
 import restaurantrush.domain.Order;
 import restaurantrush.domain.OrderStatus;
+import restaurantrush.domain.PricingPolicy;
 import restaurantrush.domain.RegularCustomer;
 import restaurantrush.domain.Restaurant;
+import restaurantrush.domain.StandardPricingPolicy;
 import restaurantrush.domain.Table;
 
-/** Sequences the shared turn phases; customer objects dispatch Stage 2 behaviour. */
+/** Sequences Stage 3 phases using polymorphic customers and time-selected pricing. */
 public final class GameController {
     public static final int MAX_TURNS = 18;
 
@@ -25,6 +27,9 @@ public final class GameController {
     private final GameIO io;
     private final IntFunction<Customer> customerFactory;
     private final int stage;
+    private final HappyHour happyHour = new HappyHour();
+    private final PricingPolicy standardPricing = new StandardPricingPolicy();
+    private final PricingPolicy happyHourPricing = new HappyHourPricingPolicy();
 
     /** Regular-only setup retained for inherited controller regression fixtures. */
     public GameController(Restaurant restaurant, GameIO io) {
@@ -37,15 +42,15 @@ public final class GameController {
         this.restaurant = Objects.requireNonNull(restaurant, "restaurant");
         this.io = Objects.requireNonNull(io, "io");
         this.customerFactory = Objects.requireNonNull(customerFactory, "customerFactory");
-        if (stage < 1 || stage > 2) {
-            throw new IllegalArgumentException("Stage must be 1 or 2: " + stage);
+        if (stage < 1 || stage > 3) {
+            throw new IllegalArgumentException("Stage metadata must be 1, 2 or 3: " + stage);
         }
         this.stage = stage;
     }
 
     public void run() {
         int turn = 1;
-        String role = "Waiter";
+        String role = "Happy Hour";
         try {
             for (; turn <= MAX_TURNS; turn++) {
                 if ((turn - 1) % 3 == 0) {
@@ -56,7 +61,25 @@ public final class GameController {
                     }
                     restaurant.registerArrival(customer);
                 }
+                role = "Happy Hour";
+                io.showHappyHour(turn, happyHour.remainingAt(turn), happyHour.hasBeenActivated());
+                if (!happyHour.hasBeenActivated()) {
+                    if (io.chooseHappyHourActivation()) {
+                        String refusal = happyHour.activate(turn);
+                        if (refusal != null) {
+                            throw new IllegalStateException("Start-of-turn activation failed: " + refusal);
+                        }
+                    }
+                    io.showHappyHour(turn, happyHour.remainingAt(turn), happyHour.hasBeenActivated());
+                }
+                if (happyHour.isActiveAt(turn)) {
+                    restaurant.recoverWaitingSatisfaction(15);
+                }
                 io.showTurnStart(state(turn, true, true, "available; payments follow staff choices"));
+
+                role = "Host";
+                chooseHost(turn);
+                io.showActionState(state(turn, true, true, "available; payments follow staff choices"));
 
                 role = "Waiter";
                 chooseWaiter(turn);
@@ -85,6 +108,23 @@ public final class GameController {
         }
     }
 
+    private void chooseHost(int turn) {
+        while (true) {
+            int customerId = io.chooseHostCustomer();
+            if (customerId == 0) {
+                return;
+            }
+            Customer customer = restaurant.findCustomer(customerId);
+            String refusal = customer == null
+                    ? "Customer " + customerId + " has not arrived; use 'wait' to Wait"
+                    : restaurant.seatCustomerWithHost(customer, turn);
+            if (refusal == null) {
+                return;
+            }
+            io.showInvalidAction(refusal);
+        }
+    }
+
     private void chooseWaiter(int turn) {
         while (true) {
             WaiterAction action = io.chooseWaiterAction();
@@ -108,7 +148,7 @@ public final class GameController {
             if (order == null) {
                 return "Order " + action.targetId() + " does not exist";
             }
-            return restaurant.getWaiter().serve(order.getCustomer(), turn);
+            return restaurant.serveOrder(order, turn);
         }
         Customer customer = restaurant.findCustomer(action.targetId());
         if (customer == null) {
@@ -117,9 +157,8 @@ public final class GameController {
         if (action.type() == WaiterAction.Type.SEAT) {
             return restaurant.seatCustomer(customer, turn);
         }
-        MenuItem item = customer.chooseItem(restaurant.getMenu());
-        int billCents = customer.applyDiscount(item.getPriceCents());
-        return restaurant.getWaiter().takeOrder(customer, item, billCents, turn);
+        PricingPolicy pricingPolicy = happyHour.isActiveAt(turn) ? happyHourPricing : standardPricing;
+        return restaurant.takeOrder(customer, pricingPolicy, turn);
     }
 
     private void chooseChef(int turn) {
@@ -130,7 +169,7 @@ public final class GameController {
             }
             Order order = restaurant.findOrder(orderId);
             String refusal = order == null ? "Order " + orderId + " does not exist; use 'wait' to Wait"
-                    : restaurant.getChef().prepare(order, turn);
+                    : restaurant.prepareOrder(order, turn);
             if (refusal == null) {
                 return;
             }
