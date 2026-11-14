@@ -1,14 +1,36 @@
-seat 1
+no
+1
+wait
+wait
+no
 wait
 wait
 wait
+no
 wait
 wait
-seat 2
 wait
+yes
+2
 order 2
 2
+wait
 serve 2
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
+wait
 wait
 wait
 wait

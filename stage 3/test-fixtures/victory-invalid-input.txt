@@ -1,45 +1,71 @@
-
+maybe
+no
+seat 1
+99
+1
 dance
-seat
-seat x
-seat -1
-seat 1 2
-  SEAT 1  
-two
-wait
-serve 1
+serve 99
 order 1
+two
+99
 1
+no
+wait
 serve 1
-1
 wait
-seat 2
+no
 wait
+wait
+wait
+no
+2
 order 2
 2
+no
+wait
 serve 2
 wait
-seat 3
+no
 wait
+wait
+wait
+no
+3
 order 3
 3
+no
+wait
 wait
 3
+no
+wait
 serve 3
 wait
-seat 4
-wait
+yes
+4
 order 4
 4
+wait
+wait
+4
+wait
 serve 4
 wait
-seat 5
-wait
+5
 order 5
 5
+wait
 serve 5
 wait
-seat 6
 wait
+wait
+wait
+6
 order 6
 6
+wait
+serve 6
+wait
+wait
+wait
+wait

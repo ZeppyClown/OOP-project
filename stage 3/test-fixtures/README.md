@@ -1,72 +1,39 @@
-# Stage 2 CLI replay fixtures
+# Stage 3 input fixtures
 
-Each retry-free file has 36 raw console lines: Waiter then Chef for each of all 18 turns. They drive production Main/ConsoleUI and the role-ordered `ScriptedGameIO.alternating(...)` harness. All runs use actual Java customer dispatch.
+These are raw input lines for the real Stage 3 `Main` and `ConsoleUI`, with no comments or blank separators. The grammar for each turn is:
 
-Run a fixture from the repository root (JDK 17; see the root [README](../../README.md)):
+1. `yes` or `no` for Happy Hour **only while it has never been activated**.
+2. Host: positive customer ID, or `wait`.
+3. Waiter: `seat <customer ID>`, `order <customer ID>`, `serve <order ID>`, or `wait`.
+4. Chef: positive order ID, or `wait`.
+
+IDs are numbers without `C`/`O` prefixes. Input is case insensitive and trims surrounding whitespace. Invalid syntax re-prompts the same role; valid but illegal choices are rejected by the controller without consuming a staff task. EOF interrupts explicitly without a final verdict. After activation there are no further yes/no lines, including after Happy Hour expires. Status is still displayed each turn: remaining 2 on activation, 1 next turn, then 0.
+
+| File | Activation | Lines | Actual final result |
+| --- | --- | ---: | --- |
+| `victory-input.txt` | Turn 10 | 64 | Victory; 5 paid, 6 served, $73.38, average 89.4, no departures |
+| `victory-invalid-input.txt` | Turn 10 | 71 | Same victory after four syntax retries and three semantic retries |
+| `defeat-input.txt` | Never | 72 | Defeat; 0 paid/served, $0.00, N/A, two departures |
+| `vip-priority-input.txt` | Turn 4 | 58 | Defeat; C2 pays turn 7, $6.48, satisfaction 100 |
+| `regular-priority-input.txt` | Turn 4 | 58 | Defeat; C2 pays turn 8, $6.48, satisfaction 95 |
+
+The full victory follows [PLAN](../PLAN.md#reference-victory-replay). Host seats each arrival on 1/4/7/10/13/16; Waiter orders that customer immediately. Chef prepares the order then, continuing Pasta on 8 and combo on 11. Waiter serves on 2/5/9/12/14/17. C4 chooses the composed Salad + Burger item: 2,160 cents, 2 units; the turn-10 bill locks at 1,728 cents. Turn-11 recovery brings C4 to 100 before ordinary loss returns it to 92. C6 reaches READY_TO_PAY on 18 and remains unpaid.
+
+The invalid fixture adds `maybe` at activation, `seat 1` at Host, `dance` at Waiter and `two` at Chef. On turn 1, valid numeric Host/Chef target `99` and Waiter `serve 99` are semantic errors, each followed by the correct same-role action. All subsequent successful actions match the clean victory.
+
+The focused files share Host seating C1 on 1, waiting on 2–3, activating on 4 and Host seating C2 on 4. VIP first orders/prepares C2 on 4 and serves on 5. Regular first orders/prepares C1 on 4, C2 on 5, and serves C2 on 6. All other actions wait. VIP discount then Happy Hour gives 900 → 810 → 648 cents in both files. Only C2 pays. These are the concrete sequence/counterfactual fixtures for the controller sequence; [ReplayTests](../src/test/java/restaurantrush/ReplayTests.java) checks READY, service, eating, payment and frozen satisfaction.
+
+`base3/victory-input.txt` and `base3/defeat-input.txt` preserve the earlier two-line Waiter/Chef grammar for explicit `Menu(false)` / Regular-only test doubles with No-Happy-Hour / Host-Wait defaults. They are not inputs for production Stage 3 Main. `ScriptedGameIO.alternating` loads those regressions; `ScriptedGameIO.stage3` loads the retry-free production grammar and enforces all roles, conditional activation and complete 18 turns.
 
 ```sh
-sh "stage 2/run.sh" --script "stage 2/test-fixtures/victory-input.txt"
-sh "stage 2/run.sh" < "stage 2/test-fixtures/defeat-input.txt"
+JAVA_HOME=/opt/homebrew/opt/openjdk@17 sh "stage 3/run.sh" --script "stage 3/test-fixtures/victory-input.txt"
+JAVA_HOME=/opt/homebrew/opt/openjdk@17 sh "stage 3/run.sh" < "stage 3/test-fixtures/victory-input.txt"
 ```
 
-| File | Lines | Stage 2 expected and observed result |
-| --- | ---: | --- |
-| `victory-input.txt` | 36 | Victory: 5 paid/served, $65.10, paid satisfactions [84,90,64,76,76] = 390, average 78.0, zero departures |
-| `victory-invalid-input.txt` | 45 | Same result as victory, with syntax retries and two semantic refusals |
-| `defeat-input.txt` | 36, all `wait` | Defeat: 0 paid/served, $0.00, N/A, two departures (Regular C1 on 13, Critic C3 on 15); VIP C2 remains WAITING at 25 |
-| `vip-priority-input.txt` | 36 | Defeat: only VIP C2 pays, turn 8, $8.10, satisfaction/average 90; C1/C3 depart |
-| `regular-priority-input.txt` | 36 | Defeat: only VIP C2 pays, turn 9, $8.10, satisfaction/average 85; C1's unserved order cancels and C1/C3 depart |
+**Manager-choice comparison.** The two VIP-priority files differ only in whose food is handled on turn 4. VIP first: C2 pays turn 7, satisfaction 100. C1 first: C2 pays turn 8, satisfaction 95. Both end in defeat with $6.48 (1 paid). This pair changes timing and recorded satisfaction. A separate [Happy Hour pair](FLIP_SCENARIO.md) changes the final verdict: activation on turn 13 wins (4 paid, $49.50, 67.3), while never activating loses (4 paid, $56.10, 57.8). Both comparisons run through the real CLI and are registered in `ReplayTests`.
 
-The three inherited input files are byte-identical to Stage 1: the manager's actions remain valid. The changed default customer objects cause the new outcomes. `ReplayTests.regularRegression` also runs the inherited victory/defeat through the explicitly Regular-only constructor, retaining the original $66.00/79.2 and C1/C2 departure turns 13/16.
+**Fix pass, 28 Oct 2026.** All five production fixtures were replayed again through the real CLI after the controller started calling `Restaurant.takeOrder/serveOrder/prepareOrder`; the outputs are byte-identical to the earlier logs (totals in the table above). No fixture file was edited.
 
-## Victory schedule
+See [EVIDENCE](../EVIDENCE.md) for actual verification commands and remaining integration/release gates.
 
-| Turn | Waiter | Chef |
-| ---: | --- | --- |
-| 1 | seat 1 | wait |
-| 2 | order 1 | 1 |
-| 3 | serve 1 | wait |
-| 4 | seat 2 | wait |
-| 5 | order 2 | 2 |
-| 6 | serve 2 | wait |
-| 7 | seat 3 | wait |
-| 8 | order 3 | 3 |
-| 9 | wait | 3 |
-| 10 | serve 3 | wait |
-| 11 | seat 4 | wait |
-| 12 | order 4 | 4 |
-| 13 | serve 4 | wait |
-| 14 | seat 5 | wait |
-| 15 | order 5 | 5 |
-| 16 | serve 5 | wait |
-| 17 | seat 6 | wait |
-| 18 | order 6 | 6 |
-
-## Focused manager alternatives
-
-Both fixtures seat C1 on turn 1 and Wait on 2–3. C2 VIP arrives on 4. Every omitted action is `wait` through turn 18.
-
-| Turn | VIP first: Waiter / Chef | Regular first: Waiter / Chef |
-| ---: | --- | --- |
-| 4 | seat 2 / wait | order 1 / 1 |
-| 5 | order 2 / 2 | seat 2 / wait |
-| 6 | serve 2 / wait | order 2 / 2 |
-| 7 | wait / wait; C2 READY_TO_PAY | serve 2 / wait |
-| 8 | wait / wait; C2 pays $8.10 at 90 | wait / wait; C2 READY_TO_PAY |
-| 9 | wait / wait | wait / wait; C2 pays $8.10 at 85 |
-
-Taking/preparing C1's order first delays C2 by one turn. The real order snapshots retain 810 cents in both alternatives, while loss before service changes satisfaction by 5. Both games still complete all 18 turns and fail the paid-count/revenue targets. No Python gameplay model supplies these results.
-
-## Invalid input
-
-Only turns 1–3 differ from clean victory:
-
-| Lines | Turn / role | Input | Handling |
-| --- | --- | --- | --- |
-| 1–6 | 1 Waiter | empty, `dance`, `seat`, `seat x`, `seat -1`, `seat 1 2` | ConsoleUI syntax retry |
-| 7 | 1 Waiter | `  SEAT 1  ` | Accepted after trim/case normalization |
-| 8 | 1 Chef | `two` | ConsoleUI syntax retry |
-| 10 | 2 Waiter | `serve 1` | Controller refusal: O1 does not exist yet |
-| 14 | 3 Chef | `1` | Controller refusal: the Waiter already served O1 this turn |
-
-ConsoleTests retains the inherited grammar/recovery checks. ReplayTests checks the actual controller retries, locked subtype prices, paid records, departure turns and EOF. Run them all with `sh "stage 2/run-tests.sh"`. See [EVIDENCE.md](../EVIDENCE.md) for the actual recorded results.
+**Result-flipping pair, 28 Oct 2026 (second fix pass).** `flip-happy-hour-on-input.txt` (Happy Hour `yes` on turn 13) ends in Victory ($49.50, 4 paid, average 67.3). `flip-happy-hour-never-input.txt` (same Host/Waiter/Chef lines, Happy Hour never activated) ends in Defeat ($56.10, 4 paid, average 57.8; satisfaction target fails). Both were executed through the real CLI. Turn-by-turn explanation and real output: [FLIP_SCENARIO](FLIP_SCENARIO.md). Both outcomes are registered in ReplayTests.
