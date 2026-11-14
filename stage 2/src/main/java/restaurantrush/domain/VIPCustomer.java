@@ -1,5 +1,6 @@
 package restaurantrush.domain;
 
+/** VIPs wait more patiently and pay 90 percent of the selected item's price. */
 public final class VIPCustomer extends Customer {
     public VIPCustomer(int id) {
         super(id);

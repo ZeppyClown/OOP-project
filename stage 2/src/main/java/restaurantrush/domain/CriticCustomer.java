@@ -1,5 +1,6 @@
 package restaurantrush.domain;
 
+/** Critics lose patience faster and always choose Pasta by name at full price. */
 public final class CriticCustomer extends Customer {
     public CriticCustomer(int id) {
         super(id);

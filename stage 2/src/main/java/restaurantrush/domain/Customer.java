@@ -2,6 +2,10 @@ package restaurantrush.domain;
 
 import java.util.List;
 
+/**
+ * Lifecycle transitions are package-private and return a refusal reason (null on
+ * success), so only domain classes can move a customer and a refusal changes nothing.
+ */
 public abstract class Customer {
     private final int id;
     private Restaurant restaurant;
@@ -51,12 +55,19 @@ public abstract class Customer {
 
     protected abstract int waitingLossPerTurn();
 
+    /** Subtype discount hook; called once when the bill is quoted, never again after. */
+    public int applyDiscount(int cents) {
+        return cents;
+    }
+
+    /** Deterministic choice by ID so replays are repeatable. */
     public MenuItem chooseItem(Menu menu) {
         if (menu == null) { throw new IllegalArgumentException("Menu cannot be null"); }
         List<MenuItem> choices = menu.getItems();
         return choices.get((id - 1) % 3);
     }
 
+    /** Registration is permanent, including after payment or departure. */
     void bindTo(Restaurant restaurant) {
         if (restaurant == null) {
             throw new IllegalArgumentException("Owning restaurant cannot be null");
@@ -75,6 +86,7 @@ public abstract class Customer {
         return null;
     }
 
+    /** Locks the supplied bill; the price is not recomputed here, so later policy changes cannot reprice it. */
     String placeOrder(MenuItem item, int billCents, int turn) {
         if (status != CustomerStatus.SEATED) {
             return "Customer " + id + " must be SEATED to order; currently " + status;
