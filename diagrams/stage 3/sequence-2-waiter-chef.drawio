@@ -1,0 +1,657 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram id="p1" name="Stage 3 — sequence 2 waiter chef — page 1">
+    <mxGraphModel grid="1" gridSize="10" page="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="s2" value="alt" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="350" width="2850" height="2491.0" />
+        </mxCell>
+        <mxCell id="title" value="Stage 3 — sequence 2 waiter chef — page 1" style="text;align=center;fontStyle=1;fontSize=20;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="15" width="2820" height="42" />
+        </mxCell>
+        <mxCell id="life_M" value="Manager" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="85" width="220" height="2811" />
+        </mxCell>
+        <mxCell id="life_UI" value="ConsoleUI / GameIO" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="340" y="85" width="220" height="2811" />
+        </mxCell>
+        <mxCell id="life_G" value="GameController" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="620" y="85" width="220" height="2811" />
+        </mxCell>
+        <mxCell id="life_HH" value="HappyHour" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="900" y="85" width="220" height="2811" />
+        </mxCell>
+        <mxCell id="life_R" value="Restaurant" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1180" y="85" width="220" height="2811" />
+        </mxCell>
+        <mxCell id="life_W" value="Waiter" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1460" y="85" width="220" height="2811" />
+        </mxCell>
+        <mxCell id="life_V" value="C2 VIPCustomer" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1740" y="85" width="220" height="2811" />
+        </mxCell>
+        <mxCell id="life_P" value="HappyHourPricingPolicy" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2020" y="85" width="220" height="2811" />
+        </mxCell>
+        <mxCell id="life_O" value="O2 Order" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2300" y="85" width="220" height="2811" />
+        </mxCell>
+        <mxCell id="life_C" value="Chef" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2580" y="85" width="220" height="2811" />
+        </mxCell>
+        <mxCell id="s1" value="DETAIL 2 of 4 - Waiter and Chef. Manager choice on turn 4: which customer's food comes first&lt;br/&gt;The controller reaches Waiter and Chef only through Restaurant.takeOrder, serveOrder and prepareOrder (Restaurant delegates to the staff object)&lt;br/&gt;The two concrete timelines are tabled in stage 3/test-fixtures/README.md. Both end with bill 648 cents (6.48 dollars)" style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="625" y="210" width="2170" height="108" />
+        </mxCell>
+        <mxCell id="s2_guard" value="Choice A - prioritise VIP food (reference replay vip-priority-input.txt)" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="125" y="352" width="2720" height="40" />
+        </mxCell>
+        <mxCell id="s3" value="C2 order and prepare on turn 4, serve 5, ready to pay 6, pay 7&lt;br/&gt;C2 satisfaction frozen at 100" style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="625" y="418" width="1330" height="72" />
+        </mxCell>
+        <mxCell id="s4" value="" style="html=1;rounded=0;endArrow=none;dashed=1;strokeColor=#777777;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="30" y="522" />
+            <mxPoint as="targetPoint" x="2880" y="522" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s5" value="Choice B - prioritise C1 food (replay regular-priority-input.txt)" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="125" y="528" width="2720" height="38" />
+        </mxCell>
+        <mxCell id="s6" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="645" />
+            <mxPoint as="targetPoint" x="450" y="645" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s7" value="chooseWaiterAction()" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="587" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s8" value="" style="html=1;rounded=0;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="745" />
+            <mxPoint as="targetPoint" x="450" y="745" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s9" value="order 1" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="180.0" y="687" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s10" value="" style="html=1;rounded=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="450" y="845" />
+            <mxPoint as="targetPoint" x="730" y="845" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s11" value="ORDER(1)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="787" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s12" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="945" />
+            <mxPoint as="targetPoint" x="1290" y="945" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s13" value="findCustomer(1)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740.0" y="887" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s14" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="1045" />
+            <mxPoint as="targetPoint" x="1290" y="1045" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s15" value="takeOrder(C1, happyHourPolicy, 4)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740.0" y="987" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s16" value="Restaurant checks C1 is SEATED, C1.chooseItem(menu) selects Burger, policy quote is 1200 cents" style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1185" y="1087" width="1050" height="72" />
+        </mxCell>
+        <mxCell id="s17" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1290" y="1249" />
+            <mxPoint as="targetPoint" x="1570" y="1249" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s18" value="takeOrder(C1, Burger, 1200, 4)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1300.0" y="1191" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s19" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="1349" />
+            <mxPoint as="targetPoint" x="450" y="1349" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s20" value="showActionState(...)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="1291" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s21" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="1449" />
+            <mxPoint as="targetPoint" x="450" y="1449" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s22" value="chooseChefOrder()" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="1391" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s23" value="" style="html=1;rounded=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="450" y="1549" />
+            <mxPoint as="targetPoint" x="730" y="1549" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s24" value="1" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="1491" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s25" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="1649" />
+            <mxPoint as="targetPoint" x="1290" y="1649" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s26" value="findOrder(1)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740.0" y="1591" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s27" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="1749" />
+            <mxPoint as="targetPoint" x="1290" y="1749" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s28" value="prepareOrder(O1, 4)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740.0" y="1691" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s29" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1290" y="1849" />
+            <mxPoint as="targetPoint" x="2690" y="1849" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s30" value="prepare(O1, 4)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1300.0" y="1791" width="1380" height="48" />
+        </mxCell>
+        <mxCell id="s31" value="Complete automatic phases, waiting loss and summary for turn 4&lt;br/&gt;C1 food stays READY and unserved for the rest of this fixture" style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="625" y="1891" width="770" height="90" />
+        </mxCell>
+        <mxCell id="s32" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="2071" />
+            <mxPoint as="targetPoint" x="450" y="2071" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s33" value="showHappyHour(5, 1, true)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="2013" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s34" value="Activation is never requested again, including after expiry" style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="625" y="2113" width="770" height="72" />
+        </mxCell>
+        <mxCell id="s35" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="2275" />
+            <mxPoint as="targetPoint" x="1290" y="2275" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s36" value="recoverWaitingSatisfaction(15) [active on turn 5, C2 95 to 100]" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740.0" y="2217" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s37" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="2375" />
+            <mxPoint as="targetPoint" x="450" y="2375" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s38" value="showTurnStart(...)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="2317" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s39" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="2475" />
+            <mxPoint as="targetPoint" x="450" y="2475" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s40" value="chooseHostCustomer()" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="2417" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s41" value="" style="html=1;rounded=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="450" y="2575" />
+            <mxPoint as="targetPoint" x="730" y="2575" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s42" value="0 (Wait)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="2517" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s43" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="2675" />
+            <mxPoint as="targetPoint" x="450" y="2675" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s44" value="showActionState(...)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="2617" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s45" value="C2 order and prepare on turn 5, serve 6, ready to pay 7, pay 8&lt;br/&gt;C2 satisfaction frozen at 95" style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="625" y="2717" width="1330" height="72" />
+        </mxCell>
+        <mxCell id="s46" value="Continues on the next page. Open fragments continue with the same guards." style="text;html=1;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="2866" width="2820" height="40" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="p2" name="Stage 3 — sequence 2 waiter chef — page 2">
+    <mxGraphModel grid="1" gridSize="10" page="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="s23" value="alt" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="66" y="1419" width="2778" height="1157.0" />
+        </mxCell>
+        <mxCell id="s11" value="alt" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="48" y="782" width="2814" height="1839.0" />
+        </mxCell>
+        <mxCell id="s1" value="loop" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="210" width="2850" height="2456.0" />
+        </mxCell>
+        <mxCell id="title" value="Stage 3 — sequence 2 waiter chef — page 2" style="text;align=center;fontStyle=1;fontSize=20;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="15" width="2820" height="42" />
+        </mxCell>
+        <mxCell id="life_M" value="Manager" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="85" width="220" height="2636" />
+        </mxCell>
+        <mxCell id="life_UI" value="ConsoleUI / GameIO" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="340" y="85" width="220" height="2636" />
+        </mxCell>
+        <mxCell id="life_G" value="GameController" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="620" y="85" width="220" height="2636" />
+        </mxCell>
+        <mxCell id="life_HH" value="HappyHour" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="900" y="85" width="220" height="2636" />
+        </mxCell>
+        <mxCell id="life_R" value="Restaurant" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1180" y="85" width="220" height="2636" />
+        </mxCell>
+        <mxCell id="life_W" value="Waiter" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1460" y="85" width="220" height="2636" />
+        </mxCell>
+        <mxCell id="life_V" value="C2 VIPCustomer" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1740" y="85" width="220" height="2636" />
+        </mxCell>
+        <mxCell id="life_P" value="HappyHourPricingPolicy" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2020" y="85" width="220" height="2636" />
+        </mxCell>
+        <mxCell id="life_O" value="O2 Order" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2300" y="85" width="220" height="2636" />
+        </mxCell>
+        <mxCell id="life_C" value="Chef" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2580" y="85" width="220" height="2636" />
+        </mxCell>
+        <mxCell id="s1_guard" value="until Wait or successful Waiter task (refusal == null)" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="125" y="212" width="2720" height="40" />
+        </mxCell>
+        <mxCell id="s2" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="336" />
+            <mxPoint as="targetPoint" x="450" y="336" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s3" value="chooseWaiterAction()" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="278" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s4" value="Syntax errors retry in ConsoleUI before a typed action is returned" style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="345" y="378" width="300" height="72" />
+        </mxCell>
+        <mxCell id="s5" value="" style="html=1;rounded=0;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="170" y="540" />
+            <mxPoint as="targetPoint" x="450" y="540" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s6" value="order 2" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="180.0" y="482" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s7" value="" style="html=1;rounded=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="450" y="640" />
+            <mxPoint as="targetPoint" x="730" y="640" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s8" value="ORDER(2)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="582" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s9" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="740" />
+            <mxPoint as="targetPoint" x="1290" y="740" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s10" value="findCustomer(2)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740.0" y="682" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s11_guard" value="customer has not arrived" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="143" y="784" width="2684" height="40" />
+        </mxCell>
+        <mxCell id="s12" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="908" />
+            <mxPoint as="targetPoint" x="450" y="908" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s13" value="showInvalidAction(reason), retry before Chef" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="850" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s14" value="" style="html=1;rounded=0;endArrow=none;dashed=1;strokeColor=#777777;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="30" y="950" />
+            <mxPoint as="targetPoint" x="2880" y="950" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s15" value="C2 registered (reference)" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="125" y="956" width="2720" height="38" />
+        </mxCell>
+        <mxCell id="s16" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="1073" />
+            <mxPoint as="targetPoint" x="1010" y="1073" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s17" value="isActiveAt(orderTurn)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740.0" y="1015" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s18" value="" style="html=1;rounded=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1010" y="1173" />
+            <mxPoint as="targetPoint" x="730" y="1173" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s19" value="true on both turn 4 and turn 5" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740.0" y="1115" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s20" value="Controller picks HappyHourPricingPolicy and passes it in" style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="625" y="1215" width="300" height="72" />
+        </mxCell>
+        <mxCell id="s21" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="1377" />
+            <mxPoint as="targetPoint" x="1290" y="1377" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s22" value="takeOrder(C2, happyHourPolicy, orderTurn)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740.0" y="1319" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s23_guard" value="C2 is not SEATED" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="161" y="1421" width="2648" height="40" />
+        </mxCell>
+        <mxCell id="s24" value="" style="html=1;rounded=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1290" y="1545" />
+            <mxPoint as="targetPoint" x="730" y="1545" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s25" value="refusal &amp;quot;must be SEATED to order&amp;quot;, Waiter capacity untouched" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740.0" y="1487" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s26" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="1645" />
+            <mxPoint as="targetPoint" x="450" y="1645" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s27" value="showInvalidAction(reason), retry before Chef" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="1587" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s28" value="" style="html=1;rounded=0;endArrow=none;dashed=1;strokeColor=#777777;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="30" y="1687" />
+            <mxPoint as="targetPoint" x="2880" y="1687" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s29" value="C2 is SEATED (reference)" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="125" y="1693" width="2720" height="38" />
+        </mxCell>
+        <mxCell id="s30" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1290" y="1810" />
+            <mxPoint as="targetPoint" x="1850" y="1810" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s31" value="chooseItem(menu)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1300.0" y="1752" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s32" value="" style="html=1;rounded=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1850" y="1910" />
+            <mxPoint as="targetPoint" x="1290" y="1910" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s33" value="Salad" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1300.0" y="1852" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s34" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1290" y="2010" />
+            <mxPoint as="targetPoint" x="2130" y="2010" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s35" value="priceFor(C2, Salad)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1300.0" y="1952" width="820" height="48" />
+        </mxCell>
+        <mxCell id="s36" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="2130" y="2110" />
+            <mxPoint as="targetPoint" x="1850" y="2110" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s37" value="applyDiscount(900)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1860.0" y="2052" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s38" value="" style="html=1;rounded=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1850" y="2210" />
+            <mxPoint as="targetPoint" x="2130" y="2210" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s39" value="810 cents (VIP first)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1860.0" y="2152" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s40" value="Money.applyPercent(810, 80) = 648 cents" style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2025" y="2252" width="300" height="72" />
+        </mxCell>
+        <mxCell id="s41" value="" style="html=1;rounded=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="2130" y="2414" />
+            <mxPoint as="targetPoint" x="1290" y="2414" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s42" value="648" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1300.0" y="2356" width="820" height="48" />
+        </mxCell>
+        <mxCell id="s43" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1290" y="2514" />
+            <mxPoint as="targetPoint" x="1570" y="2514" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s44" value="takeOrder(C2, Salad, 648, orderTurn)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1300.0" y="2456" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s45" value="Continues on the next page. Open fragments continue with the same guards." style="text;html=1;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="2691" width="2820" height="40" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="p3" name="Stage 3 — sequence 2 waiter chef — page 3">
+    <mxGraphModel grid="1" gridSize="10" page="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="s3" value="alt" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="66" y="346" width="2778" height="588.0" />
+        </mxCell>
+        <mxCell id="s2" value="alt" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="48" y="278" width="2814" height="701.0" />
+        </mxCell>
+        <mxCell id="s1" value="loop" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="210" width="2850" height="814.0" />
+        </mxCell>
+        <mxCell id="title" value="Stage 3 — sequence 2 waiter chef — page 3" style="text;align=center;fontStyle=1;fontSize=20;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="15" width="2820" height="42" />
+        </mxCell>
+        <mxCell id="life_M" value="Manager" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="60" y="85" width="220" height="1941" />
+        </mxCell>
+        <mxCell id="life_UI" value="ConsoleUI / GameIO" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="340" y="85" width="220" height="1941" />
+        </mxCell>
+        <mxCell id="life_G" value="GameController" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="620" y="85" width="220" height="1941" />
+        </mxCell>
+        <mxCell id="life_HH" value="HappyHour" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="900" y="85" width="220" height="1941" />
+        </mxCell>
+        <mxCell id="life_R" value="Restaurant" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1180" y="85" width="220" height="1941" />
+        </mxCell>
+        <mxCell id="life_W" value="Waiter" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1460" y="85" width="220" height="1941" />
+        </mxCell>
+        <mxCell id="life_V" value="C2 VIPCustomer" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1740" y="85" width="220" height="1941" />
+        </mxCell>
+        <mxCell id="life_P" value="HappyHourPricingPolicy" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2020" y="85" width="220" height="1941" />
+        </mxCell>
+        <mxCell id="life_O" value="O2 Order" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2300" y="85" width="220" height="1941" />
+        </mxCell>
+        <mxCell id="life_C" value="Chef" style="shape=umlLifeline;html=1;size=70;whiteSpace=wrap;container=1;collapsible=0;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2580" y="85" width="220" height="1941" />
+        </mxCell>
+        <mxCell id="s1_guard" value="until Wait or successful Waiter task (refusal == null) [continued from previous page]" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="125" y="212" width="2720" height="40" />
+        </mxCell>
+        <mxCell id="s2_guard" value="C2 registered (reference) [continued from previous page]" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="143" y="280" width="2684" height="40" />
+        </mxCell>
+        <mxCell id="s3_guard" value="C2 is SEATED (reference) [continued from previous page]" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="161" y="348" width="2648" height="40" />
+        </mxCell>
+        <mxCell id="s4" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1570" y="472" />
+            <mxPoint as="targetPoint" x="1850" y="472" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s5" value="placeOrder(Salad, 648, orderTurn)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1580.0" y="414" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s6" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1850" y="572" />
+            <mxPoint as="targetPoint" x="2410" y="572" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s7" value="new Order(2, C2, Salad, 648, orderTurn)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1860.0" y="514" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s8" value="" style="html=1;rounded=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1850" y="672" />
+            <mxPoint as="targetPoint" x="1570" y="672" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s9" value="null, WAITING_FOR_FOOD" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1580.0" y="614" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s10" value="" style="html=1;rounded=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1570" y="772" />
+            <mxPoint as="targetPoint" x="1290" y="772" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s11" value="null, Waiter task used" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1300.0" y="714" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s12" value="" style="html=1;rounded=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1290" y="872" />
+            <mxPoint as="targetPoint" x="730" y="872" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s13" value="null, exit loop" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740.0" y="814" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s14" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="1107" />
+            <mxPoint as="targetPoint" x="450" y="1107" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s15" value="showActionState(...)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="1049" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s16" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="1207" />
+            <mxPoint as="targetPoint" x="450" y="1207" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s17" value="chooseChefOrder()" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="1149" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s18" value="" style="html=1;rounded=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="450" y="1307" />
+            <mxPoint as="targetPoint" x="730" y="1307" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s19" value="2" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="460.0" y="1249" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s20" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="1407" />
+            <mxPoint as="targetPoint" x="1290" y="1407" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s21" value="findOrder(2)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740.0" y="1349" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s22" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="730" y="1507" />
+            <mxPoint as="targetPoint" x="1290" y="1507" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s23" value="prepareOrder(O2, orderTurn)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="740.0" y="1449" width="540" height="48" />
+        </mxCell>
+        <mxCell id="s24" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1290" y="1607" />
+            <mxPoint as="targetPoint" x="2690" y="1607" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s25" value="prepare(O2, orderTurn)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1300.0" y="1549" width="1380" height="48" />
+        </mxCell>
+        <mxCell id="s26" value="" style="html=1;rounded=0;endArrow=block;endFill=1;" edge="1" parent="1">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="2690" y="1707" />
+            <mxPoint as="targetPoint" x="2410" y="1707" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s27" value="advancePreparation(orderTurn)" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=bottom;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2420.0" y="1649" width="260" height="48" />
+        </mxCell>
+        <mxCell id="s28" value="One preparation unit completed, READY, readyTurn=orderTurn&lt;br/&gt;billCents is final and is never repriced after Happy Hour expires" style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2305" y="1749" width="300" height="111" />
+        </mxCell>
+        <mxCell id="s29" value="Chef target or state failures explain and retry before automatic phases, consuming no preparation task&lt;br/&gt;Waiter already acted, so READY food can first be served next turn. Continue in sequence-3-serve-pay.drawio" style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="625" y="1892" width="2170" height="72" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
