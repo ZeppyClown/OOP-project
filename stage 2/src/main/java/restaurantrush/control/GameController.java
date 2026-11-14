@@ -17,8 +17,7 @@ import restaurantrush.domain.RegularCustomer;
 import restaurantrush.domain.Restaurant;
 import restaurantrush.domain.Table;
 
-
-
+/** Sequences the shared turn phases; customer objects dispatch Stage 2 behaviour. */
 public final class GameController {
     public static final int MAX_TURNS = 18;
 
@@ -122,7 +121,6 @@ public final class GameController {
         int billCents = customer.applyDiscount(item.getPriceCents());
         return restaurant.getWaiter().takeOrder(customer, item, billCents, turn);
     }
-
 
     private void chooseChef(int turn) {
         while (true) {

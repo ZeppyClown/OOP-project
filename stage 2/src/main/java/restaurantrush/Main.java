@@ -11,14 +11,15 @@ import restaurantrush.boundary.ConsoleUI;
 import restaurantrush.control.GameController;
 import restaurantrush.domain.Cashier;
 import restaurantrush.domain.Chef;
-import restaurantrush.domain.Customer;
 import restaurantrush.domain.CriticCustomer;
-import restaurantrush.domain.RegularCustomer;
-import restaurantrush.domain.VIPCustomer;
+import restaurantrush.domain.Customer;
 import restaurantrush.domain.Menu;
+import restaurantrush.domain.RegularCustomer;
 import restaurantrush.domain.Restaurant;
+import restaurantrush.domain.VIPCustomer;
 import restaurantrush.domain.Waiter;
 
+/** Offline Stage 2 entry point. Script files use the same parser as interactive input. */
 public final class Main {
     private Main() { }
 
