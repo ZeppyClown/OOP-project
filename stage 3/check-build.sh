@@ -1,8 +1,8 @@
 #!/bin/sh
-# Verify the actual Stage 2 runner from copied source trees and another cwd.
+# Verify the actual Stage 3 runner from copied source trees and another cwd.
 set -eu
 STAGE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-OUT=$(mktemp -d "${TMPDIR:-/tmp}/stage2-build-check.XXXXXX")
+OUT=$(mktemp -d "${TMPDIR:-/tmp}/stage3-build-check.XXXXXX")
 trap 'rm -rf "$OUT"' EXIT
 check_report() {
     awk -v verdict="$2" -v paid="$3" -v revenue="$4" -v average="$5" '
@@ -21,21 +21,36 @@ for NAME in plain-source 'source with spaces and "quotes" \ backslash'; do
     cp -R "$STAGE/src" "$STAGE/test-fixtures" "$COPY/"
     cp "$STAGE/run.sh" "$STAGE/run-tests.sh" "$STAGE/java-env.sh" "$STAGE/compile-sources.sh" "$COPY/"
     (cd /tmp && sh "$COPY/run-tests.sh") > "$OUT/tests.log" 2>&1
-    for FIXTURE in victory-input defeat-input victory-invalid-input vip-priority-input regular-priority-input; do
+    for FIXTURE in victory-input defeat-input victory-invalid-input vip-priority-input regular-priority-input flip-happy-hour-on-input flip-happy-hour-never-input; do
         (cd /tmp && sh "$COPY/run.sh" --script "$COPY/test-fixtures/$FIXTURE.txt") > "$OUT/replay.log" 2>&1
         case "$FIXTURE" in
             defeat-input) check_report "$OUT/replay.log" DEFEAT 0 '$0.00' N/A ;;
-            vip-priority-input) check_report "$OUT/replay.log" DEFEAT 1 '$8.10' 90.0 ;;
-            regular-priority-input) check_report "$OUT/replay.log" DEFEAT 1 '$8.10' 85.0 ;;
-            *) check_report "$OUT/replay.log" VICTORY 5 '$65.10' 78.0 ;;
+            vip-priority-input) check_report "$OUT/replay.log" DEFEAT 1 '$6.48' 100.0 ;;
+            regular-priority-input) check_report "$OUT/replay.log" DEFEAT 1 '$6.48' 95.0 ;;
+            flip-happy-hour-on-input) check_report "$OUT/replay.log" VICTORY 4 '$49.50' 67.3 ;;
+            flip-happy-hour-never-input) check_report "$OUT/replay.log" DEFEAT 4 '$56.10' 57.8 ;;
+            *) check_report "$OUT/replay.log" VICTORY 5 '$73.38' 89.4 ;;
         esac
     done
     (cd /tmp && sh "$COPY/run.sh" < "$COPY/test-fixtures/victory-input.txt") > "$OUT/stdin.log" 2>&1
-    check_report "$OUT/stdin.log" VICTORY 5 '$65.10' 78.0
-    (cd /tmp && sh "$COPY/run.sh" < /dev/null) > "$OUT/eof.log" 2>&1
-    awk '/Interrupted: Input ended during turn 1, Waiter/ { interrupted=1 }
-        /===== / { verdict=1 } END { exit !(interrupted && !verdict) }' "$OUT/eof.log"
-    printf 'PASS copied-source tests, five replays, stdin and EOF: %s\n' "$NAME"
+    check_report "$OUT/stdin.log" VICTORY 5 '$73.38' 89.4
+    awk '/Happy Hour \(yes\/no\)>/ { offers++ }
+        /Happy Hour: turn 10 \| remaining 2 \| used true/ { two=1 }
+        /Happy Hour: turn 11 \| remaining 1 \| used true/ { one=1 }
+        /Happy Hour: turn 12 \| remaining 0 \| used true/ { zero=1 }
+        END { exit !(offers == 10 && two && one && zero) }' "$OUT/stdin.log"
+    for ROLE in 'Happy Hour' Host Waiter Chef; do
+        case "$ROLE" in
+            'Happy Hour') : > "$OUT/eof-input.txt" ;;
+            Host) printf 'no\n' > "$OUT/eof-input.txt" ;;
+            Waiter) printf 'no\nwait\n' > "$OUT/eof-input.txt" ;;
+            Chef) printf 'no\nwait\nwait\n' > "$OUT/eof-input.txt" ;;
+        esac
+        (cd /tmp && sh "$COPY/run.sh" < "$OUT/eof-input.txt") > "$OUT/eof.log" 2>&1
+        awk -v role="$ROLE" 'index($0, "Interrupted: Input ended during turn 1, " role) { interrupted=1 }
+            /===== / { verdict=1 } END { exit !(interrupted && !verdict) }' "$OUT/eof.log"
+    done
+    printf 'PASS copied-source tests, seven replays, duration/prompt counts, stdin and four-role EOF: %s\n' "$NAME"
 done
 
 # Exercise actual JDK selection using executable paths containing spaces.
