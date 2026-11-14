@@ -7,6 +7,7 @@ import java.util.Deque;
 import java.util.List;
 import java.util.OptionalDouble;
 
+
 public class Restaurant {
     private final List<Table> tables;
     private final Deque<Customer> waitingQueue;
@@ -15,9 +16,14 @@ public class Restaurant {
     private final Waiter waiter;
     private final Chef chef;
     private final Cashier cashier;
+    private final Host host;
 
     public Restaurant(Menu menu, Waiter waiter, Chef chef, Cashier cashier) {
-        if (menu == null || waiter == null || chef == null || cashier == null) {
+        this(menu, waiter, chef, cashier, new Host());
+    }
+
+    public Restaurant(Menu menu, Waiter waiter, Chef chef, Cashier cashier, Host host) {
+        if (menu == null || waiter == null || chef == null || cashier == null || host == null) {
             throw new IllegalArgumentException("Dependencies cannot be null");
         }
         this.tables = List.of(new Table(1), new Table(2));
@@ -27,6 +33,7 @@ public class Restaurant {
         this.waiter = waiter;
         this.chef = chef;
         this.cashier = cashier;
+        this.host = host;
     }
 
     public List<Table> getTables() {
@@ -45,18 +52,20 @@ public class Restaurant {
         return menu;
     }
 
-    /** Used by GameController to take orders and serve. */
     public Waiter getWaiter() {
         return waiter;
     }
 
-    /** Used by GameController to cook. */
     public Chef getChef() {
         return chef;
     }
 
     public Cashier getCashier() {
         return cashier;
+    }
+
+    public Host getHost() {
+        return host;
     }
 
     public void registerArrival(Customer customer) {
@@ -71,6 +80,7 @@ public class Restaurant {
         if (customer.getStatus() != CustomerStatus.WAITING) {
             throw new IllegalArgumentException("Arriving customer must be WAITING");
         }
+        // Claim exclusive ownership only after validation, before either collection changes.
         customer.bindTo(this);
         customers.add(customer);
         waitingQueue.addLast(customer);
@@ -124,17 +134,52 @@ public class Restaurant {
         return null;
     }
 
-    /** Seats a queued customer. They leave the queue only if it works. */
     public String seatCustomer(Customer customer, int turn) {
+        return seatCustomer(customer, turn, false);
+    }
+
+    public String seatCustomerWithHost(Customer customer, int turn) {
+        return seatCustomer(customer, turn, true);
+    }
+
+    private String seatCustomer(Customer customer, int turn, boolean useHost) {
         if (customer == null || findCustomer(customer.getId()) != customer) {
             return "Customer is not registered in this restaurant";
         }
         if (!waitingQueue.contains(customer)) { return "Customer is not in the waiting queue"; }
         Table table = findFreeTable();
         if (table == null) { return "No free table"; }
-        String reason = waiter.seat(customer, table, turn);
+        String reason = useHost ? host.seat(customer, table, turn) : waiter.seat(customer, table, turn);
         if (reason == null) { waitingQueue.remove(customer); }
         return reason;
+    }
+
+    public String takeOrder(Customer customer, PricingPolicy pricing, int turn) {
+        if (pricing == null) {
+            throw new IllegalArgumentException("Pricing policy cannot be null");
+        }
+        if (customer == null || findCustomer(customer.getId()) != customer) {
+            return "Customer is not registered in this restaurant";
+        }
+        if (customer.getStatus() != CustomerStatus.SEATED) {
+            return "Customer " + customer.getId() + " must be SEATED to order; currently " + customer.getStatus();
+        }
+        MenuItem item = customer.chooseItem(menu);
+        return waiter.takeOrder(customer, item, pricing.priceFor(customer, item), turn);
+    }
+
+    public String serveOrder(Order order, int turn) {
+        if (order == null || findOrder(order.getId()) != order) {
+            return "Order is not registered in this restaurant";
+        }
+        return waiter.serve(order.getCustomer(), turn);
+    }
+
+    public String prepareOrder(Order order, int turn) {
+        if (order == null || findOrder(order.getId()) != order) {
+            return "Order is not registered in this restaurant";
+        }
+        return chef.prepare(order, turn);
     }
 
     public String collectPayment(Customer customer, int turn) {
@@ -144,8 +189,15 @@ public class Restaurant {
         Table table = findTableFor(customer);
         if (table == null) { return "Customer has no occupied table"; }
         String reason = cashier.collect(customer, turn);
-        if (reason == null) { table.release(); }
+        if (reason == null) { release(table); }
         return reason;
+    }
+
+    private static void release(Table table) {
+        String refusal = table.release();
+        if (refusal != null) {
+            throw new IllegalStateException("Table release refused: " + refusal);
+        }
     }
 
     public void advanceEating(int turn) {
@@ -183,10 +235,19 @@ public class Restaurant {
                     waitingQueue.remove(c);
                     Table table = findTableFor(c);
                     if (table != null) {
-                        table.release();
+                        release(table);
                     }
                 }
             }
+        }
+    }
+
+    public void recoverWaitingSatisfaction(int amount) {
+        if (amount < 0) {
+            throw new IllegalArgumentException("Recovery amount cannot be negative");
+        }
+        for (Customer customer : customers) {
+            customer.recoverWaitingSatisfaction(amount);
         }
     }
 

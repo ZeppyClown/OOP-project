@@ -1,0 +1,451 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram id="p1" name="Stage 3 — class-entities">
+    <mxGraphModel grid="1" gridSize="10" page="0" background="#ffffff">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Stage 3 — Class Entities" style="text;align=center;fontStyle=1;fontSize=22;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="20" width="2300" height="50" />
+        </mxCell>
+        <mxCell id="Restaurant" value="Restaurant" style="swimlane;html=1;horizontal=1;startSize=54;collapsible=0;whiteSpace=wrap;align=center;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="110" width="560" height="541" />
+        </mxCell>
+        <mxCell id="Restaurant_row0" value="-List&amp;lt;Customer&amp;gt; customers" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="58" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row1" value="-Deque&amp;lt;Customer&amp;gt; waitingQueue" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="86" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row2" value="-List&amp;lt;Table&amp;gt; tables" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="114" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_sep" value="" style="line;strokeColor=#888888;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="0" y="139" width="560" height="1" />
+        </mxCell>
+        <mxCell id="Restaurant_row3" value="+registerArrival(Customer customer) void" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="142" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row4" value="+seatCustomer(Customer customer, int turn) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="170" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row5" value="+seatCustomerWithHost(Customer customer, int turn) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="198" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row6" value="+recoverWaitingSatisfaction(int amount) void" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="226" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row7" value="+advanceEating(int turn) void" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="254" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row8" value="+oldestEligiblePayer(int turn) Customer" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="282" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row9" value="+takeOrder(Customer customer, PricingPolicy pricing, int turn) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="310" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row10" value="+serveOrder(Order order, int turn) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="338" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row11" value="+prepareOrder(Order order, int turn) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="366" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row12" value="+collectPayment(Customer customer, int turn) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="394" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row13" value="+applyWaitingLoss() void" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="422" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row14" value="+getRevenueCents() int" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="450" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row15" value="+getPaidSatisfactionTotal() int" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="478" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant_row16" value="+evaluateResult() GameResult" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="8" y="506" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer" value="&lt;i&gt;Customer&lt;/i&gt; &lt;br&gt;&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt;" style="swimlane;html=1;horizontal=1;startSize=54;collapsible=0;whiteSpace=wrap;align=center;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="950" y="110" width="560" height="681" />
+        </mxCell>
+        <mxCell id="Customer_row0" value="-int id" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="58" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row1" value="-Restaurant restaurant" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="86" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row2" value="-int satisfaction" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="114" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row3" value="-CustomerStatus status" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="142" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row4" value="-Order order" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="170" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row5" value="-int servedTurn" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="198" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row6" value="-int readyToPayTurn" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="226" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row7" value="-int satisfactionAtPayment" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="254" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_sep" value="" style="line;strokeColor=#888888;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="0" y="279" width="560" height="1" />
+        </mxCell>
+        <mxCell id="Customer_row8" value="&lt;i&gt;+getTypeLabel() String&lt;/i&gt;" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="282" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row9" value="&lt;i&gt;#waitingLossPerTurn() int&lt;/i&gt;" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="310" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row10" value="+chooseItem(Menu menu) MenuItem" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="338" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row11" value="+applyDiscount(int cents) int" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="366" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row12" value="+isWaitingUnserved() boolean" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="394" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row13" value="+recoverWaitingSatisfaction(int amount) void" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="422" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row14" value="~bindTo(Restaurant restaurant) void" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="450" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row15" value="~seat() String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="478" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row16" value="~placeOrder(MenuItem item, int billCents, int turn) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="506" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row17" value="~serve(int turn) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="534" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row18" value="~finishEating(int turn) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="562" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row19" value="~pay(int turn) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="590" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Customer_row20" value="~loseWaitingSatisfaction() void" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="8" y="618" width="544" height="26" />
+        </mxCell>
+        <mxCell id="RegularCustomer" value="RegularCustomer" style="swimlane;html=1;horizontal=1;startSize=54;collapsible=0;whiteSpace=wrap;align=center;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1820" y="110" width="560" height="93" />
+        </mxCell>
+        <mxCell id="RegularCustomer_row0" value="#waitingLossPerTurn() int" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="RegularCustomer">
+          <mxGeometry as="geometry" x="8" y="58" width="544" height="26" />
+        </mxCell>
+        <mxCell id="VIPCustomer" value="VIPCustomer" style="swimlane;html=1;horizontal=1;startSize=54;collapsible=0;whiteSpace=wrap;align=center;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="1309" width="560" height="121" />
+        </mxCell>
+        <mxCell id="VIPCustomer_row0" value="#waitingLossPerTurn() int" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="VIPCustomer">
+          <mxGeometry as="geometry" x="8" y="58" width="544" height="26" />
+        </mxCell>
+        <mxCell id="VIPCustomer_row1" value="+applyDiscount(int cents) int" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="VIPCustomer">
+          <mxGeometry as="geometry" x="8" y="86" width="544" height="26" />
+        </mxCell>
+        <mxCell id="CriticCustomer" value="CriticCustomer" style="swimlane;html=1;horizontal=1;startSize=54;collapsible=0;whiteSpace=wrap;align=center;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="950" y="1309" width="560" height="121" />
+        </mxCell>
+        <mxCell id="CriticCustomer_row0" value="#waitingLossPerTurn() int" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="CriticCustomer">
+          <mxGeometry as="geometry" x="8" y="58" width="544" height="26" />
+        </mxCell>
+        <mxCell id="CriticCustomer_row1" value="+chooseItem(Menu menu) MenuItem" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="CriticCustomer">
+          <mxGeometry as="geometry" x="8" y="86" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Table" value="Table" style="swimlane;html=1;horizontal=1;startSize=54;collapsible=0;whiteSpace=wrap;align=center;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1820" y="1309" width="560" height="261" />
+        </mxCell>
+        <mxCell id="Table_row0" value="-int id" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="8" y="58" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Table_row1" value="-Customer occupant" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="8" y="86" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Table_sep" value="" style="line;strokeColor=#888888;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="0" y="111" width="560" height="1" />
+        </mxCell>
+        <mxCell id="Table_row2" value="+getId() int" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="8" y="114" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Table_row3" value="+isFree() boolean" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="8" y="142" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Table_row4" value="+getOccupant() Customer" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="8" y="170" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Table_row5" value="~seat(Customer customer) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="8" y="198" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Table_row6" value="~release() String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="8" y="226" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Order" value="Order" style="swimlane;html=1;horizontal=1;startSize=54;collapsible=0;whiteSpace=wrap;align=center;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="1766" width="560" height="429" />
+        </mxCell>
+        <mxCell id="Order_row0" value="-Customer customer" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="8" y="58" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Order_row1" value="-int billCents" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="8" y="86" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Order_row2" value="-OrderStatus status" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="8" y="114" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Order_row3" value="-int readyTurn" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="8" y="142" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Order_row4" value="-int servedTurn" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="8" y="170" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Order_sep" value="" style="line;strokeColor=#888888;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="0" y="195" width="560" height="1" />
+        </mxCell>
+        <mxCell id="Order_row5" value="+getCustomer() Customer" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="8" y="198" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Order_row6" value="+getBillCents() int" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="8" y="226" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Order_row7" value="+canBeServedAt(int turn) boolean" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="8" y="254" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Order_row8" value="+canBePaidAt(int turn) boolean" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="8" y="282" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Order_row9" value="~advancePreparation(int turn) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="8" y="310" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Order_row10" value="~markServed(int turn) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="8" y="338" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Order_row11" value="~markPaid(int turn) String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="8" y="366" width="544" height="26" />
+        </mxCell>
+        <mxCell id="Order_row12" value="~cancel() String" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="8" y="394" width="544" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatus" value="CustomerStatus &lt;br&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;" style="swimlane;html=1;horizontal=1;startSize=54;collapsible=0;whiteSpace=wrap;align=center;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="950" y="1766" width="560" height="289" />
+        </mxCell>
+        <mxCell id="CustomerStatus_row0" value="WAITING" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="8" y="58" width="544" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatus_row1" value="SEATED" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="8" y="86" width="544" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatus_row2" value="WAITING_FOR_FOOD" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="8" y="114" width="544" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatus_row3" value="SERVED" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="8" y="142" width="544" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatus_row4" value="READY_TO_PAY" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="8" y="170" width="544" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatus_row5" value="PAID" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="8" y="198" width="544" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatus_row6" value="LEFT" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="8" y="226" width="544" height="26" />
+        </mxCell>
+        <mxCell id="OrderStatus" value="OrderStatus &lt;br&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;" style="swimlane;html=1;horizontal=1;startSize=54;collapsible=0;whiteSpace=wrap;align=center;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1820" y="1766" width="560" height="261" />
+        </mxCell>
+        <mxCell id="OrderStatus_row0" value="PLACED" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="OrderStatus">
+          <mxGeometry as="geometry" x="8" y="58" width="544" height="26" />
+        </mxCell>
+        <mxCell id="OrderStatus_row1" value="PREPARING" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="OrderStatus">
+          <mxGeometry as="geometry" x="8" y="86" width="544" height="26" />
+        </mxCell>
+        <mxCell id="OrderStatus_row2" value="READY" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="OrderStatus">
+          <mxGeometry as="geometry" x="8" y="114" width="544" height="26" />
+        </mxCell>
+        <mxCell id="OrderStatus_row3" value="SERVED" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="OrderStatus">
+          <mxGeometry as="geometry" x="8" y="142" width="544" height="26" />
+        </mxCell>
+        <mxCell id="OrderStatus_row4" value="PAID" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="OrderStatus">
+          <mxGeometry as="geometry" x="8" y="170" width="544" height="26" />
+        </mxCell>
+        <mxCell id="OrderStatus_row5" value="CANCELLED" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="OrderStatus">
+          <mxGeometry as="geometry" x="8" y="198" width="544" height="26" />
+        </mxCell>
+        <mxCell id="GameResult" value="GameResult &lt;br&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;" style="swimlane;html=1;horizontal=1;startSize=54;collapsible=0;whiteSpace=wrap;align=center;fontStyle=1;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="2437" width="560" height="149" />
+        </mxCell>
+        <mxCell id="GameResult_row0" value="VICTORY" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="GameResult">
+          <mxGeometry as="geometry" x="8" y="58" width="544" height="26" />
+        </mxCell>
+        <mxCell id="GameResult_row1" value="DEFEAT" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="GameResult">
+          <mxGeometry as="geometry" x="8" y="86" width="544" height="26" />
+        </mxCell>
+        <mxCell id="rel0" value="" style="html=1;rounded=0;endArrow=open;endFill=0;startArrow=diamond;startFill=1;endArrow=none;exitX=0.08928571428571429;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Restaurant" target="Table">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="130" y="861" />
+              <mxPoint x="1765" y="861" />
+              <mxPoint x="1765" y="1269" />
+              <mxPoint x="2100.0" y="1269" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel0_label" value="Restaurant → Table [1 : 2]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="522.5" y="827" width="850" height="28" />
+        </mxCell>
+        <mxCell id="rel1" value="" style="html=1;rounded=0;endArrow=open;endFill=0;startArrow=open;startFill=0;exitX=0.13214285714285715;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Restaurant" target="Customer">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="154" y="907" />
+              <mxPoint x="887" y="907" />
+              <mxPoint x="887" y="70" />
+              <mxPoint x="1230.0" y="70" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel1_label" value="Restaurant → Customer: exclusive permanent registration [0..1 : 0..*]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="159.0" y="873" width="723" height="28" />
+        </mxCell>
+        <mxCell id="rel2" value="" style="html=1;rounded=0;endArrow=open;endFill=0;startArrow=block;startFill=0;endArrow=none;exitX=0.08928571428571429;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Customer" target="RegularCustomer">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1000" y="953" />
+              <mxPoint x="1749" y="953" />
+              <mxPoint x="1749" y="70" />
+              <mxPoint x="2100.0" y="70" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel2_label" value="RegularCustomer extends Customer" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1005.0" y="919" width="739" height="28" />
+        </mxCell>
+        <mxCell id="rel3" value="" style="html=1;rounded=0;endArrow=open;endFill=0;startArrow=block;startFill=0;endArrow=none;exitX=0.13214285714285715;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Customer" target="VIPCustomer">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1024" y="999" />
+              <mxPoint x="1" y="999" />
+              <mxPoint x="1" y="1269" />
+              <mxPoint x="360.0" y="1269" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel3_label" value="VIPCustomer extends Customer" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="87.5" y="965" width="850" height="28" />
+        </mxCell>
+        <mxCell id="rel4" value="" style="html=1;rounded=0;endArrow=open;endFill=0;startArrow=block;startFill=0;endArrow=none;exitX=0.175;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Customer" target="CriticCustomer">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1048" y="1045" />
+              <mxPoint x="863" y="1045" />
+              <mxPoint x="863" y="1269" />
+              <mxPoint x="1230.0" y="1269" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel4_label" value="CriticCustomer extends Customer" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="725.5" y="1011" width="460" height="28" />
+        </mxCell>
+        <mxCell id="rel5" value="" style="html=1;rounded=0;endArrow=open;endFill=0;startArrow=diamond;startFill=1;endArrow=none;exitX=0.21785714285714286;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Customer" target="Order">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1072" y="1091" />
+              <mxPoint x="-15" y="1091" />
+              <mxPoint x="-15" y="1726" />
+              <mxPoint x="360.0" y="1726" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel5_label" value="Customer → Order: creates once [1 : 0..1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="103.5" y="1057" width="850" height="28" />
+        </mxCell>
+        <mxCell id="rel6" value="" style="html=1;rounded=0;endArrow=open;endFill=0;exitX=0.08928571428571429;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Order" target="Customer">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="130" y="2265" />
+              <mxPoint x="847" y="2265" />
+              <mxPoint x="847" y="70" />
+              <mxPoint x="1230.0" y="70" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel6_label" value="Order → Customer: customer [0..1 : 1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="135.0" y="2231" width="707" height="28" />
+        </mxCell>
+        <mxCell id="rel7" value="" style="html=1;rounded=0;endArrow=open;endFill=0;exitX=0.08928571428571429;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Table" target="Customer">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1870" y="1640" />
+              <mxPoint x="839" y="1640" />
+              <mxPoint x="839" y="70" />
+              <mxPoint x="1230.0" y="70" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel7_label" value="Table → Customer: current occupant [0..1 : 0..1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="929.5" y="1606" width="850" height="28" />
+        </mxCell>
+        <mxCell id="rel8" value="" style="html=1;rounded=0;endArrow=open;endFill=0;exitX=0.26071428571428573;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Customer" target="CustomerStatus">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1096" y="1137" />
+              <mxPoint x="831" y="1137" />
+              <mxPoint x="831" y="1726" />
+              <mxPoint x="1230.0" y="1726" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel8_label" value="Customer → CustomerStatus" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="733.5" y="1103" width="460" height="28" />
+        </mxCell>
+        <mxCell id="rel9" value="" style="html=1;rounded=0;endArrow=open;endFill=0;exitX=0.13214285714285715;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Order" target="OrderStatus">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="154" y="2311" />
+              <mxPoint x="1693" y="2311" />
+              <mxPoint x="1693" y="1726" />
+              <mxPoint x="2100.0" y="1726" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel9_label" value="Order → OrderStatus" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="498.5" y="2277" width="850" height="28" />
+        </mxCell>
+        <mxCell id="rel10" value="" style="html=1;rounded=0;endArrow=open;endFill=0;dashed=1;exitX=0.175;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Restaurant" target="GameResult">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="178" y="1183" />
+              <mxPoint x="-55" y="1183" />
+              <mxPoint x="-55" y="2397" />
+              <mxPoint x="360.0" y="2397" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel10_label" value="Restaurant → GameResult" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="1149" width="460" height="28" />
+        </mxCell>
+        <mxCell id="note0" value="&lt;b&gt;Customer&lt;/b&gt;&lt;br&gt;Final recovery rejects negative amounts and uses long&lt;br/&gt;addition capped at 100. Eligible states: WAITING,&lt;br/&gt;SEATED and WAITING_FOR_FOOD, including&lt;br/&gt;PLACED/PREPARING/READY orders. No public lifecycle&lt;br/&gt;setters." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="2736" width="560" height="150" />
+        </mxCell>
+        <mxCell id="note1" value="&lt;b&gt;VIPCustomer&lt;/b&gt;&lt;br&gt;Waiting loss 5. 90 percent quote. Inherits menu-size-&lt;br/&gt;based ID choice." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="950" y="2736" width="560" height="150" />
+        </mxCell>
+        <mxCell id="note2" value="&lt;b&gt;CriticCustomer&lt;/b&gt;&lt;br&gt;Waiting loss 12. Always chooses actual Pasta by name.&lt;br/&gt;Full price inherited." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1820" y="2736" width="560" height="150" />
+        </mxCell>
+        <mxCell id="note3" value="&lt;b&gt;RegularCustomer&lt;/b&gt;&lt;br&gt;Waiting loss 8. Default menu ID rotation is Burger,&lt;br/&gt;Salad, Pasta, combo." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="80" y="2916" width="560" height="150" />
+        </mxCell>
+        <mxCell id="note4" value="&lt;b&gt;Restaurant&lt;/b&gt;&lt;br&gt;Recovery delegates to registered arrivals. Seat/payment&lt;br/&gt;wrappers couple successful transitions with queue&lt;br/&gt;removal/table release; a refused release after payment&lt;br/&gt;or departure throws IllegalStateException. Revenue and&lt;br/&gt;average use paid customers only." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="950" y="2916" width="560" height="150" />
+        </mxCell>
+        <mxCell id="note5" value="&lt;b&gt;Order&lt;/b&gt;&lt;br&gt;billCents is final. READY must predate serving. Eating&lt;br/&gt;and payment each require a later turn. Unserved&lt;br/&gt;departure cancels the order." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1820" y="2916" width="560" height="150" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

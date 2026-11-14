@@ -276,9 +276,9 @@ public final class CustomerTests {
         throw new AssertionError("Expected IllegalArgumentException");
     }
 
-    private static void ok(String reason) { check(reason == null, "Expected success: " + reason); }
-    private static void refused(String reason) { check(reason != null && !reason.isBlank(), "Expected refusal reason"); }
-    private static void check(boolean value, String message) { if (!value) { throw new AssertionError(message); } }
+    static void ok(String reason) { check(reason == null, "Expected success: " + reason); }
+    static void refused(String reason) { check(reason != null && !reason.isBlank(), "Expected refusal reason"); }
+    static void check(boolean value, String message) { if (!value) { throw new AssertionError(message); } }
     private static void equal(Object expected, Object actual, String message) {
         check(Objects.equals(expected, actual), message + ": expected " + expected + ", got " + actual);
     }

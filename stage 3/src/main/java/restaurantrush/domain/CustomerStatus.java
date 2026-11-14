@@ -1,12 +1,11 @@
 package restaurantrush.domain;
 
 public enum CustomerStatus {
-    WAITING, // in the queue
-    SEATED, 
-    WAITING_FOR_FOOD, 
-    SERVED, 
-    READY_TO_PAY, 
-    PAID, 
+    WAITING, //Join queue
+    SEATED,
+    WAITING_FOR_FOOD,
+    SERVED,
+    READY_TO_PAY,
+    PAID,
     LEFT
 }
-
