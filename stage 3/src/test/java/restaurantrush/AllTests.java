@@ -5,8 +5,11 @@ import java.util.List;
 import java.util.function.Consumer;
 
 /**
- * Runs every Stage 2 test and exits nonzero if any fail.
- *   sh "stage 2/run-tests.sh"
+ * Plain standard-library test runner for Stage 3:
+ *   sh "stage 3/run-tests.sh"
+ *
+ * Registers parser/harness/replay checks and wraps the domain/controller
+ * public runAll methods. Failures are collected before returning nonzero.
  */
 public final class AllTests {
 
@@ -18,12 +21,16 @@ public final class AllTests {
             r -> r.add("Restaurant domain", restaurantrush.domain.RestaurantTests::runAll),
             r -> r.add("Order domain", restaurantrush.domain.OrderTests::runAll),
             r -> r.add("Staff domain", restaurantrush.domain.StaffTests::runAll),
+            restaurantrush.domain.RestaurantOrderingTests::register,
+            r -> r.add("Control records and GameIO", () -> restaurantrush.control.ControlTests.main(new String[0])),
+            r -> r.add("Controller turns (Regular-only regression)", TurnTests::runAll),
             r -> r.add("Exact percentage pricing", restaurantrush.domain.PricingTests::runAll),
             r -> r.add("Customer subtype dispatch and shared guards", restaurantrush.domain.CustomerSubtypeTests::runAll),
             r -> r.add("Stage 2 controller and VIP priorities", Stage2ControllerTests::runAll),
-            r -> r.add("Control records and GameIO", () -> restaurantrush.control.ControlTests.main(new String[0])),
-            r -> r.add("Controller turns (Regular-only regression)", TurnTests::runAll),
             r -> r.add("Launcher arguments and script errors", LauncherTests::runAll),
+            r -> r.add("Stage 3 recovery eligibility", restaurantrush.domain.RecoveryTests::runAll),
+            r -> r.add("Stage 3 Host/combo/pricing components", restaurantrush.domain.Stage3ComponentTests::runAll),
+            r -> r.add("Stage 3 controller timing and policies", Stage3ControllerTests::runAll),
             ReplayTests::register
     );
 
