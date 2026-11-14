@@ -6,9 +6,7 @@ import java.util.OptionalDouble;
 
 /**
  * Tests for WaiterAction, InputEndedException, GameView and GameIO.
- * Run from "stage 1":
- *   javac -d build/test-classes src/main/java/restaurantrush/control/{WaiterAction,InputEndedException,GameView,GameIO}.java src/test/java/restaurantrush/control/ControlTests.java
- *   java -cp build/test-classes restaurantrush.control.ControlTests
+ * Registered by AllTests; run sh "stage 3/run-tests.sh" from repository root.
  */
 public final class ControlTests {
 

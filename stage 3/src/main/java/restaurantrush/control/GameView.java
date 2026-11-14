@@ -3,16 +3,23 @@ package restaurantrush.control;
 import java.util.List;
 import java.util.OptionalDouble;
 
+/**
+ * Immutable snapshots the controller builds from Restaurant/Order queries and
+ * hands to GameIO. The UI formats these values; it never receives mutable
+ * domain objects and never decides eligibility itself.
+ *
+ * The same state shape is refreshed between Host, Waiter and Chef choices.
+ */
 public final class GameView {
 
     private GameView() {
     }
 
-    /** A customer in the queue or at a table. */
+    /** A waiting or seated customer. {@code status} is the CustomerStatus name. */
     public record CustomerLine(int id, String type, int satisfaction, String status) {
     }
 
-    /** A table; occupant is null when free. */
+    /** {@code occupant} is null when the table is free. */
     public record TableLine(int tableId, CustomerLine occupant) {
     }
 
@@ -20,7 +27,10 @@ public final class GameView {
                             String status, int billCents) {
     }
 
-    /** Game state plus the IDs you can act on. Empty lists mean only Wait. */
+    /**
+     * Full start-of-turn state. The ID lists are the controller's eligible
+     * targets for this turn; an empty list means only Wait is useful.
+     */
     public record TurnState(int stage, int turn, int maxTurns,
                             int revenueCents, int paidCount, OptionalDouble averagePaidSatisfaction,
                             List<CustomerLine> waiting, List<TableLine> tables, List<OrderLine> orders,
@@ -38,7 +48,7 @@ public final class GameView {
         }
     }
 
-    /** Totals so far, at the end of a turn. */
+    /** End-of-turn statistics; counts are cumulative for the run. */
     public record TurnSummary(int turn, int maxTurns, int servedCount, int paidCount, int departures,
                               int revenueCents, OptionalDouble averagePaidSatisfaction) {
     }
