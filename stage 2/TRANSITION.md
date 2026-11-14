@@ -40,7 +40,33 @@ The original victory, defeat and invalid-input fixture files are unchanged. VIP-
 
 `run.sh` and `run-tests.sh` now use `java-env.sh` and `compile-sources.sh` for installed-JDK selection and escaped compiler argument files. `check-build.sh` verifies copied-source runs from another working directory, five replays, stdin, EOF, JDK discovery and invalid JAVA_HOME. No JDK is downloaded.
 
-README paths/results and EVIDENCE.md are updated. Stage 2 figures are in `diagrams/stage 2`; copied Stage 1 figures inside the Stage 2 source folder are removed. Draw.io sources and PNG exports cover the full class model, focused views and a three-page priority sequence. The sequence changes VIP payment timing and satisfaction; both alternatives end in DEFEAT.
+README paths/results and EVIDENCE.md are updated. The old tracked `stage 1/diagrams/` files are deleted from the current working source tree; their historical versions remain at `stage-1`. New Stage 2 models are added under `diagrams/stage 2/`. This is a directory replacement, not deletion from a pre-existing tracked `stage 2/diagrams/` directory. The local untracked `diagrams/stage 1/` copy is separate and is not part of the release. Draw.io sources/PNGs cover the full class model, focused views and a priority sequence. The local review repair splits that sequence into five pages; both alternatives still end in DEFEAT.
+
+## Explicit changed, moved and deleted path inventory
+
+The conceptual comparison above maps each `stage 1/` file to its `stage 2/` counterpart. The actual Git diff also records path-level deletions/additions where similarity is below rename detection. No gameplay class was dropped.
+
+| Old tracked path(s) | Current counterpart/status | Reason |
+|---|---|---|
+| `stage 1/src/main/java/**` | Moved to `stage 2/src/main/java/**`; add VIP/Critic and modify the four listed production files | Extend the Stage 1 game in one current-stage directory. |
+| `stage 1/src/test/java/**` | Moved to `stage 2/src/test/java/**`; three suites added, four updated | Preserve regressions while testing subtype pricing/dispatch and real Stage 2 startup. |
+| `stage 1/run.sh`, `stage 1/run-tests.sh` | Deleted at old paths; rewritten as `stage 2/run.sh`, `stage 2/run-tests.sh` | Use the current source root, installed JDK selection and correctly escaped javac argument lists. |
+| `stage 1/EVIDENCE.md` | Deleted at old path; new `stage 2/EVIDENCE.md` | Record actual Stage 2 checks/results instead of relabelling old Stage 1 evidence. |
+| `stage 1/test-fixtures/README.md` | Deleted at old path; rewritten `stage 2/test-fixtures/README.md` | Explain current commands, discounted totals, departure timing and priority inputs. |
+| Three original `stage 1/test-fixtures/*.txt` inputs | Renamed byte-for-byte to the corresponding `stage 2/test-fixtures/` paths | Compare stage behaviour under identical manager commands. |
+| `stage 1/diagrams/*.drawio` (7 files) and `stage 1/diagrams/png/*.png` (7 files) | Deleted from the current tree; retained in the historical tag | Replace old-stage figures with Stage 2 models; the starter diagram remains historical. |
+| No old equivalent | Add `diagrams/stage 2/` draw.io sources and PNGs | Show current factory, customer subtypes, pricing dependencies and actual sequence calls. |
+| No old equivalent | Add `stage 2/check-build.sh`, `compile-sources.sh`, `java-env.sh` | Verify copied-source CLI behaviour, difficult paths, installed JDK selection and diagnostics. |
+| No old equivalent | Add `stage 2/TRANSITION.md` and two priority input files | Explain the real transition and reproduce manager-choice timing/satisfaction changes. |
+| Root `README.md` | Modified | Update paths, commands, tag/compare links, diagrams, design discussion and results. |
+
+At the published `stage-1...stage-2` comparison, Git reports `Money.java` and `ReplayTests.java` as old-path deletions plus new-path additions, despite their conceptual continuity. The same applies to the substantially rewritten runner/evidence/fixture README files. Rename detection is heuristic; it does not mean those responsibilities vanished. To reproduce the actual status list:
+
+```sh
+git diff --name-status --find-renames stage-1 stage-2
+```
+
+The review follow-up corrects diagram sources/exports, expands the design discussion and path inventory, and clarifies the discount-hook Javadoc. The five-page sequence makes the turn loop, lookups, lifetime continuation, same-role retries and EOF exit explicit. These changes do not alter gameplay rules. The recreated stage-2 release includes this follow-up; the Git history preserves the original integration checkpoint.
 
 ## Integration provenance
 

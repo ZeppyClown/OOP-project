@@ -123,3 +123,7 @@ Victory runs serve five customers with no departures. The all-wait run has two d
 ## Remaining presentation/submission checks
 
 Draw.io files were parsed/exported and focused images inspected during preparation. Final report PDF page-size readability, member sign-off, declarations, video and submission archive approval are separate human deliverables and are not certified by this release.
+
+## Review follow-up
+
+The follow-up changes documentation, UML and the discount-hook Javadoc without changing executable gameplay. Claude independently reran the suite (40 passing registered checks), all four build-check outcomes and both priority replays during review. After that review, small diagram routing/label/EOF-context issues were corrected locally and the PNGs re-exported and inspected. Those final visual adjustments were checked locally rather than claimed as a second Claude approval. The sequence now has five pages. Final report PDF sizing remains a separate check.
