@@ -1,0 +1,67 @@
+no
+wait
+wait
+wait
+no
+wait
+wait
+wait
+no
+1
+order 1
+1
+no
+wait
+serve 1
+wait
+no
+wait
+wait
+wait
+no
+wait
+wait
+wait
+no
+wait
+wait
+wait
+no
+2
+order 2
+2
+no
+wait
+serve 2
+wait
+no
+wait
+wait
+wait
+no
+wait
+wait
+wait
+no
+3
+wait
+wait
+yes
+5
+order 3
+3
+wait
+order 5
+3
+wait
+serve 3
+5
+wait
+serve 5
+wait
+wait
+wait
+wait
+wait
+wait
+wait

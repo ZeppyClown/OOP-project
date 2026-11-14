@@ -10,17 +10,15 @@ import java.util.List;
 import java.util.OptionalDouble;
 
 import restaurantrush.boundary.ConsoleUI;
+import restaurantrush.control.GameIO;
 import restaurantrush.control.GameView;
 import restaurantrush.control.InputEndedException;
 import restaurantrush.control.WaiterAction;
 
-/** ConsoleUI: parsing, retries, end of input and output. */
+/** Talon: ConsoleUI parsing, syntax retry, EOF and display (S1-T1). */
 public final class ConsoleTests {
 
-    /**
-     * Fixture directory: -Dstage1.fixtures wins; otherwise look relative to
-     * the repository root or to the "stage 2" folder.
-     */
+    /** Stage 3 scripts supply an absolute path using the inherited property name. */
     static final Path FIXTURES = locateFixtures();
 
     private static Path locateFixtures() {
@@ -28,12 +26,12 @@ public final class ConsoleTests {
         if (configured != null) {
             return Path.of(configured);
         }
-        for (Path candidate : List.of(Path.of("stage 2", "test-fixtures"), Path.of("test-fixtures"))) {
+        for (Path candidate : List.of(Path.of("stage 3", "test-fixtures"), Path.of("test-fixtures"))) {
             if (Files.isDirectory(candidate)) {
                 return candidate.toAbsolutePath();
             }
         }
-        return Path.of("stage 2", "test-fixtures").toAbsolutePath();
+        return Path.of("stage 3", "test-fixtures").toAbsolutePath();
     }
 
     private ConsoleTests() {
@@ -43,10 +41,14 @@ public final class ConsoleTests {
         r.add("Console: parses seat/order/serve/wait", ConsoleTests::parsesWaiterCommands);
         r.add("Console: trims and ignores case", ConsoleTests::trimsAndIgnoresCase);
         r.add("Console: rejects malformed Waiter commands", ConsoleTests::rejectsMalformedWaiter);
+        r.add("Console: parses Happy Hour and Host commands", ConsoleTests::parsesNewRoles);
+        r.add("Console: new roles retry syntax and propagate EOF", ConsoleTests::newRoleRetries);
+        r.add("Console: displays Happy Hour duration and Host options", ConsoleTests::displaysNewRoles);
         r.add("Console: parses Chef ID or wait", ConsoleTests::parsesChef);
         r.add("Console: rejects malformed Chef commands", ConsoleTests::rejectsMalformedChef);
         r.add("Console: re-prompts on syntax error in the same request", ConsoleTests::retriesUntilValid);
         r.add("Console: EOF throws instead of choosing Wait", ConsoleTests::eofThrows);
+        r.add("Console: overrides every GameIO default method", ConsoleTests::overridesEveryGameIoDefault);
         r.add("Console: start-of-turn display shows every required field", ConsoleTests::displaysTurnState);
         r.add("Console: Stage 2 header and supplied subtype labels", ConsoleTests::displaysSubtypeLabels);
         r.add("Console: no paid customers shows N/A and free tables", ConsoleTests::displaysEmptyState);
@@ -55,7 +57,7 @@ public final class ConsoleTests {
         r.add("Console: lists every Waiter verb and Chef order with IDs", ConsoleTests::listsAllOptions);
         r.add("Console: mid-turn state update, invalid action and interruption lines", ConsoleTests::displaysNotices);
         r.add("Console: accepts large IDs and rejects null Chef input", ConsoleTests::idBoundaries);
-        r.add("Fixtures: four retry-free files are 18 valid Waiter+Chef turns", ConsoleTests::fixturesParse);
+        r.add("Fixtures: four retry-free files are 18 valid Stage 3 turns", ConsoleTests::fixturesParse);
         r.add("Fixtures: invalid-input file reaches the same choices via retries", ConsoleTests::invalidFixtureRecovers);
     }
 
@@ -105,6 +107,23 @@ public final class ConsoleTests {
         Check.contains(text, "Invalid Chef command: 'nope' is not a whole-number ID", "chef message");
     }
 
+    /** GameIO's Stage 3 methods are default so older test doubles compile; the real UI must not rely on them. */
+    private static void overridesEveryGameIoDefault() {
+        int defaults = 0;
+        for (java.lang.reflect.Method method : GameIO.class.getMethods()) {
+            if (!method.isDefault()) {
+                continue;
+            }
+            defaults++;
+            try {
+                ConsoleUI.class.getDeclaredMethod(method.getName(), method.getParameterTypes());
+            } catch (NoSuchMethodException missing) {
+                throw new AssertionError("ConsoleUI does not override GameIO." + method.getName());
+            }
+        }
+        Check.isTrue(defaults > 0, "GameIO has default methods to check");
+    }
+
     private static void eofThrows() {
         Console empty = console("");
         Check.throwsType(InputEndedException.class, empty.ui::chooseWaiterAction, "Waiter at EOF");
@@ -114,7 +133,7 @@ public final class ConsoleTests {
 
     // ---- displays --------------------------------------------------------
 
-    /** State from the victory run at the start of turn 9. */
+    /** Values from the reference victory at the start of turn 9. */
     private static void displaysTurnState() {
         GameView.CustomerLine c3 = new GameView.CustomerLine(3, "Regular", 84, "WAITING_FOR_FOOD");
         GameView.TurnState state = new GameView.TurnState(1, 9, 18,
@@ -262,43 +281,90 @@ public final class ConsoleTests {
         for (String name : List.of("victory-input.txt", "defeat-input.txt",
                 "vip-priority-input.txt", "regular-priority-input.txt")) {
             List<String> lines = fixture(name);
-            Check.equal(36, lines.size(), name + " line count");
-            ScriptedGameIO io = ScriptedGameIO.alternating(lines);
-            Check.equal(36, io.remainingSteps(), name + " typed steps");
+            int expected = name.equals("victory-input.txt") ? 64 : name.equals("defeat-input.txt") ? 72 : 58;
+            Check.equal(expected, lines.size(), name + " conditional grammar line count");
+            Check.equal(expected, ScriptedGameIO.stage3(lines).remainingSteps(), name + " typed steps");
         }
-        ScriptedGameIO victory = ScriptedGameIO.alternating(fixture("victory-input.txt"));
-        Check.equal(WaiterAction.seat(1), victory.chooseWaiterAction(), "turn 1 Waiter");
-        Check.equal(0, victory.chooseChefOrder(), "turn 1 Chef");
-        Check.equal(WaiterAction.order(1), victory.chooseWaiterAction(), "turn 2 Waiter");
-        Check.equal(1, victory.chooseChefOrder(), "turn 2 Chef");
+        ScriptedGameIO victory = ScriptedGameIO.stage3(fixture("victory-input.txt"));
+        Check.equal(false, victory.chooseHappyHourActivation(), "turn 1 activation");
+        Check.equal(1, victory.chooseHostCustomer(), "turn 1 Host");
+        Check.equal(WaiterAction.order(1), victory.chooseWaiterAction(), "turn 1 Waiter");
+        Check.equal(1, victory.chooseChefOrder(), "turn 1 Chef");
     }
 
-    /**
-     * Runs the invalid-input file through ConsoleUI. Lines 10 and 14 parse fine
-     * but the controller would reject them, so we skip them. What's left
-     * should match the clean victory file.
-     */
+    /** Syntax retries remain within the role, semantic retries consume a second same-role choice. */
     private static void invalidFixtureRecovers() {
-        String all = String.join("\n", fixture("victory-invalid-input.txt")) + "\n";
-        Console c = console(all);
-        ScriptedGameIO expected = ScriptedGameIO.alternating(fixture("victory-input.txt"));
+        Console c = console(String.join("\n", fixture("victory-invalid-input.txt")) + "\n");
+        ScriptedGameIO expected = ScriptedGameIO.stage3(fixture("victory-input.txt"));
+        boolean used = false;
         for (int turn = 1; turn <= 18; turn++) {
-            WaiterAction w = c.ui.chooseWaiterAction();
-            if (turn == 2) {
-                Check.equal(WaiterAction.serve(1), w, "turn 2 semantic-invalid Waiter line");
-                w = c.ui.chooseWaiterAction();
+            if (!used) {
+                used = c.ui.chooseHappyHourActivation();
+                Check.equal(expected.chooseHappyHourActivation(), used, "activation " + turn);
             }
-            Check.equal(expected.chooseWaiterAction(), w, "turn " + turn + " Waiter");
+            int host = c.ui.chooseHostCustomer();
+            if (turn == 1) {
+                Check.equal(99, host, "invalid Host target");
+                host = c.ui.chooseHostCustomer();
+            }
+            Check.equal(expected.chooseHostCustomer(), host, "Host " + turn);
+            WaiterAction waiter = c.ui.chooseWaiterAction();
+            if (turn == 1) {
+                Check.equal(WaiterAction.serve(99), waiter, "invalid Waiter target");
+                waiter = c.ui.chooseWaiterAction();
+            }
+            Check.equal(expected.chooseWaiterAction(), waiter, "Waiter " + turn);
             int chef = c.ui.chooseChefOrder();
-            if (turn == 3) {
-                Check.equal(1, chef, "turn 3 semantic-invalid Chef line");
+            if (turn == 1) {
+                Check.equal(99, chef, "invalid Chef target");
                 chef = c.ui.chooseChefOrder();
             }
-            Check.equal(expected.chooseChefOrder(), chef, "turn " + turn + " Chef");
+            Check.equal(expected.chooseChefOrder(), chef, "Chef " + turn);
         }
         Check.equal(0, expected.remainingSteps(), "all clean steps matched");
-        Check.throwsType(InputEndedException.class, c.ui::chooseWaiterAction, "nothing left over");
-        Check.contains(c.output(), "Invalid Chef command: 'two'", "turn 1 Chef syntax line");
+        Check.throwsType(InputEndedException.class, c.ui::chooseHostCustomer, "no leftover lines");
+        for (String role : List.of("Happy Hour", "Host", "Waiter", "Chef")) {
+            Check.contains(c.output(), "Invalid " + role + " command", role + " syntax retry");
+        }
+    }
+
+    private static void parsesNewRoles() {
+        Check.equal(true, ConsoleUI.parseHappyHourActivation("  YeS  "), "yes");
+        Check.equal(false, ConsoleUI.parseHappyHourActivation(" NO "), "no");
+        Check.equal(3, ConsoleUI.parseHostChoice(" 3 "), "Host id");
+        Check.equal(0, ConsoleUI.parseHostChoice(" WaIt "), "Host wait");
+        for (String bad : List.of("", "y", "1", "yes now", "wait")) {
+            Check.throwsType(IllegalArgumentException.class, () -> ConsoleUI.parseHappyHourActivation(bad), bad);
+        }
+        for (String bad : List.of("", "0", "-1", "1.2", "seat 1", "C1", "1 2", "wait now", "2147483648")) {
+            Check.throwsType(IllegalArgumentException.class, () -> ConsoleUI.parseHostChoice(bad), bad);
+        }
+        Check.throwsType(IllegalArgumentException.class, () -> ConsoleUI.parseHostChoice(null), "Host null");
+        Check.throwsType(IllegalArgumentException.class, () -> ConsoleUI.parseHappyHourActivation(null), "HH null");
+    }
+
+    private static void newRoleRetries() {
+        Console c = console("maybe\nyes now\n YES \nseat 1\n0\n WAIT \n");
+        Check.equal(true, c.ui.chooseHappyHourActivation(), "activation after syntax retries");
+        Check.equal(0, c.ui.chooseHostCustomer(), "Host after syntax retries");
+        Check.contains(c.output(), "Invalid Happy Hour command", "activation message");
+        Check.contains(c.output(), "Invalid Host command", "Host message");
+        Check.throwsType(InputEndedException.class, console("").ui::chooseHappyHourActivation, "activation EOF");
+        Check.throwsType(InputEndedException.class, console("seat 1\n").ui::chooseHostCustomer, "Host EOF after invalid");
+    }
+
+    private static void displaysNewRoles() {
+        Console c = console("");
+        c.ui.showHappyHour(10, 2, true);
+        c.ui.showHappyHour(11, 1, true);
+        c.ui.showHappyHour(12, 0, true);
+        for (String status : List.of("turn 10 | remaining 2 | used true", "turn 11 | remaining 1 | used true",
+                "turn 12 | remaining 0 | used true")) Check.contains(c.output(), status, "duration");
+        GameView.TurnState s = new GameView.TurnState(3, 1, 18, 0, 0, OptionalDouble.empty(), List.of(),
+                List.of(), List.of(), List.of(1), List.of(), List.of(), List.of(), "no eligible payment");
+        c.ui.showTurnStart(s);
+        Check.contains(c.output(), "Host options: C1", "Host options from state");
+        Check.contains(c.output(), "Stage 3 - Turn 1 / 18", "Stage 3 header");
     }
 
     // ---- helpers ---------------------------------------------------------

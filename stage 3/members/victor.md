@@ -37,6 +37,6 @@ JAVA_HOME=/opt/homebrew/opt/openjdk@17 sh "stage 3/run-tests.sh"
 JAVA_HOME=/opt/homebrew/opt/openjdk@17 sh "stage 3/check-build.sh"
 ```
 
-The integrated local tree passed 55 registered checks and all build/replay checks. The inherited EVIDENCE file on this partial branch describes Stage 2; final Stage 3 evidence must be supplied at team integration. Coordinate shared signatures and test registration before combining individual file sets. All four sets are needed for a complete Stage 3 build.
+See [EVIDENCE](../EVIDENCE.md) for actual local results. Coordinate shared signatures and test registration before combining individual file sets. All four sets are needed for a complete Stage 3 build.
 
 Diagram files use editable draw.io sources and matching PNG pages. See the [Stage 3 diagram index](../../diagrams/stage%203/README.md).
