@@ -26,7 +26,7 @@ public final class PricingTests {
     private static void menuQuotes() {
         int[] expected = {1350, 810, 1620};
         String[] names = {"Burger", "Salad", "Pasta"};
-        Menu menu = new Menu();
+        Menu menu = new Menu(false);
         for (int i = 0; i < expected.length; i++) {
             MenuItem item = menu.getItems().get(i);
             equal(names[i], item.getName(), "quote belongs to documented dish");
@@ -104,8 +104,8 @@ public final class PricingTests {
     }
 
     private static void discountedBillsStayLockedThroughPayment() {
-        for (MenuItem item : new Menu().getItems()) {
-            Restaurant restaurant = new Restaurant(new Menu(), new Waiter(), new Chef(), new Cashier());
+        for (MenuItem item : new Menu(false).getItems()) {
+            Restaurant restaurant = new Restaurant(new Menu(false), new Waiter(), new Chef(), new Cashier());
             Customer customer = new RegularCustomer(1);
             restaurant.registerArrival(customer);
             ok(restaurant.seatCustomer(customer, 1));
@@ -135,7 +135,7 @@ public final class PricingTests {
     }
 
     private static void cancelledDiscountedBillAddsNoRevenue() {
-        Restaurant restaurant = new Restaurant(new Menu(), new Waiter(), new Chef(), new Cashier());
+        Restaurant restaurant = new Restaurant(new Menu(false), new Waiter(), new Chef(), new Cashier());
         Customer customer = new RegularCustomer(1);
         restaurant.registerArrival(customer);
         ok(restaurant.seatCustomer(customer, 1));
