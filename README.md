@@ -1,110 +1,84 @@
-# OOP-project: Restaurant Rush
+# Restaurant Rush
 
-SC2002 group project. Restaurant Rush is a turn-based console restaurant game written in plain Java with no external libraries. The manager plays 18 turns, assigning the Waiter and the Chef each turn while customers arrive, wait, eat and pay.
+Plain Java console restaurant game. The current source is **Stage 2**, built upon Stage 1 in one `stage 2/` folder. Stage 1 is preserved by its Git tag.
 
-**Released stage:** Stage 1, tag [`stage-1`](https://github.com/ZeppyClown/OOP-project/releases/tag/stage-1).
+## Runnable stages
 
-## Team
-
-| Member | Branch | AI history |
+| Stage | Source snapshot | Release |
 |---|---|---|
-| Abraham | [`Abraham`](https://github.com/ZeppyClown/OOP-project/tree/Abraham) | [Abraham/ai-history](https://github.com/ZeppyClown/OOP-project/tree/Abraham/ai-history) |
-| Danielle | [`Danielle`](https://github.com/ZeppyClown/OOP-project/tree/Danielle) | [Danielle/ai-history](https://github.com/ZeppyClown/OOP-project/tree/Danielle/ai-history) |
-| Talon | [`Talon`](https://github.com/ZeppyClown/OOP-project/tree/Talon) | [Talon/ai-history](https://github.com/ZeppyClown/OOP-project/tree/Talon/ai-history) |
-| Victor | [`Victor`](https://github.com/ZeppyClown/OOP-project/tree/Victor) | [Victor/ai-history](https://github.com/ZeppyClown/OOP-project/tree/Victor/ai-history) |
+| 1 | [stage-1](https://github.com/ZeppyClown/OOP-project/tree/stage-1) | Existing Stage 1 tag |
+| 2 | [stage-2](https://github.com/ZeppyClown/OOP-project/tree/stage-2) | [Stage 2](https://github.com/ZeppyClown/OOP-project/releases/tag/stage-2) |
 
-Each member keeps AI conversation records in an `ai-history/` folder on their own branch.
+[Compare Stage 1 to Stage 2](https://github.com/ZeppyClown/OOP-project/compare/stage-1...stage-2). New files, changed files and design reasons are recorded in [the transition inventory](stage%202/TRANSITION.md). Stage 3 is not part of this release.
 
-## Requirements
+## Requirements and commands
 
-- **JDK 17 or newer.** The code is compiled with `--release 17`. Check with `javac -version` and `java -version`.
-- A POSIX shell (macOS, Linux, or Git Bash on Windows) for the helper scripts. You can also use the plain `javac`/`java` commands below.
-- If `java` is not on your `PATH`, set `JAVA_HOME` to the JDK folder. The scripts then use `$JAVA_HOME/bin`. For example, with Homebrew on macOS: `export JAVA_HOME=/opt/homebrew/opt/openjdk@17`.
-
-## Layout
-
-```
-stage 1/
-  src/main/java/restaurantrush/   Main, boundary (ConsoleUI), control (GameController, GameIO, …), domain
-  src/test/java/restaurantrush/   plain-Java test suites, run together by AllTests
-  test-fixtures/                  scripted console input: victory, defeat, victory with invalid lines
-  diagrams/                       draw.io UML sources; PNG exports in diagrams/png/
-  run.sh                          compile and play
-  run-tests.sh                    compile and run every test
-  EVIDENCE.md                     recorded test and replay results
-```
-
-## Stage 1: build and run
-
-All commands are run from the repository root. Because the folder name `stage 1` contains a space, keep the quotes.
-
-### With the scripts
+Use an installed **JDK 17 or newer** and a POSIX shell. Set `JAVA_HOME` if `java` and `javac` are unavailable on PATH. For this Mac:
 
 ```sh
-sh "stage 1/run.sh"                                                         # play at the keyboard
-sh "stage 1/run.sh" --script "stage 1/test-fixtures/victory-input.txt"      # replay a scripted game
-sh "stage 1/run-tests.sh"                                                   # compile and run all tests
+export JAVA_HOME=/opt/homebrew/opt/openjdk@17
+sh "stage 2/run.sh"
+sh "stage 2/run-tests.sh"
+sh "stage 2/check-build.sh"
+sh "stage 2/run.sh" --script "stage 2/test-fixtures/victory-input.txt"
+sh "stage 2/run.sh" --script "stage 2/test-fixtures/defeat-input.txt"
 ```
 
-### By hand
+The scripts compile with `--release 17` into temporary directories. Tests enable assertions and supply the fixture directory. The expected integrated result is **40 registered checks passed**, with nested suites reporting their own scenario counts; the total is not a count of individual assertions.
 
-```sh
-# compile
-javac --release 17 -d build/main $(find "stage 1/src/main/java" -name '*.java')
-# play (interactive), or replay a script file
-java -cp build/main restaurantrush.Main
-java -cp build/main restaurantrush.Main --script "stage 1/test-fixtures/defeat-input.txt"
-```
+## Gameplay
 
-On bash/zsh, `$(find …)` splits the folder name `stage 1` at the space. If compiling by hand fails, use the scripts, or pass the file list through an argument file:
+Play 18 turns. Customers arrive on turns 1, 4, 7, 10, 13 and 16. C2 is VIP, C3 is Critic and the remaining customers are Regular. Two tables are available.
 
-```sh
-find "stage 1/src/main/java" -name '*.java' | sed 's/.*/"&"/' > build-main.txt
-javac --release 17 -d build/main @build-main.txt
-```
+Each turn asks for a Waiter action (`seat <customer ID>`, `order <customer ID>`, `serve <order ID>` or `wait`), then a Chef order ID or `wait`. Eating, at most one oldest eligible payment, and waiting-satisfaction loss follow automatically. Invalid syntax and refused actions retry without advancing the role's phase. EOF reports an interruption without a final verdict.
 
-### Tests
+Food completed this turn can be served only on a later turn. Eating finishes after the serving turn; payment occurs after the turn eating finishes. The bill is locked when ordered. Only paid bills contribute revenue.
 
-The tests need **assertions enabled (`-ea`)** and the **fixture folder** passed as `-Dstage1.fixtures=<path>`. `run-tests.sh` does both. To run them by hand:
+| Customer | Waiting loss per unserved turn | Food choice | Price |
+|---|---:|---|---|
+| Regular | 8 | ID rotation: Burger, Salad, Pasta | Full price |
+| VIP | 5 | Inherited ID rotation | 90%, rounded HALF_UP to cents |
+| Critic | 12 | Pasta | Full price |
 
-```sh
-find "stage 1/src/main/java" -name '*.java' | sed 's/.*/"&"/' > build-main.txt
-find "stage 1/src/test/java" -name '*.java' | sed 's/.*/"&"/' > build-test.txt
-javac --release 17 -d build/main @build-main.txt
-javac --release 17 -cp build/main -d build/test @build-test.txt
-java -ea -Dstage1.fixtures="stage 1/test-fixtures" -cp build/main:build/test restaurantrush.AllTests
-```
+Victory requires at least 4 paid customers, revenue of at least $45.00, and average paid satisfaction of at least 60. All three conditions must pass after turn 18.
 
-The expected result is `29 passed, 0 failed, 29 total`. On Windows, use `;` instead of `:` in the `-cp` list.
+## Reproducible outcomes
 
-## How to play (Stage 1)
+| Fixture in `stage 2/test-fixtures/` | Paid | Revenue | Average | Verdict |
+|---|---:|---:|---:|---|
+| `victory-input.txt` | 5 | $65.10 | 78.0 | VICTORY |
+| `victory-invalid-input.txt` | 5 | $65.10 | 78.0 | VICTORY |
+| `defeat-input.txt` | 0 | $0.00 | N/A | DEFEAT |
+| `vip-priority-input.txt` | 1 | $8.10 | 90.0 | DEFEAT |
+| `regular-priority-input.txt` | 1 | $8.10 | 85.0 | DEFEAT |
 
-Each turn, the game shows the waiting queue, both tables, every order and the totals, then asks two questions:
+The priority pair changes VIP payment timing (turn 8 versus 9) and satisfaction, while both verdicts remain DEFEAT. It does not demonstrate a victory/defeat flip. See [fixture schedules](stage%202/test-fixtures/README.md) and [execution evidence](stage%202/EVIDENCE.md).
 
-- **Waiter:** `seat <C>`, `order <C>`, `serve <O>` or `wait`. `C` is a customer ID and `O` is an order ID; order IDs equal the customer's ID.
-- **Chef:** an order ID to cook one preparation unit, or `wait`.
+## Design and diagrams
 
-Eating, payment (oldest eligible customer first) and waiting-satisfaction loss then run automatically. An invalid command explains why and asks again without using up that staff member's turn. After turn 18 the game reports **VICTORY** if at least 4 customers paid, revenue is at least $45.00, and average paid satisfaction is at least 60. Otherwise it reports **DEFEAT**. If input ends early, the game stops as *interrupted* with no result.
+`Main` supplies a customer factory. `GameController` coordinates the existing phases through `GameIO`, calls customer hooks for item choice/discount, and reaches Waiter/Chef through Restaurant getters. Customer and Order enforce lifecycle guards; Restaurant coordinates membership, tables and payment. Stage 2 has no Host, Happy Hour, ComboMeal or pricing-policy layer.
 
-## Reproducible results
+Editable draw.io sources and PNG exports are in [diagrams/stage 2](diagrams/stage%202):
 
-| Script | Result |
-|---|---|
-| `stage 1/test-fixtures/victory-input.txt` | VICTORY: 5 paid, 5 served, $66.00, average paid satisfaction 79.2, 0 departures |
-| `stage 1/test-fixtures/defeat-input.txt` | DEFEAT: 0 paid, 0 served, $0.00, average N/A, 2 unhappy departures |
+| View | Editable source | PNG |
+|---|---|---|
+| Full class model | [draw.io](diagrams/stage%202/class-diagram.drawio) | [PNG](diagrams/stage%202/png/class-diagram.png) |
+| Entities | [draw.io](diagrams/stage%202/class-entities.drawio) | [PNG](diagrams/stage%202/png/class-entities.png) |
+| Menu/pricing | [draw.io](diagrams/stage%202/class-menu.drawio) | [PNG](diagrams/stage%202/png/class-menu.png) |
+| Staff | [draw.io](diagrams/stage%202/class-staff.drawio) | [PNG](diagrams/stage%202/png/class-staff.png) |
+| Control | [draw.io](diagrams/stage%202/class-control.drawio) | [PNG](diagrams/stage%202/png/class-control.png) |
+| Customer subtypes | [draw.io](diagrams/stage%202/customer-subtypes.drawio) | [PNG](diagrams/stage%202/png/customer-subtypes.png) |
+| VIP-priority sequence | [three-page draw.io](diagrams/stage%202/stage2-sequence.drawio) | [1](diagrams/stage%202/png/stage2-sequence-1.png), [2](diagrams/stage%202/png/stage2-sequence-2.png), [3](diagrams/stage%202/png/stage2-sequence-3.png) |
 
-The full recorded output and the commit it was produced from are in [`stage 1/EVIDENCE.md`](stage%201/EVIDENCE.md). The fixture schedules are explained in [`stage 1/test-fixtures/README.md`](stage%201/test-fixtures/README.md).
+The full class model is a zoomable reference. Use the focused views in a report and check readability at final page size. Diagrams do not certify report/video or member approval.
 
-## UML (Stage 1)
+## Team branches and AI records
 
-Each diagram has a draw.io source in [`stage 1/diagrams/`](stage%201/diagrams) and a PNG in [`stage 1/diagrams/png/`](stage%201/diagrams/png).
+| Member | Branch | AI records |
+|---|---|---|
+| Abraham | [Abraham](https://github.com/ZeppyClown/OOP-project/tree/Abraham) | [Records](https://github.com/ZeppyClown/OOP-project/tree/Abraham/ai-history) |
+| Danielle | [Danielle](https://github.com/ZeppyClown/OOP-project/tree/Danielle) | [Records](https://github.com/ZeppyClown/OOP-project/tree/Danielle/ai-history) |
+| Talon | [Talon](https://github.com/ZeppyClown/OOP-project/tree/Talon) | [Records](https://github.com/ZeppyClown/OOP-project/tree/Talon/ai-history) |
+| Victor | [Victor](https://github.com/ZeppyClown/OOP-project/tree/Victor) | [Records](https://github.com/ZeppyClown/OOP-project/tree/Victor/ai-history) |
 
-| Diagram | Shows |
-|---|---|
-| [`class-diagram`](stage%201/diagrams/png/class-diagram.png) | **Full Stage 1 class diagram:** every class, member and relationship, grouped into the boundary, control and domain packages |
-| [`class-entities`](stage%201/diagrams/png/class-entities.png) | Restaurant, tables, customer lifecycle and orders |
-| [`class-menu`](stage%201/diagrams/png/class-menu.png) | Menu, menu items and price locking |
-| [`class-staff`](stage%201/diagrams/png/class-staff.png) | Staff, Waiter, Chef and Cashier, and the staff each Restaurant is given |
-| [`class-control`](stage%201/diagrams/png/class-control.png) | Main, GameController, GameIO / ConsoleUI and the controller's calls into Waiter and Chef |
-| [`stage1-sequence`](stage%201/diagrams/png/stage1-sequence.png) | Sequence diagram: customer C3 through the victory replay (turns 7–18), with retries, guards and both Waiter-priority paths |
-| [`current-starter`](stage%201/diagrams/png/current-starter.png) | The original starter code, before Stage 1 (for comparison) |
+Member records retain their stated scope. This technical release does not establish completion of individual reflections, declarations, the group report or video.

@@ -1,14 +1,10 @@
 #!/bin/sh
-# Compile and play Stage 2. Interactive by default; extra arguments go to Main.
-# Usage: sh "stage 2/run.sh"                                   (play at the keyboard)
-#        sh "stage 2/run.sh" --script "stage 2/test-fixtures/victory-input.txt"
-# Needs JDK 17+. Uses $JAVA_HOME/bin if JAVA_HOME is set, otherwise javac/java on PATH.
+# Compile Stage 2 with an installed JDK 17 or newer; all output is temporary.
 set -eu
 STAGE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-BIN=${JAVA_HOME:+$JAVA_HOME/bin/}
+. "$STAGE/java-env.sh"
+. "$STAGE/compile-sources.sh"
 OUT=$(mktemp -d "${TMPDIR:-/tmp}/stage2-run.XXXXXX")
 trap 'rm -rf "$OUT"' EXIT
-
-find "$STAGE/src/main/java" -name '*.java' -type f | sed 's/.*/"&"/' > "$OUT/main.txt"
-"${BIN}javac" --release 17 -d "$OUT/classes" "@$OUT/main.txt"
-"${BIN}java" -cp "$OUT/classes" restaurantrush.Main "$@"
+compile_sources "$OUT/classes" "$STAGE/src/main/java"
+"$JAVA" -cp "$OUT/classes" restaurantrush.Main "$@"
