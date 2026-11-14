@@ -14,11 +14,43 @@ public final class ScriptedGameIOTests {
     }
 
     public static void register(AllTests.Registry r) {
+        r.add("Scripted: strict Stage 3 roles and duration observations", ScriptedGameIOTests::stage3Roles);
+        r.add("Scripted: Stage 3 fixture completeness and activation grammar", ScriptedGameIOTests::stage3Fixtures);
         r.add("Scripted: returns choices in order", ScriptedGameIOTests::returnsInOrder);
         r.add("Scripted: exhausted script throws, never Waits", ScriptedGameIOTests::exhaustionThrows);
         r.add("Scripted: role mismatch throws", ScriptedGameIOTests::roleMismatchThrows);
         r.add("Scripted: records displays and checks completion", ScriptedGameIOTests::recordsObservations);
         r.add("Scripted: alternating rejects bad fixture lines with line number", ScriptedGameIOTests::badFixtureLine);
+    }
+
+    private static void stage3Roles() {
+        ScriptedGameIO io = new ScriptedGameIO().happyHour(true).host(1).turn(WaiterAction.order(1), 1);
+        Check.equal(true, io.chooseHappyHourActivation(), "activation");
+        Check.equal(1, io.chooseHostCustomer(), "Host");
+        Check.equal(WaiterAction.order(1), io.chooseWaiterAction(), "Waiter");
+        Check.equal(1, io.chooseChefOrder(), "Chef");
+        io.showHappyHour(4, 2, true);
+        Check.equal(List.of(new ScriptedGameIO.HappyHourState(4, 2, true)), io.happyHourStates(), "HH observed");
+        Check.throwsType(InputEndedException.class, io::chooseHostCustomer, "strict new-role exhaustion");
+        Check.throwsType(IllegalStateException.class,
+                () -> new ScriptedGameIO().host(1).chooseHappyHourActivation(), "wrong new role");
+        Check.throwsType(IllegalArgumentException.class, () -> new ScriptedGameIO().host(-1), "invalid Host ID");
+        ScriptedGameIO legacy = new ScriptedGameIO().turn(WaiterAction.waitAction(), 0);
+        Check.equal(false, legacy.chooseHappyHourActivation(), "legacy default No");
+        Check.equal(0, legacy.chooseHostCustomer(), "legacy default Wait");
+        Check.equal(2, legacy.remainingSteps(), "defaults consume no legacy steps");
+    }
+
+    private static void stage3Fixtures() {
+        List<String> clean = ConsoleTests.fixture("victory-input.txt");
+        Check.throwsType(IllegalArgumentException.class,
+                () -> ScriptedGameIO.stage3(clean.subList(0, clean.size() - 1)), "truncated turn18");
+        var extra = new java.util.ArrayList<>(clean);
+        extra.add("no");
+        Check.throwsType(IllegalArgumentException.class, () -> ScriptedGameIO.stage3(extra), "unused activation");
+        var bad = new java.util.ArrayList<>(clean);
+        bad.set(0, "maybe");
+        Check.throwsType(IllegalArgumentException.class, () -> ScriptedGameIO.stage3(bad), "invalid activation");
     }
 
     private static void returnsInOrder() {

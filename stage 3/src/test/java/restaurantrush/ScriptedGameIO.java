@@ -13,20 +13,27 @@ import restaurantrush.control.InputEndedException;
 import restaurantrush.control.WaiterAction;
 
 /**
- * Fake GameIO for full replays. Unlike TestGameIO, Waiter and Chef choices
- * share one ordered script, so asking the wrong role fails straight away.
- * Running out of script also fails instead of quietly waiting. Display calls
- * are recorded so tests can check what the player saw.
+ * Reproducible GameIO for full replays (ReplayTests); Victor's TestGameIO
+ * serves TurnTests. Unlike TestGameIO it keeps role choices in one
+ * ordered script, so it also catches a role asked out of order.
+ *
+ * Choices are an ordered script of role-tagged steps. A request for the wrong
+ * role, or a request after the script is used up, fails immediately: a silent
+ * Wait would hide a broken turn loop or an unexpected retry. Every display
+ * call is recorded so tests can assert what the player would have seen.
  */
 public class ScriptedGameIO implements GameIO {
 
-    public enum Role { WAITER, CHEF }
+    public enum Role { HAPPY_HOUR, HOST, WAITER, CHEF }
 
-    private record Step(Role role, WaiterAction waiter, int chef) {
+    private record Step(Role role, WaiterAction waiter, int chef, boolean activate) {
     }
 
     private final Deque<Step> script = new ArrayDeque<>();
     private int requestCount;
+    private boolean explicitStage3;
+    public record HappyHourState(int turn, int remaining, boolean used) { }
+    private final List<HappyHourState> happyHourStates = new ArrayList<>();
     private final List<GameView.TurnState> actionStates = new ArrayList<>();
     private final List<String> interruptions = new ArrayList<>();
 
@@ -39,27 +46,65 @@ public class ScriptedGameIO implements GameIO {
     // ---- building the script ---------------------------------------------
 
     public ScriptedGameIO waiter(WaiterAction action) {
-        script.addLast(new Step(Role.WAITER, action, 0));
+        script.addLast(new Step(Role.WAITER, action, 0, false));
         return this;
     }
 
-    /** 0 means Wait. */
+    /** {@code orderId} 0 means Wait. */
     public ScriptedGameIO chef(int orderId) {
         if (orderId < 0) {
             throw new IllegalArgumentException("Chef choice must be an order ID or 0");
         }
-        script.addLast(new Step(Role.CHEF, null, orderId));
+        script.addLast(new Step(Role.CHEF, null, orderId, false));
         return this;
     }
 
-    /** One turn: a Waiter choice, then a Chef choice. */
+    /** Enable strict Stage 3 role order, including conditional activation requests. */
+    public ScriptedGameIO happyHour(boolean activate) {
+        explicitStage3 = true;
+        script.addLast(new Step(Role.HAPPY_HOUR, null, 0, activate));
+        return this;
+    }
+
+    public ScriptedGameIO host(int customerId) {
+        if (customerId < 0) throw new IllegalArgumentException("Host choice must be an ID or 0");
+        explicitStage3 = true;
+        script.addLast(new Step(Role.HOST, null, customerId, false));
+        return this;
+    }
+
+    /** Parse a complete retry-free 18-turn production fixture. */
+    public static ScriptedGameIO stage3(List<String> lines) {
+        ScriptedGameIO io = new ScriptedGameIO();
+        boolean used = false;
+        int line = 0;
+        try {
+            for (int turn = 1; turn <= 18; turn++) {
+                if (!used) {
+                    boolean activate = ConsoleUI.parseHappyHourActivation(lines.get(line++));
+                    io.happyHour(activate);
+                    used = activate;
+                }
+                io.host(ConsoleUI.parseHostChoice(lines.get(line++)));
+                io.waiter(ConsoleUI.parseWaiterAction(lines.get(line++)));
+                io.chef(ConsoleUI.parseChefChoice(lines.get(line++)));
+            }
+            if (line != lines.size()) throw new IllegalArgumentException("unused lines after turn 18");
+        } catch (IndexOutOfBoundsException | IllegalArgumentException e) {
+            throw new IllegalArgumentException("Stage 3 fixture near line " + line + ": " + e.getMessage(), e);
+        }
+        return io;
+    }
+
+    /** One turn without retries: a Waiter choice then a Chef choice. */
     public ScriptedGameIO turn(WaiterAction waiterAction, int chefOrderId) {
         return waiter(waiterAction).chef(chefOrderId);
     }
 
     /**
-     * Builds a script from fixture lines (no retries). Even lines are Waiter,
-     * odd lines are Chef, parsed the same way ConsoleUI does.
+     * Builds a script from console fixture lines that contain no retries:
+     * even lines are Waiter commands, odd lines Chef commands, parsed with the
+     * same grammar as ConsoleUI.
      */
     public static ScriptedGameIO alternating(List<String> lines) {
         if (lines.size() % 2 != 0) {
@@ -83,6 +128,23 @@ public class ScriptedGameIO implements GameIO {
     }
 
     // ---- GameIO requests -------------------------------------------------
+
+    @Override
+    public boolean chooseHappyHourActivation() {
+        return explicitStage3 ? next(Role.HAPPY_HOUR).activate() : false;
+    }
+
+    @Override
+    public int chooseHostCustomer() {
+        return explicitStage3 ? next(Role.HOST).chef() : 0;
+    }
+
+    @Override
+    public void showHappyHour(int turn, int remaining, boolean used) {
+        happyHourStates.add(new HappyHourState(turn, remaining, used));
+    }
+
+    public List<HappyHourState> happyHourStates() { return List.copyOf(happyHourStates); }
 
     @Override
     public WaiterAction chooseWaiterAction() {
@@ -152,7 +214,7 @@ public class ScriptedGameIO implements GameIO {
         return script.size();
     }
 
-    /** Fails if any scripted choice was left unused. */
+    /** Fails unless the game ended with every scripted choice consumed. */
     public void requireFinished() {
         if (finalReport == null) {
             throw new AssertionError("Game ended without showing a final result");
