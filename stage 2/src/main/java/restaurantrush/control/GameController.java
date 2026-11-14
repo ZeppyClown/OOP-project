@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.function.IntFunction;
 
 import restaurantrush.domain.Customer;
 import restaurantrush.domain.CustomerStatus;
@@ -16,15 +17,30 @@ import restaurantrush.domain.RegularCustomer;
 import restaurantrush.domain.Restaurant;
 import restaurantrush.domain.Table;
 
+/** Sequences the shared turn phases; customer objects dispatch Stage 2 behaviour. */
 public final class GameController {
     public static final int MAX_TURNS = 18;
 
     private final Restaurant restaurant;
     private final GameIO io;
+    private final IntFunction<Customer> customerFactory;
+    private final int stage;
 
+    /** Regular-only setup retained for inherited controller regression fixtures. */
     public GameController(Restaurant restaurant, GameIO io) {
+        this(restaurant, io, RegularCustomer::new, 1);
+    }
+
+    /** The assembly supplies customer types; the turn sequence uses only Customer. */
+    public GameController(Restaurant restaurant, GameIO io,
+                          IntFunction<Customer> customerFactory, int stage) {
         this.restaurant = Objects.requireNonNull(restaurant, "restaurant");
         this.io = Objects.requireNonNull(io, "io");
+        this.customerFactory = Objects.requireNonNull(customerFactory, "customerFactory");
+        if (stage < 1 || stage > 2) {
+            throw new IllegalArgumentException("Stage must be 1 or 2: " + stage);
+        }
+        this.stage = stage;
     }
 
     public void run() {
@@ -33,7 +49,12 @@ public final class GameController {
         try {
             for (; turn <= MAX_TURNS; turn++) {
                 if ((turn - 1) % 3 == 0) {
-                    restaurant.registerArrival(new RegularCustomer((turn - 1) / 3 + 1));
+                    int id = (turn - 1) / 3 + 1;
+                    Customer customer = customerFactory.apply(id);
+                    if (customer == null || customer.getId() != id) {
+                        throw new IllegalStateException("Customer factory must return customer C" + id);
+                    }
+                    restaurant.registerArrival(customer);
                 }
                 io.showTurnStart(state(turn, true, true, "available; payments follow staff choices"));
 
@@ -97,7 +118,8 @@ public final class GameController {
             return restaurant.seatCustomer(customer, turn);
         }
         MenuItem item = customer.chooseItem(restaurant.getMenu());
-        return restaurant.getWaiter().takeOrder(customer, item, item.getPriceCents(), turn);
+        int billCents = customer.applyDiscount(item.getPriceCents());
+        return restaurant.getWaiter().takeOrder(customer, item, billCents, turn);
     }
 
     private void chooseChef(int turn) {
@@ -154,7 +176,7 @@ public final class GameController {
                 preparable.add(order.getId());
             }
         }
-        return new GameView.TurnState(1, turn, MAX_TURNS, restaurant.getRevenueCents(),
+        return new GameView.TurnState(stage, turn, MAX_TURNS, restaurant.getRevenueCents(),
                 restaurant.getPaidCount(), restaurant.getAveragePaidSatisfaction(), waiting, tables, orders,
                 seatable, orderable, servable, preparable, cashierStatus);
     }

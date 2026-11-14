@@ -33,6 +33,7 @@ public final class LauncherTests {
             inputIoFailure();
             programmingFailureEscapes();
             spacedScriptCompletes();
+            defaultStage2Victory();
             eofRemainsAnInterruption();
             chefAdviceWorksThroughParser();
         } catch (IOException failure) {
@@ -106,6 +107,31 @@ public final class LauncherTests {
         check(result.exit() == 0 && result.stderr().isEmpty(), "EOF remains a normal interruption");
         check(result.stdout().contains("Input ended during turn 1, Waiter"), "EOF identifies role and turn");
         noVerdict(result);
+        passed++;
+    }
+
+    private static void defaultStage2Victory() throws IOException, InterruptedException {
+        Path fixtures = Path.of(ConsoleTests.FIXTURES.toString());
+        Path script = Files.createDirectories(output.resolve("stage 2 scripts")).resolve("victory input.txt");
+        Files.copy(fixtures.resolve("victory-input.txt"), script);
+        Result result = launch("restaurantrush.Main", "", "--script", script.toString());
+        check(result.exit() == 0 && result.stderr().isEmpty(), "Stage 2 victory script succeeds");
+        check(result.stdout().contains("Stage 2 - Turn 1 / 18")
+                && result.stdout().contains("C2 VIP") && result.stdout().contains("C3 Critic"),
+                "real Main assembles Stage 2 customer mix");
+        check(result.stdout().split("-- End of turn ", -1).length - 1 == 18
+                && result.stdout().split("===== ", -1).length - 1 == 1, "18 turns and one final report");
+        check(result.stdout().contains("===== VICTORY ====="), "Stage 2 victory verdict");
+        String report = result.stdout().substring(result.stdout().indexOf("===== VICTORY ====="));
+        check(report.contains("Served: 5\n") && report.contains("Paid: 5\n")
+                && report.contains("Revenue: $65.10\n")
+                && report.contains("Average satisfaction of paid customers: 78.0\n")
+                && report.contains("Unhappy departures: 0\n") && report.contains("Turns used: 18 / 18"),
+                "default Stage 2 victory totals");
+        check(report.contains("[PASS] Paid customers: required 4, actual 5")
+                && report.contains("[PASS] Revenue: required $45.00, actual $65.10")
+                && report.contains("[PASS] Average paid satisfaction: required 60, actual 78.0"),
+                "unchanged victory thresholds");
         passed++;
     }
 
