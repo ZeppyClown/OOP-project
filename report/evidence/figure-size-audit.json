@@ -1,6 +1,6 @@
 [
   {
-    "figure": "class-history-report-1.png",
+    "figure": "class-stage1-control-report.png",
     "number": "1",
     "caption": "Stage 1 control",
     "image_size": [
@@ -15,16 +15,16 @@
     "nominal_minimum_pdf_font_pt": 7.36
   },
   {
-    "figure": "class-history-report-2.png",
+    "figure": "class-stage2-customer-report.png",
     "number": "2",
     "caption": "Stage 2 customer extension",
     "image_size": [
       2066,
-      1219
+      1241
     ],
     "placed_points": [
       771.9,
-      455.4
+      463.7
     ],
     "minimum_source_font_px": 18,
     "nominal_minimum_pdf_font_pt": 10.09

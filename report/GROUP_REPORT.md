@@ -44,23 +44,23 @@ A combo stores two actual menu-item references. They are shared with the offered
 
 ### Class-diagram evidence
 
-Figure 1 shows the original control separation. Figures 2 and 3 show how the factory and later timing/policy dependencies extend it. The final domain views supplement the control view; no one figure is expected to carry every readable detail.
+Figure 1 shows the original control separation. Figure 2 shows the customer subtype extension; Figure 3 shows the factory and later timing/policy dependencies. The final domain views supplement the control view; no one figure is expected to carry every readable detail.
 
-![Figure 1. Stage 1 focused control view, matched to the published Stage 1 tag.](diagrams/png/class-history-report-1.png)
+![Figure 1. Stage 1 focused control view, matched to the published Stage 1 tag.](../diagrams/stage%201/report-print/png/class-stage1-control-report.png)
 
-![Figure 2. Stage 2 customer extension; factory injection is described in Section 4.](diagrams/png/class-history-report-2.png)
+![Figure 2. Stage 2 customer extension; factory injection is described in Section 4.](../diagrams/stage%202/report-print/png/class-stage2-customer-report.png)
 
-![Figure 3. Stage 3 control collaboration, selected members.](diagrams/png/class-control-report-1.png)
+![Figure 3. Stage 3 control collaboration, selected members.](../diagrams/stage%203/report-print/class/png/class-control-report-1.png)
 
-![Figure 3b. Stage 3 interaction contract and its implementations.](diagrams/png/class-control-report-2.png)
+![Figure 3b. Stage 3 interaction contract and its implementations.](../diagrams/stage%203/report-print/class/png/class-control-report-2.png)
 
-![Figure 4. Stage 3 entity view: customer, order and table relationships.](diagrams/png/class-entities-report-1.png)
+![Figure 4. Stage 3 entity view: customer, order and table relationships.](../diagrams/stage%203/report-print/class/png/class-entities-report-1.png)
 
-![Figure 5. Stage 3 staff view: Host has independent capacity under Staff.](diagrams/png/class-staff-report.png)
+![Figure 5. Stage 3 staff view: Host has independent capacity under Staff.](../diagrams/stage%203/report-print/class/png/class-staff-report.png)
 
-![Figure 6. Stage 3 menu view: ComboMeal and the pricing abstraction.](diagrams/png/class-menu-report-1.png)
+![Figure 6. Stage 3 menu view: ComboMeal and the pricing abstraction.](../diagrams/stage%203/report-print/class/png/class-menu-report-1.png)
 
-Editable sources and the complete navigation view are in the [Stage 3 diagram index](../diagrams/stage%203/README.md). Class names, visibility and relationships must remain readable in the final PDF. The complete overview is not a substitute for these focused views. 
+Editable sources and the complete navigation view are in the [Stage 3 diagram index](../diagrams/stage%203/README.md). The complete overview is not a substitute for these focused views. 
 
 ## 3. Stage 1: establishing the lifecycle
 

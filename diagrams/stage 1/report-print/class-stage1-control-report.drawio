@@ -8,7 +8,7 @@
         <mxCell id="title" value="Stage 1 — basic control and boundary responsibilities" style="text;html=1;align=center;fontSize=25;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="20" y="15" width="1280" height="40" />
         </mxCell>
-        <mxCell id="subtitle" value="Selected members from stage-1 tag9197f24. Stage 1 has no VIP, Critic, Host, combo, promotion or customer factory." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+        <mxCell id="subtitle" value="Selected members from stage-1 tag 9197f24. Stage 1 has no VIP, Critic, Host, combo, promotion or customer factory." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="20" y="60" width="1280" height="48" />
         </mxCell>
         <mxCell id="Main" value="Main" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
@@ -112,7 +112,7 @@
         <mxCell id="arrival" edge="1" parent="1" source="GameController" target="RegularCustomer" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;exitX=0.46;exitY=0;entryX=0.5;entryY=1;exitPerimeter=0;entryPerimeter=0;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="io" edge="1" parent="1" source="GameController" target="GameIO" style="html=1;rounded=0;strokeWidth=1.4;endArrow=none;exitX=1;exitY=0.2;entryX=0.5;entryY=1;exitPerimeter=0;entryPerimeter=0;dashed=1;endArrow=open;endFill=0;">
+        <mxCell id="io" edge="1" parent="1" source="GameController" target="GameIO" style="html=1;rounded=0;strokeWidth=1.4;endArrow=none;exitX=1;exitY=0.2;entryX=0.5;entryY=1;exitPerimeter=0;entryPerimeter=0;endFill=0;">
           <mxGeometry as="geometry" relative="1">
             <Array as="points">
               <mxPoint x="950" y="500" />
@@ -121,7 +121,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="r" edge="1" parent="1" source="GameController" target="Restaurant" style="html=1;rounded=0;strokeWidth=1.4;endArrow=none;exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;dashed=1;endArrow=open;endFill=0;">
+        <mxCell id="r" edge="1" parent="1" source="GameController" target="Restaurant" style="html=1;rounded=0;strokeWidth=1.4;endArrow=none;exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitPerimeter=0;entryPerimeter=0;endFill=0;">
           <mxGeometry as="geometry" relative="1">
             <Array as="points">
               <mxPoint x="450" y="550" />
@@ -151,78 +151,7 @@
         <mxCell id="baseline" value="The controller schedules arrival, Waiter, Chef, eating, one eligible payment, waiting loss and result. Domain guards enforce later-turn serving/eating/payment. No factory is injected in Stage 1." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="30" y="1040" width="1350" height="80" />
         </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
-  <diagram name="Stage 2 customer extension" id="historical-stage2">
-    <mxGraphModel page="0" background="#ffffff" grid="1">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="title" value="Stage 2 — customer extension through polymorphic hooks" style="text;html=1;align=center;fontSize=25;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="20" y="15" width="1280" height="40" />
-        </mxCell>
-        <mxCell id="subtitle" value="Selected members matched to stage-2 tag4711c31. Main injects Main::createCustomer; GameController calls factory.apply(id)." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="20" y="60" width="1280" height="48" />
-        </mxCell>
-        <mxCell id="Customer" value="Customer" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="455" y="130" width="475" height="187" />
-        </mxCell>
-        <mxCell id="Customerr0" value="«abstract»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
-          <mxGeometry as="geometry" x="10" y="49" width="455.0" height="26" />
-        </mxCell>
-        <mxCell id="Customerr1" value="+chooseItem(menu: Menu): MenuItem" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
-          <mxGeometry as="geometry" x="10" y="76" width="455.0" height="26" />
-        </mxCell>
-        <mxCell id="Customerr2" value="+applyDiscount(cents: int): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
-          <mxGeometry as="geometry" x="10" y="103" width="455.0" height="26" />
-        </mxCell>
-        <mxCell id="Customerr3" value="#waitingLossPerTurn(): int {abstract}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
-          <mxGeometry as="geometry" x="10" y="130" width="455.0" height="26" />
-        </mxCell>
-        <mxCell id="Customerr4" value="~loseWaitingSatisfaction(): void" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
-          <mxGeometry as="geometry" x="10" y="157" width="455.0" height="26" />
-        </mxCell>
-        <mxCell id="RegularCustomer" value="RegularCustomer" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="25" y="520" width="420" height="79" />
-        </mxCell>
-        <mxCell id="RegularCustomerr0" value="#waitingLossPerTurn(): int = 8" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="RegularCustomer">
-          <mxGeometry as="geometry" x="10" y="49" width="400.0" height="26" />
-        </mxCell>
-        <mxCell id="VIPCustomer" value="VIPCustomer" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="485" y="520" width="420" height="106" />
-        </mxCell>
-        <mxCell id="VIPCustomerr0" value="#waitingLossPerTurn(): int = 5" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="VIPCustomer">
-          <mxGeometry as="geometry" x="10" y="49" width="400.0" height="26" />
-        </mxCell>
-        <mxCell id="VIPCustomerr1" value="+applyDiscount(cents: int): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="VIPCustomer">
-          <mxGeometry as="geometry" x="10" y="76" width="400.0" height="26" />
-        </mxCell>
-        <mxCell id="CriticCustomer" value="CriticCustomer" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="945" y="520" width="420" height="106" />
-        </mxCell>
-        <mxCell id="CriticCustomerr0" value="#waitingLossPerTurn(): int = 12" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="CriticCustomer">
-          <mxGeometry as="geometry" x="10" y="49" width="400.0" height="26" />
-        </mxCell>
-        <mxCell id="CriticCustomerr1" value="+chooseItem(menu: Menu): MenuItem" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="CriticCustomer">
-          <mxGeometry as="geometry" x="10" y="76" width="400.0" height="26" />
-        </mxCell>
-        <mxCell id="inh0" edge="1" parent="1" source="RegularCustomer" target="Customer" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.14;entryY=1;exitPerimeter=0;entryPerimeter=0;">
-          <mxGeometry as="geometry" relative="1">
-            </mxGeometry>
-        </mxCell>
-        <mxCell id="inh1" edge="1" parent="1" source="VIPCustomer" target="Customer" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.46;entryY=1;exitPerimeter=0;entryPerimeter=0;">
-          <mxGeometry as="geometry" relative="1">
-            </mxGeometry>
-        </mxCell>
-        <mxCell id="inh2" edge="1" parent="1" source="CriticCustomer" target="Customer" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.78;entryY=1;exitPerimeter=0;entryPerimeter=0;">
-          <mxGeometry as="geometry" relative="1">
-            </mxGeometry>
-        </mxCell>
-        <mxCell id="poly" value="Polymorphism: loseWaitingSatisfaction() calls the overridden waitingLossPerTurn(). The controller uses Customer, not VIP/Critic type checks. Critic assumes Pasta exists in the supported menu." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="30" y="710" width="1320" height="85" />
-        </mxCell>
-      </root>
+      <mxCell id="io_controllers" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=18;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="io"><mxGeometry x="-0.8" y="-14" relative="1" as="geometry"><mxPoint x="0" y="0" as="offset" /></mxGeometry></mxCell><mxCell id="io_reference" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=18;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="io"><mxGeometry x="0.8" y="-14" relative="1" as="geometry"><mxPoint x="0" y="0" as="offset" /></mxGeometry></mxCell><mxCell id="r_controllers" value="0..*" style="text;html=1;align=center;fontSize=16;fillColor=#ffffff;strokeColor=none;" vertex="1" connectable="0" parent="1"><mxGeometry x="433" y="510" width="34" height="22" as="geometry" /></mxCell><mxCell id="r_reference" value="1" style="text;html=1;align=center;fontSize=16;fillColor=#ffffff;strokeColor=none;" vertex="1" connectable="0" parent="1"><mxGeometry x="433" y="544" width="34" height="22" as="geometry" /></mxCell></root>
     </mxGraphModel>
   </diagram>
 </mxfile>

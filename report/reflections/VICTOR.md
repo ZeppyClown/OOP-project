@@ -28,7 +28,6 @@ The useful approach was to trace both a successful action and a refusal through 
 
 For EOF, the controller catches `InputEndedException`, reports the current role and stops without a victory or defeat verdict. Earlier changes are retained; the game does not pretend that an interrupted turn completed. The lesson I took from this was that the refusal and interruption paths deserve the same attention as the successful lifecycle.
 
-**Supporting examples:** the [Stage 1 controller](https://github.com/ZeppyClown/OOP-project/blob/stage-1/stage%201/src/main/java/restaurantrush/control/GameController.java) and [turn tests](https://github.com/ZeppyClown/OOP-project/blob/stage-1/stage%201/src/test/java/restaurantrush/TurnTests.java).
 
 ## Stage 2: separating customer construction from customer behaviour
 
@@ -53,8 +52,6 @@ The challenge was checking the extension without concentrating only on its most 
 I used the Stage 1 lifecycle as the baseline and looked for the specific points where Stage 2 changed it. The factory changes the arriving object; dispatch changes its behaviour; neither should introduce a new turn system. The controller tests provide examples of factory validation, scheduling and continued timing rules.
 
 The priority comparison gave me a concrete explanation: serving C2 earlier leads to payment on turn 8 with satisfaction 90, while delaying C2 gives payment on turn 9 with satisfaction 85. I describe that as a timing and satisfaction consequence, rather than calling it a victory/defeat flip. This stage taught me to connect a design claim to exactly what the example proves.
-
-**Supporting examples:** [Stage 2 Main](https://github.com/ZeppyClown/OOP-project/blob/stage-2/stage%202/src/main/java/restaurantrush/Main.java), [Stage2ControllerTests](https://github.com/ZeppyClown/OOP-project/blob/stage-2/stage%202/src/test/java/restaurantrush/Stage2ControllerTests.java), and the [1 → 2 comparison](https://github.com/ZeppyClown/OOP-project/compare/stage-1...stage-2).
 
 ## Stage 3: extending the workflow and checking integration
 
@@ -83,9 +80,3 @@ I followed the scenario from turn 13 through payment on turns 17 and 18. Activat
 For the integration issue, I requested a comparison of the saved handoffs with the branches and main, followed by an independent Claude review. After that review confirmed the restored version, I authorised focused repair commits and verification of the completed tree. The automated checks passed 55 registered checks and all four build checks before the restoration reached main. Those repairs restored the team's existing work; they do not establish sole authorship of that code.
 
 The main lesson I take from Stage 3 is to test the version that will actually be submitted, not just the individual pieces. Clear interfaces help, but they do not remove the need to review merge results and rerun complete scenarios.
-
-**Supporting examples:** [HappyHour](../../stage%203/src/main/java/restaurantrush/control/HappyHour.java), [Stage3ControllerTests](../../stage%203/src/test/java/restaurantrush/Stage3ControllerTests.java), [FLIP_SCENARIO](../../stage%203/test-fixtures/FLIP_SCENARIO.md), and [the completed restoration](https://github.com/ZeppyClown/OOP-project/commit/699b3173444e7efae4b324101130d73ce1252577).
-
----
-
-**Personal review:** This is a first-person editorial draft based on Victor's assigned scope and the recorded project work. Victor should confirm that the learning and challenge statements describe his own experience, and revise any that do not. Automated verification is reported as automated verification, rather than as a claim that Victor personally ran every command. No video script is included.

@@ -28,10 +28,18 @@ doc=BaseDocTemplate(str(OUT),pagesize=A4,leftMargin=40,rightMargin=40,topMargin=
 doc.addPageTemplates([PageTemplate(id='portrait',frames=[Frame(40,40,pw-80,ph-80,id='p',leftPadding=0,rightPadding=0,topPadding=0,bottomPadding=0)],onPage=footer,pagesize=A4),PageTemplate(id='landscape',frames=[Frame(32,38,lw-64,lh-70,id='l',leftPadding=0,rightPadding=0,topPadding=0,bottomPadding=0)],onPage=footer,pagesize=landscape(A4))])
 FIGURE_PAGES=json.loads((B/'evidence/figure-pages.json').read_text()) if (B/'evidence/figure-pages.json').exists() else {}
 NEW_FIGURE_PAGES={}
-CLASS_INFO=[('class-history-report-1','1','Stage 1 control'),('class-history-report-2','2','Stage 2 customer extension'),('class-control-report-1','3','Stage 3 controller collaboration'),('class-control-report-2','3b','Interaction contract'),('class-entities-report-1','4','Customer, order and table'),('class-entities-report-3','4b','Status and action values'),('class-ownership-report','4c','Restaurant ownership'),('class-staff-report','5','Staff capacity'),('class-support-report-2','5b','Restaurant staff references'),('class-menu-report-1','6','Menu and shared combo components'),('class-menu-report-2','6b','Pricing strategies'),('class-support-report-1','7','Money, results and EOF')]
+# Canonical diagram layout: diagrams/stage N/... (see diagrams/README.md).
+DIAGRAMS=B.parent/'diagrams'
+REPORT_PNG_DIRS=[DIAGRAMS/'stage 1/report-print/png',DIAGRAMS/'stage 2/report-print/png',DIAGRAMS/'stage 3/report-print/class/png']
+SEQ_PNG=DIAGRAMS/'stage 3/report-print/sequence/png'
+def class_png(stem):
+ found=[d/(stem+'.png') for d in REPORT_PNG_DIRS if (d/(stem+'.png')).exists()]
+ if len(found)!=1:raise RuntimeError(f'Expected exactly one report-print PNG for {stem}: {found}')
+ return found[0]
+CLASS_INFO=[('class-stage1-control-report','1','Stage 1 control'),('class-stage2-customer-report','2','Stage 2 customer extension'),('class-control-report-1','3','Stage 3 controller collaboration'),('class-control-report-2','3b','Interaction contract'),('class-entities-report-1','4','Customer, order and table'),('class-entities-report-3','4b','Status and action values'),('class-ownership-report','4c','Restaurant ownership'),('class-staff-report','5','Staff capacity'),('class-support-report-2','5b','Restaurant staff references'),('class-menu-report-1','6','Menu and shared combo components'),('class-menu-report-2','6b','Pricing strategies'),('class-support-report-1','7','Money, results and EOF')]
 SEQ_NAMES={'01':'Turn 13: scheduled arrival','02':'Turn 13: activation and recovery alternatives','03':'Turn 13: Host seating and retries','04':'Turn 13: Pasta order and price lock','05':'Turn 13: first preparation unit','06':'Turn 14: Burger order and second recovery','06b-ready':'Turn 14: Pasta becomes READY','07':'Turn 15: serving Pasta and kitchen choice','07b-ready':'Turn 15: Burger becomes READY','08':'Turn 16: serving Burger and eating','09':'Turn 17: payment and table release','10':'Turn 18: payment and final result'}
 FIG_META={stem:(num,label) for stem,num,label in CLASS_INFO}
-for image in sorted((B/'diagrams/png').glob('sequence-selected-*.png')):
+for image in sorted(SEQ_PNG.glob('sequence-selected-*.png')):
  match=re.match(r'sequence-selected-(\d+b-ready|\d+)(?:-(\d+))?$',image.stem)
  if match:
   part,panel=match.groups();FIG_META[image.stem]=('S'+part+'.'+(panel or '1'),SEQ_NAMES.get(part,part)+' — panel '+(panel or '1'))
@@ -89,7 +97,7 @@ for part,label in SEQ_NAMES.items():
 g=Table(guide,colWidths=[95,350,50],repeatRows=1);g.setStyle(TableStyle([('BACKGROUND',(0,0),(-1,0),colors.HexColor('#e8ecdf')),('VALIGN',(0,0),(-1,-1),'TOP'),('TOPPADDING',(0,0),(-1,-1),4),('BOTTOMPADDING',(0,0),(-1,-1),4),('LINEBELOW',(0,0),(-1,-1),.25,colors.HexColor('#ccd1cd'))]));story.append(g)
 story.append(Paragraph('PDF bookmarks link directly to each figure. Continued panels repeat the same objects and active guards. READY detail panels expand the preceding kitchen action; they do not add an extra staff task.',styles['Caption']))
 story.extend([NextPageTemplate('landscape'),PageBreak()]);audit=[]
-classes=[B/'diagrams/png'/(stem+'.png') for stem,num,label in CLASS_INFO];seq=sorted((B/'diagrams/png').glob('sequence-selected-*.png'))
+classes=[class_png(stem) for stem,num,label in CLASS_INFO];seq=sorted(SEQ_PNG.glob('sequence-selected-*.png'))
 for k,p in enumerate(classes+seq):
  if k:story.append(PageBreak())
  num,label=FIG_META.get(p.stem,(p.stem,p.stem));heading=Paragraph('Figure '+num+' · '+label,styles['H4']);heading.figure_stem=p.stem;story.append(heading)

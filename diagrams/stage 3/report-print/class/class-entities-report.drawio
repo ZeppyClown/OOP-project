@@ -285,10 +285,10 @@
         <mxCell id="WaiterActionr0" value="«record»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="WaiterAction">
           <mxGeometry as="geometry" x="10" y="49" width="400.0" height="26" />
         </mxCell>
-        <mxCell id="WaiterActionr1" value="+type: Type" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="WaiterAction">
+        <mxCell id="WaiterActionr1" value="-type: Type" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="WaiterAction">
           <mxGeometry as="geometry" x="10" y="76" width="400.0" height="26" />
         </mxCell>
-        <mxCell id="WaiterActionr2" value="+targetId: int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="WaiterAction">
+        <mxCell id="WaiterActionr2" value="-targetId: int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="WaiterAction">
           <mxGeometry as="geometry" x="10" y="103" width="400.0" height="26" />
         </mxCell>
         <mxCell id="WaiterActionr3" value="+seat(id): WaiterAction {static}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="WaiterAction">

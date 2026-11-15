@@ -32,7 +32,7 @@ The implementation and diagram material carry forward Restaurant Rush work from 
 ## Report and submission evidence
 
 - [Group PDF report](report/Restaurant_Rush_Group_Report.pdf) and [editable report](report/GROUP_REPORT.md).
-- [Printable UML sources and PNGs](report/diagrams/) and [figure index](report/FIGURE_APPENDIX.md).
+- [Stage-organised UML sources and PNGs](diagrams/README.md) and [figure index](report/FIGURE_APPENDIX.md).
 - Reflections: [Victor](report/reflections/VICTOR.md), [Danielle](report/reflections/DANIELLE.md), [Abraham](report/reflections/ABRAHAM.md), [Talon](report/reflections/TALON.md). Members must confirm their own accounts.
 - Complete transition path inventories: [1 to 2](docs/transitions/stage-1-to-stage-2.md), [2 to 3](docs/transitions/stage-2-to-stage-3.md).
 - [AI-history index](ai-history/README.md). Each member must supply complete chronological records on their own branch; existing records are not certified complete.

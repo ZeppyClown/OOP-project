@@ -17,7 +17,7 @@ IDs are numbers without `C`/`O` prefixes. Input is case insensitive and trims su
 | `vip-priority-input.txt` | Turn 4 | 58 | Defeat; C2 pays turn 7, $6.48, satisfaction 100 |
 | `regular-priority-input.txt` | Turn 4 | 58 | Defeat; C2 pays turn 8, $6.48, satisfaction 95 |
 
-The full victory follows [PLAN](../PLAN.md#reference-victory-replay). Host seats each arrival on 1/4/7/10/13/16; Waiter orders that customer immediately. Chef prepares the order then, continuing Pasta on 8 and combo on 11. Waiter serves on 2/5/9/12/14/17. C4 chooses the composed Salad + Burger item: 2,160 cents, 2 units; the turn-10 bill locks at 1,728 cents. Turn-11 recovery brings C4 to 100 before ordinary loss returns it to 92. C6 reaches READY_TO_PAY on 18 and remains unpaid.
+The full victory follows [the recorded victory evidence](../EVIDENCE.md). Host seats each arrival on 1/4/7/10/13/16; Waiter orders that customer immediately. Chef prepares the order then, continuing Pasta on 8 and combo on 11. Waiter serves on 2/5/9/12/14/17. C4 chooses the composed Salad + Burger item: 2,160 cents, 2 units; the turn-10 bill locks at 1,728 cents. Turn-11 recovery brings C4 to 100 before ordinary loss returns it to 92. C6 reaches READY_TO_PAY on 18 and remains unpaid.
 
 The invalid fixture adds `maybe` at activation, `seat 1` at Host, `dance` at Waiter and `two` at Chef. On turn 1, valid numeric Host/Chef target `99` and Waiter `serve 99` are semantic errors, each followed by the correct same-role action. All subsequent successful actions match the clean victory.
 

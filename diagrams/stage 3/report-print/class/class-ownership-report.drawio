@@ -72,8 +72,8 @@
         <mxCell id="memberslabel" value="registered customers" style="text;html=1;align=center;whiteSpace=wrap;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="238.0" y="392.0" width="192" height="25" />
         </mxCell>
-        <mxCell id="memberssource" value="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
-          <mxGeometry as="geometry" x="402.0" y="231.5" width="42" height="24" />
+        <mxCell id="memberssource" value="0..1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="402.0" y="231.5" width="52" height="24" />
         </mxCell>
         <mxCell id="memberstarget" value="0..*" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="165.0" y="538.0" width="42" height="24" />
