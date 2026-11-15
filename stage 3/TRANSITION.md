@@ -1,6 +1,6 @@
 # Stage 2 → Stage 3
 
-Baseline: annotated `stage-2`, commit `4711c313b455a0d88fb14553c936b0e25560b579`. Local changes only; there is no Stage 3 release/tag yet.
+Baseline: annotated `stage-2`, commit `4711c313b455a0d88fb14553c936b0e25560b579`. The Stage 3 release preserves the verified production source at 699b317 and adds report/diagram/documentation evidence.
 
 `stage 2/` is renamed to `stage 3/` for the current implementation. Earlier code remains at the Stage 2 tag. This is a logical inventory; Git may report renames or delete/add depending on similarity.
 
@@ -47,7 +47,7 @@ New features: HappyHour timing, Host independent seating, ComboMeal, standard/Ha
 | Changed | `src/test/java/restaurantrush/domain/StaffTests.java` |
 | New | `src/test/java/restaurantrush/domain/Stage3ComponentTests.java` |
 
-Other Java files retain the current Stage 2 implementation, including exact Money arithmetic, staff success-only capacity and timestamp guards. No production Java class is deleted logically.
+Money also has comment/formatting-only changes relative to Stage 2. Other Java files retain the current Stage 2 implementation, including exact Money arithmetic, staff success-only capacity and timestamp guards. No production Java class is deleted logically.
 
 ## Scripts, fixtures and documents
 

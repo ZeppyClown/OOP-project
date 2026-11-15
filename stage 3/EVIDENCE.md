@@ -29,3 +29,12 @@ Claude independent code review is requested after this verification; its result 
 ## Diagram format update
 
 All 15 Stage 3 diagrams now use native editable draw.io shapes and PNG exports (15 draw.io files, 34 PNG pages). XML page counts and export counts are checked; original Mermaid/SVG copies were replaced. Visual checks cover class relationships, message direction, frame continuation and label/arrow separation. This conversion changes no gameplay code. Claude reviewed the conversion and identified incorrect continued-alt guards, remaining combined calls and class-editing limitations. These were corrected locally: continued fragments now carry their active branch; calls are separated; class rows are children and connectors have source/target attachments. Duplicate continuation markers and stale cross-references are corrected too. The corrected files were structurally and visually checked locally; no new Claude approval is claimed.
+
+
+## Source lineage clarification
+
+The implementation and diagram material carry forward Restaurant Rush work from the team’s earlier repository, [SC2002MACS2G2](https://github.com/abra0006-glitch/SC2002MACS2G2), which is the repository checked out locally as `Documents/OOP`. That material was integrated into [OOP-project](https://github.com/ZeppyClown/OOP-project), with local controller, testing, build-portability, documentation and diagram changes. The November restoration commits repair integration regressions in that existing work; they do not represent the first creation of every restored feature. Source lineage does not establish individual authorship or the extent of AI assistance: each member’s declaration and chronological records must describe their actual work and assistance consistently.
+
+## Published source and release checks
+
+The historical local results above are retained as dated evidence. The integrated production source is commit 699b317; release preparation changes only diagrams, report and documentation. Fresh release test/build logs are attached to the Stage 3 GitHub release. The report contains 68 pages with printable UML panels and all four named reflections. Personal declarations, complete AI histories, member confirmation and final video timestamps remain submission responsibilities.
