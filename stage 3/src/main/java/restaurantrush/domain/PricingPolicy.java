@@ -1,3 +1,6 @@
 package restaurantrush.domain;
 
-public interface PricingPolicy{int priceFor(Customer customer,MenuItem item);}
+/** Quotes a final bill at order placement; Order stores that quote unchanged. */
+public interface PricingPolicy {
+    int priceFor(Customer customer, MenuItem item);
+}
