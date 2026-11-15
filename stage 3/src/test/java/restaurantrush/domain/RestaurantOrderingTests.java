@@ -8,7 +8,10 @@ import restaurantrush.Check;
 
 import static restaurantrush.domain.CustomerTests.*;
 
-
+/**
+ * Restaurant.takeOrder/serveOrder/prepareOrder: success, refusals that leave staff capacity
+ * unused, and refusal text identical to the earlier direct Waiter/Chef path.
+ */
 public final class RestaurantOrderingTests {
     private static final String NOT_CUSTOMER = "Customer is not registered in this restaurant";
     private static final String NOT_ORDER = "Order is not registered in this restaurant";

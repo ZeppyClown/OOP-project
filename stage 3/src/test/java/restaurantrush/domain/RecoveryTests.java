@@ -6,6 +6,7 @@ import java.util.function.IntFunction;
 import static restaurantrush.Check.throwsType;
 import static restaurantrush.domain.CustomerTests.*;
 
+/** Recovery fixtures reach each state through real lifecycle operations. */
 public final class RecoveryTests {
     private static final List<IntFunction<Customer>> FACTORIES = List.of(
             RegularCustomer::new, VIPCustomer::new, CriticCustomer::new);

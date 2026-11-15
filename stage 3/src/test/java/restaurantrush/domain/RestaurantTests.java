@@ -1,324 +1,233 @@
 package restaurantrush.domain;
 
 import java.util.List;
-import java.util.Objects;
+import static restaurantrush.domain.CustomerTests.*;
 
-/**
- * Restaurant: arrivals, lookups, seating through the queue, departures,
- * eating/payment ordering, totals and the victory rule.
- */
 public final class RestaurantTests {
-    private RestaurantTests() {
-    }
-
-    public static void main(String[] args) {
-        runAll();
-        System.out.println("RestaurantTests passed");
-    }
-
+    public static void main(String[] args) { runAll(); System.out.println("RestaurantTests: 11 scenarios passed"); }
     public static void runAll() {
-        constructionGuards();
-        startsEmptyWithTwoTables();
-        arrivalGuards();
-        lookups();
-        exposedCollectionsAreReadOnly();
-        seatingGuards();
-        departureLeavesQueueAndFreesTable();
-        paymentGuards();
-        advanceEatingWaitsOneTurn();
-        oldestEligiblePayerOrdering();
-        totalsAndAverage();
-        victoryThresholds();
+        arrivalsAndSeating(); exclusiveOwnership(); failedArrivalDoesNotClaimOwnership();
+        cleanup(); paymentAndPriority(); thresholds(); victorySchedule(); defeatSchedule();
+        hostConstructionAndOwnership(); independentSeatingCapacity(); hostCannotAnticipatePayment();
     }
-
-    private static void constructionGuards() {
-        illegal(() -> new Restaurant(null, new Waiter(), new Chef(), new Cashier()));
-        illegal(() -> new Restaurant(new Menu(), null, new Chef(), new Cashier()));
-        illegal(() -> new Restaurant(new Menu(), new Waiter(), null, new Cashier()));
-        illegal(() -> new Restaurant(new Menu(), new Waiter(), new Chef(), null));
-    }
-
-    private static void startsEmptyWithTwoTables() {
-        Restaurant r = restaurant();
-        equal(2, r.getTables().size(), "two tables");
-        equal(1, r.getTables().get(0).getId(), "table 1");
-        equal(2, r.getTables().get(1).getId(), "table 2");
-        check(r.getTables().stream().allMatch(Table::isFree), "tables free");
-        check(r.getCustomers().isEmpty() && r.getWaitingQueue().isEmpty(), "no customers");
-        check(r.findFreeTable() == r.getTables().get(0), "first free table is table 1");
-        equal(0, r.getRevenueCents(), "no revenue");
-        equal(0, r.getPaidCount(), "no payers");
-        equal(0, r.getServedCount(), "none served");
-        equal(0, r.getUnhappyDepartureCount(), "no departures");
-        check(r.getAveragePaidSatisfaction().isEmpty(), "average empty with no payers");
-        equal(GameResult.DEFEAT, r.evaluateResult(), "empty restaurant is a defeat");
-        check(r.oldestEligiblePayer(5) == null, "no payer");
-    }
-
-    private static void arrivalGuards() {
-        Restaurant r = restaurant();
-        illegal(() -> r.registerArrival(null));
-        Customer c1 = new RegularCustomer(1);
-        r.registerArrival(c1);
-        try {
-            r.registerArrival(new RegularCustomer(1));
-            throw new AssertionError("duplicate id should throw");
-        } catch (IllegalStateException expected) {
-            // ok
+    private static Restaurant restaurant() { return new Restaurant(new Menu(false), new Waiter(), new Chef(), new Cashier()); }
+    private static Customer arrive(Restaurant r, int id) { Customer c = new RegularCustomer(id); r.registerArrival(c); return c; }
+    private static void arrivalsAndSeating() {
+        Restaurant r = restaurant(); Customer a = arrive(r, 1), b = arrive(r, 2), c = arrive(r, 3);
+        check(r.getTables().size() == 2 && r.getAveragePaidSatisfaction().isEmpty(), "initial aggregate");
+        try { r.registerArrival(new RegularCustomer(1)); throw new AssertionError("duplicate accepted"); }
+        catch (IllegalStateException expected) { }
+        for (List<?> list : List.of(r.getCustomers(), r.getTables(), r.getWaitingQueue())) {
+            try { list.clear(); throw new AssertionError("mutable query"); }
+            catch (UnsupportedOperationException expected) { }
         }
-        Customer seated = new RegularCustomer(2);
-        ok(seated.seat());
-        illegal(() -> r.registerArrival(seated));
-        equal(List.of(c1), r.getCustomers(), "rejected arrivals are not added");
-        equal(List.of(c1), r.getWaitingQueue(), "rejected arrivals are not queued");
-
-        Restaurant other = restaurant();
-        try {
-            other.registerArrival(c1);
-            throw new AssertionError("customer bound elsewhere should throw");
-        } catch (IllegalStateException expected) {
-            // ok
+        refused(r.seatCustomer(new RegularCustomer(2), 1));
+        ok(r.seatCustomer(b, 1)); check(r.getWaitingQueue().equals(List.of(a, c)), "select second queued customer");
+        refused(r.seatCustomer(a, 1)); check(r.findWaitingCustomer(1) == a, "capacity refusal retains queue");
+        ok(r.seatCustomer(a, 2)); refused(r.seatCustomer(c, 3));
+        check(r.findFreeTable() == null && r.findWaitingCustomer(3) == c, "third seating atomic");
+        check(r.findCustomer(99) == null && r.findOrder(99) == null && r.findTableFor(null) == null, "missing queries");
+    }
+    private static void exclusiveOwnership() {
+        Restaurant owner = restaurant(), other = restaurant();
+        Customer customer = arrive(owner, 1), resident = arrive(other, 2);
+        try { other.registerArrival(customer); throw new AssertionError("shared customer accepted"); }
+        catch (IllegalStateException expected) { }
+        check(owner.getCustomers().equals(List.of(customer))
+                && owner.getWaitingQueue().equals(List.of(customer)), "owner retains sole registration");
+        check(other.getCustomers().equals(List.of(resident))
+                && other.getWaitingQueue().equals(List.of(resident)), "rejected registration leaves target unchanged");
+        check(customer.getStatus() == CustomerStatus.WAITING && customer.getSatisfaction() == 100
+                && customer.getOrder() == null, "rejected registration leaves customer unchanged");
+        refused(other.seatCustomer(customer, 1));
+        refused(other.collectPayment(customer, 1));
+        check(other.getTables().stream().allMatch(Table::isFree)
+                && other.getWaiter().getTaskTurn() == -1 && other.getCashier().getTaskTurn() == -1,
+                "foreign operations preserve tables and staff capacity");
+        ok(other.seatCustomer(resident, 1));
+        ok(owner.seatCustomer(customer, 1));
+        check(owner.getWaitingQueue().isEmpty() && owner.findTableFor(customer) != null
+                && other.findTableFor(customer) == null, "seating changes only the owning aggregate");
+        ready(customer, 4); ok(owner.collectPayment(customer, 5));
+        try { other.registerArrival(customer); throw new AssertionError("paid customer transferred"); }
+        catch (IllegalArgumentException | IllegalStateException expected) { }
+        check(owner.getCustomers().equals(List.of(customer)) && owner.getRevenueCents() == 1500
+                && other.getCustomers().equals(List.of(resident)) && other.getRevenueCents() == 0,
+                "paid history remains exclusively with owner");
+    }
+    private static void failedArrivalDoesNotClaimOwnership() {
+        Restaurant fullId = restaurant(), eventualOwner = restaurant();
+        Customer existing = arrive(fullId, 1), candidate = new RegularCustomer(1);
+        try { fullId.registerArrival(candidate); throw new AssertionError("duplicate ID accepted"); }
+        catch (IllegalStateException expected) { }
+        eventualOwner.registerArrival(candidate);
+        check(fullId.getCustomers().equals(List.of(existing)) && fullId.getWaitingQueue().equals(List.of(existing))
+                && eventualOwner.getCustomers().equals(List.of(candidate))
+                && eventualOwner.getWaitingQueue().equals(List.of(candidate)), "invalid arrival does not claim ownership");
+        try { eventualOwner.registerArrival(candidate); throw new AssertionError("repeat arrival accepted"); }
+        catch (IllegalStateException expected) { }
+        check(eventualOwner.getCustomers().size() == 1 && eventualOwner.getWaitingQueue().size() == 1,
+                "repeat arrival leaves collections unchanged");
+        for (int turn = 1; turn <= 13; turn++) { eventualOwner.applyWaitingLoss(); }
+        try { restaurant().registerArrival(candidate); throw new AssertionError("departed customer transferred"); }
+        catch (IllegalArgumentException | IllegalStateException expected) { }
+        check(eventualOwner.getUnhappyDepartureCount() == 1 && eventualOwner.getCustomers().equals(List.of(candidate)),
+                "departure retains registered history");
+    }
+    private static void cleanup() {
+        Restaurant r = restaurant(); Customer queued = arrive(r, 1), seated = arrive(r, 3);
+        ok(r.seatCustomer(seated, 1));
+        ok(r.getWaiter().takeOrder(seated, seated.chooseItem(r.getMenu()), 1800, 2));
+        ok(r.getChef().prepare(seated.getOrder(), 2));
+        for (int i = 0; i < 13; i++) { r.applyWaitingLoss(); }
+        check(r.getWaitingQueue().isEmpty() && r.getTables().stream().allMatch(Table::isFree), "departure cleanup");
+        check(r.getCustomers().equals(List.of(queued, seated)) && r.getUnhappyDepartureCount() == 2, "history retained");
+        check(seated.getOrder().getStatus() == OrderStatus.CANCELLED && r.getRevenueCents() == 0, "cancelled unpaid");
+        r.applyWaitingLoss(); check(r.getUnhappyDepartureCount() == 2, "cleanup idempotent for departures");
+    }
+    private static void ready(Customer c, int readyTurn) {
+        MenuItem item = new Menu(false).getItems().get(0);
+        ok(c.placeOrder(item, 1500, 2)); ok(c.getOrder().advancePreparation(2)); ok(c.serve(3)); ok(c.finishEating(readyTurn));
+    }
+    private static void paymentAndPriority() {
+        for (boolean tie : new boolean[] {false, true}) {
+            Restaurant r = restaurant(); Customer high = arrive(r, 2), low = arrive(r, 1);
+            ok(r.seatCustomer(high, 1)); ok(r.seatCustomer(low, 2));
+            ready(high, 4); ready(low, tie ? 4 : 5);
+            check(r.oldestEligiblePayer(4) == null, "newly ready cannot pay");
+            Customer first = tie ? low : high, second = tie ? high : low;
+            check(r.oldestEligiblePayer(6) == first, "readiness then ID priority");
+            check(r.getRevenueCents() == 0 && r.getPaidCount() == 0, "unpaid bills excluded");
+            refused(r.collectPayment(new RegularCustomer(first.getId()), 6));
+            ok(r.collectPayment(first, 6)); refused(r.collectPayment(second, 6)); refused(r.collectPayment(first, 7));
+            check(r.findTableFor(first) == null && r.findTableFor(second) != null && r.getRevenueCents() == 1500, "payment release and once-only revenue");
+            ok(r.collectPayment(second, 7)); check(r.getPaidCount() == 2 && r.getRevenueCents() == 3000, "next payment");
         }
-        check(other.getCustomers().isEmpty(), "other restaurant unchanged");
     }
-
-    private static void lookups() {
+    private static Restaurant paidFixture(int count, int bill, int losses) {
         Restaurant r = restaurant();
-        Customer c1 = arrive(r, 1);
-        Customer c2 = arrive(r, 2);
-        check(r.findCustomer(1) == c1 && r.findCustomer(2) == c2, "findCustomer");
-        check(r.findCustomer(3) == null, "unknown customer");
-        check(r.findWaitingCustomer(2) == c2, "waiting lookup");
-        check(r.findOrder(1) == null, "no orders yet");
-        check(r.findTableFor(c1) == null && r.findTableFor(null) == null, "no table yet");
-
-        ok(r.seatCustomer(c1, 1));
-        check(r.findWaitingCustomer(1) == null, "seated customer is no longer waiting");
-        check(r.findTableFor(c1) == r.getTables().get(0), "C1 at table 1");
-        check(r.findFreeTable() == r.getTables().get(1), "table 2 now first free");
-        ok(r.getWaiter().takeOrder(c1, c1.chooseItem(r.getMenu()), 1500, 2));
-        check(r.findOrder(1) == c1.getOrder(), "findOrder by id");
-        check(r.findOrder(2) == null, "C2 has no order");
-    }
-
-    private static void exposedCollectionsAreReadOnly() {
-        Restaurant r = restaurant();
-        arrive(r, 1);
-        unsupported(() -> r.getTables().clear());
-        unsupported(() -> r.getCustomers().clear());
-        unsupported(() -> r.getWaitingQueue().clear());
-        List<Customer> snapshot = r.getWaitingQueue();
-        arrive(r, 2);
-        equal(1, snapshot.size(), "queue view is a snapshot");
-        equal(2, r.getWaitingQueue().size(), "fresh view sees new arrival");
-    }
-
-    private static void seatingGuards() {
-        Restaurant r = restaurant();
-        Customer c1 = arrive(r, 1);
-        Customer c2 = arrive(r, 2);
-        Customer c3 = arrive(r, 3);
-        refused(r.seatCustomer(null, 1));
-        refused(r.seatCustomer(new RegularCustomer(1), 1));
-        refused(r.seatCustomer(new RegularCustomer(9), 1));
-        check(r.getWaiter().canAct(1), "lookup refusals do not use the Waiter");
-
-        ok(r.seatCustomer(c1, 1));
-        refused(r.seatCustomer(c1, 2));
-        check(r.getWaiter().canAct(2), "re-seating a seated customer does not use the Waiter");
-        ok(r.seatCustomer(c2, 2));
-        refused(r.seatCustomer(c3, 3));
-        equal(List.of(c3), r.getWaitingQueue(), "no free table keeps C3 queued");
-        equal(CustomerStatus.WAITING, c3.getStatus(), "C3 still WAITING");
-        check(r.getWaiter().canAct(3), "full restaurant does not use the Waiter");
-    }
-
-    private static void departureLeavesQueueAndFreesTable() {
-        Restaurant r = restaurant();
-        Customer c1 = arrive(r, 1);
-        ok(r.seatCustomer(c1, 1));
-        ok(r.getWaiter().takeOrder(c1, c1.chooseItem(r.getMenu()), 1500, 2));
-        Customer c2 = arrive(r, 2);
-        for (int i = 0; i < 12; i++) {
-            r.applyWaitingLoss();
-        }
-        equal(4, c1.getSatisfaction(), "C1 at 4 after 12 losses");
-        equal(0, r.getUnhappyDepartureCount(), "nobody left yet");
-        r.applyWaitingLoss();
-        equal(CustomerStatus.LEFT, c1.getStatus(), "C1 left");
-        equal(CustomerStatus.LEFT, c2.getStatus(), "C2 left from the queue");
-        equal(OrderStatus.CANCELLED, c1.getOrder().getStatus(), "C1 order cancelled");
-        check(r.getTables().stream().allMatch(Table::isFree), "C1 table released");
-        check(r.getWaitingQueue().isEmpty(), "C2 removed from queue");
-        equal(2, r.getUnhappyDepartureCount(), "two departures");
-        equal(2, r.getCustomers().size(), "departed customers stay on record");
-        refused(r.seatCustomer(c2, 20));
-    }
-
-    private static void paymentGuards() {
-        Restaurant r = restaurant();
-        Customer c1 = arrive(r, 1);
-        refused(r.collectPayment(null, 5));
-        refused(r.collectPayment(new RegularCustomer(1), 5));
-        refused(r.collectPayment(c1, 5));
-        check(r.getCashier().canAct(5), "no-table refusal does not use the Cashier");
-        ok(r.seatCustomer(c1, 1));
-        refused(r.collectPayment(c1, 2));
-        check(r.getCashier().canAct(2) && !r.findTableFor(c1).isFree(), "seated customer cannot pay");
-    }
-
-    private static void advanceEatingWaitsOneTurn() {
-        Restaurant r = restaurant();
-        Customer c1 = servedCustomer(r, 1, 1);
-        r.advanceEating(3);
-        equal(CustomerStatus.SERVED, c1.getStatus(), "still eating on serving turn");
-        r.advanceEating(4);
-        equal(CustomerStatus.READY_TO_PAY, c1.getStatus(), "ready the turn after serving");
-        equal(4, c1.getReadyToPayTurn(), "ready turn recorded");
-        r.advanceEating(5);
-        equal(4, c1.getReadyToPayTurn(), "ready turn not overwritten");
-        check(r.oldestEligiblePayer(4) == null, "not eligible on the ready turn");
-        check(r.oldestEligiblePayer(5) == c1, "eligible the turn after");
-    }
-
-    private static void oldestEligiblePayerOrdering() {
-        Restaurant r = restaurant();
-        Customer c1 = servedCustomer(r, 1, 1);
-        Customer c2 = servedCustomer(r, 2, 2);
-        r.advanceEating(5);
-        check(c1.getReadyToPayTurn() == 5 && c2.getReadyToPayTurn() == 5, "both ready on turn 5");
-        check(r.oldestEligiblePayer(6) == c1, "tie on ready turn goes to lower id");
-        ok(r.collectPayment(c1, 6));
-        check(r.oldestEligiblePayer(6) == c2, "C2 next");
-        refused(r.collectPayment(c2, 6));
-        check(c2.getStatus() == CustomerStatus.READY_TO_PAY, "Cashier used: C2 waits");
-        ok(r.collectPayment(c2, 7));
-        check(r.oldestEligiblePayer(8) == null, "everyone paid");
-
-        Restaurant later = restaurant();
-        Customer b2 = servedCustomer(later, 2, 1);
-        later.advanceEating(4);
-        Customer a1 = servedCustomer(later, 1, 2);
-        later.advanceEating(5);
-        check(b2.getReadyToPayTurn() == 4 && a1.getReadyToPayTurn() == 5, "different ready turns");
-        check(later.oldestEligiblePayer(6) == b2, "earlier ready turn beats lower id");
-    }
-
-    private static void totalsAndAverage() {
-        Restaurant r = restaurant();
-        Customer c1 = servedCustomer(r, 1, 1);
-        Customer c2 = arrive(r, 2);
-        ok(r.seatCustomer(c2, 4));
-        for (int i = 0; i < 2; i++) {
-            r.applyWaitingLoss();
-        }
-        equal(1, r.getServedCount(), "served counts SERVED");
-        r.advanceEating(4);
-        equal(1, r.getServedCount(), "served still counts READY_TO_PAY");
-        ok(r.collectPayment(c1, 5));
-        equal(1, r.getServedCount(), "served still counts PAID");
-        equal(1500, r.getRevenueCents(), "revenue after one payment");
-        equal(100, r.getPaidSatisfactionTotal(), "C1 paid at 100");
-        check(r.getAveragePaidSatisfaction().getAsDouble() == 100.0, "average 100");
-        equal(84, c2.getSatisfaction(), "C2 lost 16 while seated");
-    }
-
-    private static void victoryThresholds() {
-        equal(GameResult.VICTORY, played(new int[]{60, 60, 60, 60}).evaluateResult(),
-                "4 paid, $57.00, average exactly 60 wins");
-        equal(GameResult.DEFEAT, played(new int[]{60, 60, 60}).evaluateResult(), "3 paid loses");
-        Restaurant low = played(new int[]{60, 60, 60, 52});
-        equal(232, low.getPaidSatisfactionTotal(), "total below 240");
-        equal(GameResult.DEFEAT, low.evaluateResult(), "average 58 loses");
-
-        Restaurant cheap = restaurant();
-        for (int id = 1; id <= 4; id++) {
-            payAtSatisfaction(cheap, id, 100, 1000);
-        }
-        equal(4000, cheap.getRevenueCents(), "$40.00 revenue");
-        equal(GameResult.DEFEAT, cheap.evaluateResult(), "revenue below $45.00 loses");
-
-        Restaurant exact = restaurant();
-        for (int id = 1; id <= 4; id++) {
-            payAtSatisfaction(exact, id, 100, 1125);
-        }
-        equal(4500, exact.getRevenueCents(), "exactly $45.00");
-        equal(GameResult.VICTORY, exact.evaluateResult(), "exact revenue threshold wins");
-    }
-
-    // ---- helpers ----
-
-    private static Restaurant restaurant() {
-        return new Restaurant(new Menu(), new Waiter(), new Chef(), new Cashier());
-    }
-
-    private static Customer arrive(Restaurant r, int id) {
-        Customer c = new RegularCustomer(id);
-        r.registerArrival(c);
-        return c;
-    }
-
-    /** Seated by the Waiter on seatTurn, Burger ordered and cooked on seatTurn+1, served seatTurn+2. */
-    private static Customer servedCustomer(Restaurant r, int id, int seatTurn) {
-        Customer c = arrive(r, id);
-        ok(r.seatCustomer(c, seatTurn));
-        MenuItem burger = r.getMenu().getItems().get(0);
-        ok(c.placeOrder(burger, burger.getPriceCents(), seatTurn + 1));
-        ok(c.getOrder().advancePreparation(seatTurn + 1));
-        ok(c.serve(seatTurn + 2));
-        return c;
-    }
-
-    /** One paid customer per entry, frozen at that satisfaction (100 - 8k), paying the menu price. */
-    private static Restaurant played(int[] satisfactions) {
-        Restaurant r = restaurant();
-        for (int i = 0; i < satisfactions.length; i++) {
-            payAtSatisfaction(r, i + 1, satisfactions[i], -1);
+        for (int id = 1; id <= count; id++) {
+            Customer c = arrive(r, id);
+            for (int j = 0; j < losses; j++) { c.loseWaitingSatisfaction(); }
+            int t = id * 10;
+            ok(r.seatCustomer(c, t));
+            ok(r.getWaiter().takeOrder(c, r.getMenu().getItems().get(0), bill, t + 1));
+            ok(r.getChef().prepare(c.getOrder(), t + 1)); ok(r.getWaiter().serve(c, t + 2));
+            r.advanceEating(t + 3); ok(r.collectPayment(c, t + 4));
         }
         return r;
     }
-
-    /** Registers and pays customer id at the target satisfaction; bill -1 means the menu price. */
-    private static void payAtSatisfaction(Restaurant r, int id, int target, int bill) {
-        check((100 - target) % 8 == 0 && target > 0, "target reachable in 8-point steps");
-        Customer c = arrive(r, id);
-        ok(c.seat());
-        for (int k = 0; k < (100 - target) / 8; k++) {
-            c.loseWaitingSatisfaction();
+    private static void thresholds() {
+        Restaurant exact = paidFixture(4, 1125, 5);
+        check(exact.getPaidCount() == 4 && exact.getRevenueCents() == 4500
+                && exact.getPaidSatisfactionTotal() == 240 && exact.getAveragePaidSatisfaction().orElseThrow() == 60,
+                "exact thresholds fixture");
+        check(exact.evaluateResult() == GameResult.VICTORY, "exact boundaries pass");
+        check(paidFixture(3, 1500, 5).evaluateResult() == GameResult.DEFEAT, "paid target alone fails");
+        check(paidFixture(4, 1124, 5).evaluateResult() == GameResult.DEFEAT, "revenue target alone fails");
+        check(paidFixture(4, 1125, 6).evaluateResult() == GameResult.DEFEAT, "satisfaction target alone fails");
+        check(restaurant().evaluateResult() == GameResult.DEFEAT, "zero paid defeat");
+    }
+    private static void victorySchedule() {
+        Restaurant r = restaurant();
+        int[] seats = {1,4,7,11,14,17}, orders = {2,5,8,12,15,18}, serves = {3,6,10,13,16};
+        for (int turn = 1; turn <= 18; turn++) {
+            if ((turn - 1) % 3 == 0) { arrive(r, (turn - 1) / 3 + 1); }
+            for (int i = 0; i < seats.length; i++) {
+                Customer c = r.findCustomer(i + 1);
+                if (turn == seats[i]) { ok(r.seatCustomer(c, turn)); }
+                if (turn == orders[i]) { MenuItem item = c.chooseItem(r.getMenu()); ok(r.getWaiter().takeOrder(c, item, item.getPriceCents(), turn)); }
+                if (i < serves.length && turn == serves[i]) { ok(r.getWaiter().serve(c, turn)); }
+            }
+            if (turn == 2 || turn == 5 || turn == 8 || turn == 9 || turn == 12 || turn == 15 || turn == 18) {
+                int id = turn == 9 ? 3 : turn == 18 ? 6 : turn == 15 ? 5 : turn == 12 ? 4 : turn == 8 ? 3 : turn == 5 ? 2 : 1;
+                ok(r.getChef().prepare(r.findOrder(id), turn));
+            }
+            r.advanceEating(turn); Customer payer = r.oldestEligiblePayer(turn);
+            if (payer != null) { ok(r.collectPayment(payer, turn)); }
+            r.applyWaitingLoss();
         }
-        MenuItem item = c.chooseItem(r.getMenu());
-        ok(c.placeOrder(item, bill < 0 ? item.getPriceCents() : bill, 1));
-        for (int turn = 1; c.getOrder().getStatus() != OrderStatus.READY; turn++) {
-            ok(c.getOrder().advancePreparation(turn));
+        check(r.getPaidCount() == 5 && r.getServedCount() == 5 && r.getRevenueCents() == 6600
+                && r.getPaidSatisfactionTotal() == 396 && r.getUnhappyDepartureCount() == 0
+                && r.getAveragePaidSatisfaction().orElseThrow() == 79.2 && r.evaluateResult() == GameResult.VICTORY, "reference victory totals");
+    }
+    private static void defeatSchedule() {
+        Restaurant r = restaurant();
+        for (int turn = 1; turn <= 18; turn++) {
+            if ((turn - 1) % 3 == 0) { arrive(r, (turn - 1) / 3 + 1); }
+            r.advanceEating(turn); r.applyWaitingLoss();
+            if (turn == 13) { check(r.findCustomer(1).getStatus() == CustomerStatus.LEFT, "C1 leaves 13"); }
+            if (turn == 16) { check(r.findCustomer(2).getStatus() == CustomerStatus.LEFT, "C2 leaves 16"); }
         }
-        ok(c.serve(5));
-        ok(c.finishEating(6));
-        ok(c.pay(7));
-        equal(target, c.getSatisfactionAtPayment(), "frozen satisfaction");
+        check(r.getPaidCount() == 0 && r.getServedCount() == 0 && r.getRevenueCents() == 0
+                && r.getAveragePaidSatisfaction().isEmpty() && r.getUnhappyDepartureCount() == 2
+                && r.findCustomer(3).getSatisfaction() == 4 && r.evaluateResult() == GameResult.DEFEAT, "reference defeat totals");
     }
 
-    private static void illegal(Runnable action) {
-        try {
-            action.run();
-        } catch (IllegalArgumentException expected) {
-            return;
+    private static void hostConstructionAndOwnership() {
+        Host host = new Host(); Menu menu = new Menu(false);
+        Restaurant owner = new Restaurant(menu, new Waiter(), new Chef(), new Cashier(), host);
+        check(owner.getHost() == host && restaurant().getHost() != null, "both constructor forms provide a Host");
+        restaurantrush.Check.throwsType(IllegalArgumentException.class,
+                () -> new Restaurant(menu, new Waiter(), new Chef(), new Cashier(), null), "null Host rejected");
+        Restaurant other = restaurant(); Customer customer = arrive(owner, 1);
+        for (Customer invalid : new Customer[] {null, new RegularCustomer(1), new RegularCustomer(99)}) {
+            refused(owner.seatCustomerWithHost(invalid, 1));
         }
-        throw new AssertionError("Expected IllegalArgumentException");
+        refused(other.seatCustomerWithHost(customer, 1));
+        refused(owner.seatCustomerWithHost(customer, 0));
+        check(owner.getWaitingQueue().equals(List.of(customer)) && owner.getTables().stream().allMatch(Table::isFree)
+                && owner.getHost().getTaskTurn() == -1 && owner.getWaiter().getTaskTurn() == -1
+                && other.getHost().getTaskTurn() == -1, "invalid Host attempts preserve both aggregates and capacity");
+        ok(owner.seatCustomerWithHost(customer, 1));
+        refused(owner.seatCustomerWithHost(customer, 2));
+        check(owner.getWaitingQueue().isEmpty() && owner.findTableFor(customer) != null
+                && owner.getHost().getTaskTurn() == 1, "only successful registered seating removes queue entry");
     }
 
-    private static void unsupported(Runnable action) {
-        try {
-            action.run();
-        } catch (UnsupportedOperationException expected) {
-            return;
+    private static void independentSeatingCapacity() {
+        for (boolean hostFirst : new boolean[] {true, false}) {
+            Restaurant r = restaurant(); Customer a = arrive(r, 1), b = arrive(r, 2), c = arrive(r, 3);
+            if (hostFirst) { ok(r.seatCustomerWithHost(a, 1)); }
+            else { ok(r.seatCustomer(a, 1)); }
+            check((hostFirst ? r.getWaiter() : r.getHost()).canAct(1), "one role leaves the other's task available");
+            if (hostFirst) {
+                refused(r.seatCustomerWithHost(b, 1));
+                ok(r.seatCustomer(b, 1));
+            } else {
+                refused(r.seatCustomer(b, 1));
+                ok(r.seatCustomerWithHost(b, 1));
+            }
+            refused(r.seatCustomerWithHost(c, 2));
+            check(r.findFreeTable() == null && r.getWaitingQueue().equals(List.of(c))
+                    && c.getStatus() == CustomerStatus.WAITING && r.getHost().canAct(2)
+                    && r.getHost().getTaskTurn() == 1 && r.getWaiter().getTaskTurn() == 1,
+                    "two roles fill two tables; full-table refusal preserves next-turn capacity and queue");
         }
-        throw new AssertionError("Expected UnsupportedOperationException");
+        Restaurant r = restaurant(); Customer customer = arrive(r, 1);
+        ok(r.seatCustomerWithHost(customer, 1));
+        MenuItem item = customer.chooseItem(r.getMenu());
+        ok(r.getWaiter().takeOrder(customer, item, item.getPriceCents(), 1));
+        ok(r.getChef().prepare(customer.getOrder(), 1));
+        refused(r.getWaiter().serve(customer, 1));
+        check(customer.getOrder().getStatus() == OrderStatus.READY && customer.getStatus() == CustomerStatus.WAITING_FOR_FOOD,
+                "Host enables same-turn ordering/preparation while prior-turn serving guard survives");
     }
 
-    private static void ok(String reason) { check(reason == null, "Expected success: " + reason); }
-    private static void refused(String reason) { check(reason != null && !reason.isBlank(), "Expected refusal reason"); }
-    private static void check(boolean value, String message) { if (!value) { throw new AssertionError(message); } }
-    private static void equal(Object expected, Object actual, String message) {
-        check(Objects.equals(expected, actual), message + ": expected " + expected + ", got " + actual);
+    private static void hostCannotAnticipatePayment() {
+        Restaurant r = restaurant(); Customer payer = arrive(r, 1), occupied = arrive(r, 2), queued = arrive(r, 3);
+        ok(r.seatCustomerWithHost(payer, 1)); ok(r.seatCustomer(occupied, 1));
+        ready(payer, 4);
+        check(r.oldestEligiblePayer(4) == null, "readiness still delays payment");
+        refused(r.seatCustomerWithHost(queued, 5));
+        check(r.getHost().canAct(5) && r.findWaitingCustomer(3) == queued,
+                "Host phase cannot use a table still occupied before payment");
+        ok(r.collectPayment(payer, 5));
+        check(r.findTableFor(payer) == null && r.getRevenueCents() == 1500,
+                "existing aggregate payment releases table and records paid revenue");
+        // The coordinator has ended turn 5's staff phases; next turn can reuse the table.
+        ok(r.seatCustomerWithHost(queued, 6));
+        check(r.getWaitingQueue().isEmpty() && r.findTableFor(queued) != null
+                && r.findTableFor(occupied) != null, "next-turn Host seating reuses only released table");
     }
 }
