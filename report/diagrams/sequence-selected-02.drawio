@@ -1,0 +1,347 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Turn 13 — activation and recovery — panel 1" id="p1">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="turnloop" value="loop" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="10" y="215" width="1560" height="620" />
+        </mxCell>
+        <mxCell id="frag5" value="alt" style="shape=umlFrame;html=1;fillColor=none;tabWidth=75;tabHeight=28;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="655" width="1530" height="155.0" />
+        </mxCell>
+        <mxCell id="title" value="Turn 13 — activation and recovery — panel 1" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="15" y="10" width="1555" height="45" />
+        </mxCell>
+        <mxCell id="legend" value="Calls: solid filled head. Returns: dashed open head. Human input/output: solid open head. Participants repeat across continued pages." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="55" width="1540" height="50" />
+        </mxCell>
+        <mxCell id="lifeM" value="manager:Manager" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="lifeI" value="ui:ConsoleUI" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="235" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="lifeG" value="gc:GameController" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="445" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="lifeH" value="hh:HappyHour" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="655" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="lifeR" value="r:Restaurant" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="865" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="lifeC3" value="c3:CriticCustomer" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1075" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="lifeC5" value="c5:RegularCustomer" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1285" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="loopguard" value="[for turn = 1..18; detail: turn 13 activation/recovery]" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="110" y="218" width="1445" height="45" />
+        </mxCell>
+        <mxCell id="m1" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="335" />
+            <mxPoint as="targetPoint" x="330" y="335" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label1" value="showHappyHour(13,0,false)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="338" y="285" width="195" height="50" />
+        </mxCell>
+        <mxCell id="m2" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="430" />
+            <mxPoint as="targetPoint" x="330" y="430" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label2" value="chooseHappyHourActivation()" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="338" y="380" width="195" height="50" />
+        </mxCell>
+        <mxCell id="m3" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="120" y="520" />
+            <mxPoint as="targetPoint" x="330" y="520" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label3" value="A:yes / B:no" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="128" y="475" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m4" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="330" y="610" />
+            <mxPoint as="targetPoint" x="540" y="610" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label4" value="A:true / B:false" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="338" y="565" width="195" height="45" />
+        </mxCell>
+        <mxCell id="fg5" value="[A: manager chooses yes on13]" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="115" y="657" width="1420" height="40" />
+        </mxCell>
+        <mxCell id="m6" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="765" />
+            <mxPoint as="targetPoint" x="750" y="765" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label6" value="activate(13)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="720" width="195" height="45" />
+        </mxCell>
+        <mxCell id="cont" value="Continuation: other phases follow the controller order; omitted idle participants remain the same objects." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="850" width="1530" height="60" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Turn 13 — activation and recovery — panel 2" id="p2">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="turnloop" value="loop" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="10" y="215" width="1560" height="615" />
+        </mxCell>
+        <mxCell id="frag1" value="alt" style="shape=umlFrame;html=1;fillColor=none;tabWidth=75;tabHeight=28;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="285" width="1530" height="520.0" />
+        </mxCell>
+        <mxCell id="title" value="Turn 13 — activation and recovery — panel 2" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="15" y="10" width="1555" height="45" />
+        </mxCell>
+        <mxCell id="legend" value="Calls: solid filled head. Returns: dashed open head. Human input/output: solid open head. Participants repeat across continued pages." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="55" width="1540" height="50" />
+        </mxCell>
+        <mxCell id="lifeM" value="manager:Manager" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="115" width="190" height="740.0" />
+        </mxCell>
+        <mxCell id="lifeI" value="ui:ConsoleUI" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="235" y="115" width="190" height="740.0" />
+        </mxCell>
+        <mxCell id="lifeG" value="gc:GameController" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="445" y="115" width="190" height="740.0" />
+        </mxCell>
+        <mxCell id="lifeH" value="hh:HappyHour" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="655" y="115" width="190" height="740.0" />
+        </mxCell>
+        <mxCell id="lifeR" value="r:Restaurant" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="865" y="115" width="190" height="740.0" />
+        </mxCell>
+        <mxCell id="lifeC3" value="c3:CriticCustomer" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1075" y="115" width="190" height="740.0" />
+        </mxCell>
+        <mxCell id="lifeC5" value="c5:RegularCustomer" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1285" y="115" width="190" height="740.0" />
+        </mxCell>
+        <mxCell id="loopguard" value="[for turn = 1..18; detail: turn 13 activation/recovery] [continued]" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="110" y="218" width="1445" height="45" />
+        </mxCell>
+        <mxCell id="fg1" value="[A: manager chooses yes on13] [continued]" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="115" y="287" width="1420" height="40" />
+        </mxCell>
+        <mxCell id="m2" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="395" />
+            <mxPoint as="targetPoint" x="540" y="395" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label2" value="null" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="350" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m3" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="490" />
+            <mxPoint as="targetPoint" x="330" y="490" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label3" value="showHappyHour(13,2,true)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="338" y="440" width="195" height="50" />
+        </mxCell>
+        <mxCell id="m4" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="580" />
+            <mxPoint as="targetPoint" x="750" y="580" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label4" value="isActiveAt(13)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="535" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m5" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="670" />
+            <mxPoint as="targetPoint" x="540" y="670" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label5" value="true" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="625" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m6" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="760" />
+            <mxPoint as="targetPoint" x="960" y="760" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label6" value="recoverWaitingSatisfaction(15)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="715" width="405" height="45" />
+        </mxCell>
+        <mxCell id="cont" value="Continuation: other phases follow the controller order; omitted idle participants remain the same objects." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="845" width="1530" height="60" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Turn 13 — activation and recovery — panel 3" id="p3">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="turnloop" value="loop" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="10" y="215" width="1560" height="595" />
+        </mxCell>
+        <mxCell id="frag1" value="alt" style="shape=umlFrame;html=1;fillColor=none;tabWidth=75;tabHeight=28;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="285" width="1530" height="500.0" />
+        </mxCell>
+        <mxCell id="title" value="Turn 13 — activation and recovery — panel 3" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="15" y="10" width="1555" height="45" />
+        </mxCell>
+        <mxCell id="legend" value="Calls: solid filled head. Returns: dashed open head. Human input/output: solid open head. Participants repeat across continued pages." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="55" width="1540" height="50" />
+        </mxCell>
+        <mxCell id="lifeM" value="manager:Manager" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="115" width="190" height="720.0" />
+        </mxCell>
+        <mxCell id="lifeI" value="ui:ConsoleUI" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="235" y="115" width="190" height="720.0" />
+        </mxCell>
+        <mxCell id="lifeG" value="gc:GameController" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="445" y="115" width="190" height="720.0" />
+        </mxCell>
+        <mxCell id="lifeH" value="hh:HappyHour" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="655" y="115" width="190" height="720.0" />
+        </mxCell>
+        <mxCell id="lifeR" value="r:Restaurant" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="865" y="115" width="190" height="720.0" />
+        </mxCell>
+        <mxCell id="lifeC3" value="c3:CriticCustomer" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1075" y="115" width="190" height="720.0" />
+        </mxCell>
+        <mxCell id="lifeC5" value="c5:RegularCustomer" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1285" y="115" width="190" height="720.0" />
+        </mxCell>
+        <mxCell id="loopguard" value="[for turn = 1..18; detail: turn 13 activation/recovery] [continued]" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="110" y="218" width="1445" height="45" />
+        </mxCell>
+        <mxCell id="fg1" value="[A: manager chooses yes on13] [continued]" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="115" y="287" width="1420" height="40" />
+        </mxCell>
+        <mxCell id="m2" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="960" y="400" />
+            <mxPoint as="targetPoint" x="1170" y="400" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label2" value="recoverWaitingSatisfaction(15)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="968" y="350" width="195" height="50" />
+        </mxCell>
+        <mxCell id="m3" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="960" y="490" />
+            <mxPoint as="targetPoint" x="1380" y="490" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label3" value="recoverWaitingSatisfaction(15)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="968" y="445" width="405" height="45" />
+        </mxCell>
+        <mxCell id="n4" value="Recovery also visits waiting C4 (lifeline elided). C3 28→43; C4/C5 cap at100 as applicable." style="shape=note;html=1;whiteSpace=wrap;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="35" y="535" width="1510" height="70" />
+        </mxCell>
+        <mxCell id="d5" value="else [B: manager chooses no on13]" style="text;html=1;align=center;fillColor=#e8ecdf;fontSize=19;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="625" width="1530" height="45" />
+        </mxCell>
+        <mxCell id="m6" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="740" />
+            <mxPoint as="targetPoint" x="330" y="740" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label6" value="showHappyHour(13,0,false)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="338" y="690" width="195" height="50" />
+        </mxCell>
+        <mxCell id="cont" value="Continuation: other phases follow the controller order; omitted idle participants remain the same objects." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="825" width="1530" height="60" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Turn 13 — activation and recovery — panel 4" id="p4">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="turnloop" value="loop" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="10" y="215" width="1560" height="430" />
+        </mxCell>
+        <mxCell id="frag1" value="alt" style="shape=umlFrame;html=1;fillColor=none;tabWidth=75;tabHeight=28;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="285" width="1530" height="335.0" />
+        </mxCell>
+        <mxCell id="title" value="Turn 13 — activation and recovery — panel 4" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="15" y="10" width="1555" height="45" />
+        </mxCell>
+        <mxCell id="legend" value="Calls: solid filled head. Returns: dashed open head. Human input/output: solid open head. Participants repeat across continued pages." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="55" width="1540" height="50" />
+        </mxCell>
+        <mxCell id="lifeM" value="manager:Manager" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="115" width="190" height="555.0" />
+        </mxCell>
+        <mxCell id="lifeI" value="ui:ConsoleUI" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="235" y="115" width="190" height="555.0" />
+        </mxCell>
+        <mxCell id="lifeG" value="gc:GameController" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="445" y="115" width="190" height="555.0" />
+        </mxCell>
+        <mxCell id="lifeH" value="hh:HappyHour" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="655" y="115" width="190" height="555.0" />
+        </mxCell>
+        <mxCell id="lifeR" value="r:Restaurant" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="865" y="115" width="190" height="555.0" />
+        </mxCell>
+        <mxCell id="lifeC3" value="c3:CriticCustomer" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1075" y="115" width="190" height="555.0" />
+        </mxCell>
+        <mxCell id="lifeC5" value="c5:RegularCustomer" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1285" y="115" width="190" height="555.0" />
+        </mxCell>
+        <mxCell id="loopguard" value="[for turn = 1..18; detail: turn 13 activation/recovery] [continued]" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="110" y="218" width="1445" height="45" />
+        </mxCell>
+        <mxCell id="fg1" value="[B: manager chooses no on13] [continued]" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="115" y="287" width="1420" height="40" />
+        </mxCell>
+        <mxCell id="m2" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="395" />
+            <mxPoint as="targetPoint" x="750" y="395" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label2" value="isActiveAt(13)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="350" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m3" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="485" />
+            <mxPoint as="targetPoint" x="540" y="485" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label3" value="false" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="440" width="195" height="45" />
+        </mxCell>
+        <mxCell id="n4" value="No recovery occurs. Activation prompt repeats on turns14–18 and receives no; A stops prompting after use." style="shape=note;html=1;whiteSpace=wrap;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="35" y="530" width="1510" height="70" />
+        </mxCell>
+        <mxCell id="cont" value="Continuation: other phases follow the controller order; omitted idle participants remain the same objects." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="660" width="1530" height="60" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

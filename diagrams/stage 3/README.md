@@ -39,3 +39,8 @@ This pair changes payment timing/satisfaction; both paths end in defeat. It is s
 | sequence-diagram | [draw.io](sequence-diagram.drawio) | [1](png/sequence-diagram-1.png) · [2](png/sequence-diagram-2.png) |
 
 The diagrams were converted from the Stage 3 reference in `Documents/OOP`, then checked against the local Java. Factory calls use a factory participant; success/refusal alternatives and continued fragments remain editable. Selected sequence lifelines for multiple orders/customers are summaries; notes identify the concrete IDs. Optional refusal paths are not extra actions in the valid fixtures. Earlier Stage 2 figures remain in `../stage 2/`.
+
+
+## Focused report edition
+
+The report edition at [report/diagrams](../../report/diagrams) supplies the printable class and selected-sequence views. It uses end multiplicities, attached class connectors, selected member lists and at most eight lifelines per sequence panel. An explicit turn-loop context is repeated on continued panels, and the final result is outside the loop. These sources and exports supersede the older wide views for report placement; the older complete diagrams remain navigation/reference material and match the earlier recording. See [the rendered report](../../report/Restaurant_Rush_Group_Report.pdf), [panel index](../../report/FIGURE_APPENDIX.md) and [figure-size audit](../../report/evidence/figure-size-audit.json).

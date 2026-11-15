@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Controller collaboration" id="p1">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Stage 3 — controller collaboration" style="text;html=1;align=center;fontSize=25;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="15" width="1280" height="40" />
+        </mxCell>
+        <mxCell id="subtitle" value="Selected members shown; complete declarations remain in source. Java visibility: + public, - private, # protected, ~ package-private." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="60" width="1280" height="48" />
+        </mxCell>
+        <mxCell id="Main" value="Main" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="130" width="365" height="106" />
+        </mxCell>
+        <mxCell id="Mainr0" value="+main(args): void {static}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="49" width="345.0" height="26" />
+        </mxCell>
+        <mxCell id="Mainr1" value="~createCustomer(id): Customer {static}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Main">
+          <mxGeometry as="geometry" x="10" y="76" width="345.0" height="26" />
+        </mxCell>
+        <mxCell id="GameController" value="GameController" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="500" y="355" width="440" height="268" />
+        </mxCell>
+        <mxCell id="GameControllerr0" value="-restaurant: Restaurant" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameController">
+          <mxGeometry as="geometry" x="10" y="49" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="GameControllerr1" value="-io: GameIO" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameController">
+          <mxGeometry as="geometry" x="10" y="76" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="GameControllerr2" value="-happyHour: HappyHour" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameController">
+          <mxGeometry as="geometry" x="10" y="103" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="GameControllerr3" value="-customerFactory: IntFunction&amp;lt;Customer&amp;gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameController">
+          <mxGeometry as="geometry" x="10" y="130" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="GameControllerr4" value="+GameController(r, io, factory, stage)" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameController">
+          <mxGeometry as="geometry" x="10" y="157" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="GameControllerr5" value="+run(): void" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameController">
+          <mxGeometry as="geometry" x="10" y="184" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="GameControllerr6" value="-chooseHost(turn: int): void" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameController">
+          <mxGeometry as="geometry" x="10" y="211" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="GameControllerr7" value="-performWaiter(action, turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameController">
+          <mxGeometry as="geometry" x="10" y="238" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="GameIO" value="GameIO" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="480" width="360" height="187" />
+        </mxCell>
+        <mxCell id="GameIOr0" value="«interface»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameIO">
+          <mxGeometry as="geometry" x="10" y="49" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="GameIOr1" value="+chooseHappyHourActivation(): boolean" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameIO">
+          <mxGeometry as="geometry" x="10" y="76" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="GameIOr2" value="+chooseHostCustomer(): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameIO">
+          <mxGeometry as="geometry" x="10" y="103" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="GameIOr3" value="+chooseWaiterAction(): WaiterAction" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameIO">
+          <mxGeometry as="geometry" x="10" y="130" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="GameIOr4" value="+chooseChefOrder(): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameIO">
+          <mxGeometry as="geometry" x="10" y="157" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="HappyHour" value="HappyHour" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="515" y="125" width="420" height="160" />
+        </mxCell>
+        <mxCell id="HappyHourr0" value="-activationTurn: int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="HappyHour">
+          <mxGeometry as="geometry" x="10" y="49" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="HappyHourr1" value="+activate(turn: int): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="HappyHour">
+          <mxGeometry as="geometry" x="10" y="76" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="HappyHourr2" value="+isActiveAt(turn: int): boolean" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="HappyHour">
+          <mxGeometry as="geometry" x="10" y="103" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="HappyHourr3" value="+remainingAt(turn: int): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="HappyHour">
+          <mxGeometry as="geometry" x="10" y="130" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="Restaurant" value="Restaurant" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1110" y="490" width="440" height="160" />
+        </mxCell>
+        <mxCell id="Restaurantr0" value="+takeOrder(customer, policy, turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="10" y="49" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="Restaurantr1" value="+serveOrder(order, turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="10" y="76" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="Restaurantr2" value="+prepareOrder(order, turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="10" y="103" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="Restaurantr3" value="+seatCustomerWithHost(c, turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="10" y="130" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="PricingPolicy" value="PricingPolicy" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1110" y="130" width="425" height="106" />
+        </mxCell>
+        <mxCell id="PricingPolicyr0" value="«interface»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="PricingPolicy">
+          <mxGeometry as="geometry" x="10" y="49" width="405.0" height="26" />
+        </mxCell>
+        <mxCell id="PricingPolicyr1" value="+priceFor(c: Customer, item: MenuItem): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="PricingPolicy">
+          <mxGeometry as="geometry" x="10" y="76" width="405.0" height="26" />
+        </mxCell>
+        <mxCell id="assembly" edge="1" parent="1" source="Main" target="GameController" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;exitX=1;exitY=0.5;entryX=0.1;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="425" y="220" />
+              <mxPoint x="425" y="340" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="assemblylabel" value="creates / injects" style="text;html=1;align=center;whiteSpace=wrap;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="242.0" y="267.0" width="165" height="25" />
+        </mxCell>
+        <mxCell id="io" edge="1" parent="1" source="GameController" target="GameIO" style="html=1;rounded=0;strokeWidth=1.4;endArrow=none;exitX=0;exitY=0.6;entryX=1;entryY=0.3;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="435" y="545" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iosource" value="0..*" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="452.0" y="541.8" width="42" height="24" />
+        </mxCell>
+        <mxCell id="iotarget" value="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="389.0" y="562.1" width="42" height="24" />
+        </mxCell>
+        <mxCell id="hh" edge="1" parent="1" source="GameController" target="HappyHour" style="html=1;rounded=0;strokeWidth=1.4;startArrow=diamond;startFill=1;endArrow=none;exitX=0.48;exitY=0;entryX=0.46;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="hhsource" value="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="656.2" y="323.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="hhtarget" value="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="653.2" y="293.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="rest" edge="1" parent="1" source="GameController" target="Restaurant" style="html=1;rounded=0;strokeWidth=1.4;endArrow=none;exitX=1;exitY=0.68;entryX=0;entryY=0.42;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="restsource" value="0..*" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="949.0" y="545.24" width="42" height="24" />
+        </mxCell>
+        <mxCell id="resttarget" value="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1062.0" y="565.2" width="42" height="24" />
+        </mxCell>
+        <mxCell id="policy" edge="1" parent="1" source="GameController" target="PricingPolicy" style="html=1;rounded=0;strokeWidth=1.4;endArrow=none;exitX=0.89;exitY=0;entryX=0.5;entryY=1;exitPerimeter=0;entryPerimeter=0;startArrow=diamond;startFill=1;endArrow=none;startArrow=diamond;startFill=1;endArrow=none;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="920" y="325" />
+              <mxPoint x="1160" y="325" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="policylabel" value="selects quote strategy" style="text;html=1;align=center;whiteSpace=wrap;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="935.0" y="292.0" width="210" height="25" />
+        </mxCell>
+        <mxCell id="policysource" value="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="836.6" y="323.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="policytarget" value="2" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1285.5" y="262.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="enc" value="Encapsulation: the controller calls Restaurant wrappers; ownership checks occur before staff actions. Constructor parameters are abbreviated to keep this focused view readable." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="735" width="1320" height="80" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Interaction contract" id="p2">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Stage 3 — interaction contract and replaceable boundary" style="text;html=1;align=center;fontSize=25;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="15" width="1280" height="40" />
+        </mxCell>
+        <mxCell id="subtitle" value="Selected members shown; complete declarations remain in source. Java visibility: + public, - private, # protected, ~ package-private." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="60" width="1280" height="48" />
+        </mxCell>
+        <mxCell id="GameIO" value="GameIO" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="450" y="130" width="470" height="268" />
+        </mxCell>
+        <mxCell id="GameIOr0" value="«interface»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameIO">
+          <mxGeometry as="geometry" x="10" y="49" width="450.0" height="26" />
+        </mxCell>
+        <mxCell id="GameIOr1" value="+chooseHappyHourActivation(): boolean" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameIO">
+          <mxGeometry as="geometry" x="10" y="76" width="450.0" height="26" />
+        </mxCell>
+        <mxCell id="GameIOr2" value="+chooseHostCustomer(): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameIO">
+          <mxGeometry as="geometry" x="10" y="103" width="450.0" height="26" />
+        </mxCell>
+        <mxCell id="GameIOr3" value="+chooseWaiterAction(): WaiterAction" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameIO">
+          <mxGeometry as="geometry" x="10" y="130" width="450.0" height="26" />
+        </mxCell>
+        <mxCell id="GameIOr4" value="+chooseChefOrder(): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameIO">
+          <mxGeometry as="geometry" x="10" y="157" width="450.0" height="26" />
+        </mxCell>
+        <mxCell id="GameIOr5" value="+showTurnStart(state): void" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameIO">
+          <mxGeometry as="geometry" x="10" y="184" width="450.0" height="26" />
+        </mxCell>
+        <mxCell id="GameIOr6" value="+showInvalidAction(reason): void" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameIO">
+          <mxGeometry as="geometry" x="10" y="211" width="450.0" height="26" />
+        </mxCell>
+        <mxCell id="GameIOr7" value="+showFinalResult(report): void" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameIO">
+          <mxGeometry as="geometry" x="10" y="238" width="450.0" height="26" />
+        </mxCell>
+        <mxCell id="ConsoleUI" value="ConsoleUI" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="540" width="470" height="133" />
+        </mxCell>
+        <mxCell id="ConsoleUIr0" value="+ConsoleUI(in: InputStream, out: PrintStream)" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="ConsoleUI">
+          <mxGeometry as="geometry" x="10" y="49" width="450.0" height="26" />
+        </mxCell>
+        <mxCell id="ConsoleUIr1" value="+chooseHostCustomer(): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="ConsoleUI">
+          <mxGeometry as="geometry" x="10" y="76" width="450.0" height="26" />
+        </mxCell>
+        <mxCell id="ConsoleUIr2" value="+chooseHappyHourActivation(): boolean" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="ConsoleUI">
+          <mxGeometry as="geometry" x="10" y="103" width="450.0" height="26" />
+        </mxCell>
+        <mxCell id="ScriptedGameIO" value="ScriptedGameIO" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="850" y="540" width="450" height="133" />
+        </mxCell>
+        <mxCell id="ScriptedGameIOr0" value="-steps: ordered role-tagged script" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="ScriptedGameIO">
+          <mxGeometry as="geometry" x="10" y="49" width="430.0" height="26" />
+        </mxCell>
+        <mxCell id="ScriptedGameIOr1" value="+chooseHostCustomer(): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="ScriptedGameIO">
+          <mxGeometry as="geometry" x="10" y="76" width="430.0" height="26" />
+        </mxCell>
+        <mxCell id="ScriptedGameIOr2" value="+chooseHappyHourActivation(): boolean" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="ScriptedGameIO">
+          <mxGeometry as="geometry" x="10" y="103" width="430.0" height="26" />
+        </mxCell>
+        <mxCell id="GameView" value="GameView" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="475" y="750" width="440" height="133" />
+        </mxCell>
+        <mxCell id="GameViewr0" value="«immutable snapshots»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameView">
+          <mxGeometry as="geometry" x="10" y="49" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="GameViewr1" value="TurnState / TurnSummary / FinalReport" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameView">
+          <mxGeometry as="geometry" x="10" y="76" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="GameViewr2" value="CustomerLine / OrderLine / TableLine" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="GameView">
+          <mxGeometry as="geometry" x="10" y="103" width="420.0" height="26" />
+        </mxCell>
+        <mxCell id="ui" edge="1" parent="1" source="ConsoleUI" target="GameIO" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.2;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="script" edge="1" parent="1" source="ScriptedGameIO" target="GameIO" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.8;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="views" edge="1" parent="1" source="GameIO" target="GameView" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="viewslabel" value="receives display values" style="text;html=1;align=center;whiteSpace=wrap;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="708.0" y="481.0" width="219" height="25" />
+        </mxCell>
+        <mxCell id="dip" value="DIP: the controller receives GameIO rather than constructing ConsoleUI. Defaults support older test doubles; ConsoleTests checks that production ConsoleUI overrides every default." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="925" width="1250" height="80" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

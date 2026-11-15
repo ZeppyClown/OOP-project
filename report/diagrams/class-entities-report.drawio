@@ -1,0 +1,327 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Lifecycle associations" id="p1">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Stage 3 — customer, order and table" style="text;html=1;align=center;fontSize=25;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="15" width="1280" height="40" />
+        </mxCell>
+        <mxCell id="subtitle" value="Selected members shown; complete declarations remain in source. Java visibility: + public, - private, # protected, ~ package-private." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="60" width="1280" height="48" />
+        </mxCell>
+        <mxCell id="Customer" value="Customer" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="180" width="400" height="322.0" />
+        </mxCell>
+        <mxCell id="Customerr0" value="«abstract»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="49" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Customerr1" value="-status: CustomerStatus" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="76" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Customerr2" value="-order: Order" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="103" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Customerr3" value="-satisfaction: int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="130" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Customerr4" value="~placeOrder(item, bill, turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="157" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Customerr5" value="~serve(turn: int): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="184" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Customerr6" value="~finishEating(turn: int): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="211" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Customerr7" value="~pay(turn: int): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="238" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Order" value="Order" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="550" y="180" width="390" height="241" />
+        </mxCell>
+        <mxCell id="Orderr0" value="-status: OrderStatus" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="10" y="49" width="370.0" height="26" />
+        </mxCell>
+        <mxCell id="Orderr1" value="-billCents: int {final}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="10" y="76" width="370.0" height="26" />
+        </mxCell>
+        <mxCell id="Orderr2" value="-readyTurn: int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="10" y="103" width="370.0" height="26" />
+        </mxCell>
+        <mxCell id="Orderr3" value="~advancePreparation(turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="10" y="130" width="370.0" height="26" />
+        </mxCell>
+        <mxCell id="Orderr4" value="+canBeServedAt(turn): boolean" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="10" y="157" width="370.0" height="26" />
+        </mxCell>
+        <mxCell id="Orderr5" value="~markServed(turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="10" y="184" width="370.0" height="26" />
+        </mxCell>
+        <mxCell id="Orderr6" value="~markPaid(turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Order">
+          <mxGeometry as="geometry" x="10" y="211" width="370.0" height="26" />
+        </mxCell>
+        <mxCell id="Table" value="Table" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1040" y="180" width="330" height="160" />
+        </mxCell>
+        <mxCell id="Tabler0" value="-occupant: Customer" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="10" y="49" width="310.0" height="26" />
+        </mxCell>
+        <mxCell id="Tabler1" value="+isFree(): boolean" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="10" y="76" width="310.0" height="26" />
+        </mxCell>
+        <mxCell id="Tabler2" value="~seat(c: Customer): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="10" y="103" width="310.0" height="26" />
+        </mxCell>
+        <mxCell id="Tabler3" value="~release(): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="10" y="130" width="310.0" height="26" />
+        </mxCell>
+        <mxCell id="MenuItem" value="MenuItem" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="560" y="650" width="390" height="133" />
+        </mxCell>
+        <mxCell id="MenuItemr0" value="-name: String {final}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="MenuItem">
+          <mxGeometry as="geometry" x="10" y="49" width="370.0" height="26" />
+        </mxCell>
+        <mxCell id="MenuItemr1" value="-priceCents: int {final}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="MenuItem">
+          <mxGeometry as="geometry" x="10" y="76" width="370.0" height="26" />
+        </mxCell>
+        <mxCell id="MenuItemr2" value="-preparationUnits: int {final}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="MenuItem">
+          <mxGeometry as="geometry" x="10" y="103" width="370.0" height="26" />
+        </mxCell>
+        <mxCell id="order" edge="1" parent="1" source="Customer" target="Order" style="html=1;rounded=0;strokeWidth=1.4;startArrow=diamond;startFill=1;endArrow=none;exitX=1;exitY=0.25;entryX=0;entryY=0.26;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="480" y="260" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="orderlabel" value="order" style="text;html=1;align=center;whiteSpace=wrap;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="486.5" y="218.32999999999998" width="57" height="25" />
+        </mxCell>
+        <mxCell id="ordersource" value="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="429.0" y="273.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="ordertarget" value="0..1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="502.0" y="268.65999999999997" width="42" height="24" />
+        </mxCell>
+        <mxCell id="occupant" edge="1" parent="1" source="Table" target="Customer" style="html=1;rounded=0;strokeWidth=1.4;endArrow=none;exitX=0.5;exitY=1;entryX=0.5;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1205" y="540" />
+              <mxPoint x="210" y="540" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="occupantlabel" value="occupant" style="text;html=1;align=center;whiteSpace=wrap;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="647.5" y="507.0" width="84" height="25" />
+        </mxCell>
+        <mxCell id="occupantsource" value="0..1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1150.0" y="348.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="occupanttarget" value="0..1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="165.0" y="516.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="item" edge="1" parent="1" source="Order" target="MenuItem" style="html=1;rounded=0;strokeWidth=1.4;endArrow=none;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="itemlabel" value="item" style="text;html=1;align=center;whiteSpace=wrap;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="768.0" y="504.5" width="48" height="25" />
+        </mxCell>
+        <mxCell id="itemsource" value="0..*" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="690.0" y="429.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="itemtarget" value="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="700.0" y="618.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="enc" value="Encapsulation: lifecycle fields are private. Package-private transition methods validate the current state and turn before mutation. The Order → Customer back-reference is inverse to the customer/order link shown above; association fields are elided from member lists." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="820" width="1310" height="95" />
+        </mxCell>
+        <mxCell id="CustomerRecovery" value="+recoverWaitingSatisfaction(n: int)&lt;br/&gt;: void {final}" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="265.0" width="380.0" height="52" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Customer polymorphism" id="p2">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Stage 2 / 3 — customer polymorphism" style="text;html=1;align=center;fontSize=25;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="15" width="1280" height="40" />
+        </mxCell>
+        <mxCell id="subtitle" value="Selected members shown; complete declarations remain in source. Java visibility: + public, - private, # protected, ~ package-private." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="60" width="1280" height="48" />
+        </mxCell>
+        <mxCell id="Customer" value="Customer" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="455" y="130" width="475" height="241.0" />
+        </mxCell>
+        <mxCell id="Customerr0" value="«abstract»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="49" width="455.0" height="26" />
+        </mxCell>
+        <mxCell id="Customerr1" value="+chooseItem(menu: Menu): MenuItem" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="76" width="455.0" height="26" />
+        </mxCell>
+        <mxCell id="Customerr2" value="+applyDiscount(cents: int): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="103" width="455.0" height="26" />
+        </mxCell>
+        <mxCell id="Customerr3" value="#waitingLossPerTurn(): int {abstract}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="130" width="455.0" height="26" />
+        </mxCell>
+        <mxCell id="Customerr4" value="~loseWaitingSatisfaction(): void" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="157" width="455.0" height="26" />
+        </mxCell>
+        <mxCell id="RegularCustomer" value="RegularCustomer" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="520" width="420" height="79" />
+        </mxCell>
+        <mxCell id="RegularCustomerr0" value="#waitingLossPerTurn(): int = 8" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="RegularCustomer">
+          <mxGeometry as="geometry" x="10" y="49" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="VIPCustomer" value="VIPCustomer" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="485" y="520" width="420" height="106" />
+        </mxCell>
+        <mxCell id="VIPCustomerr0" value="#waitingLossPerTurn(): int = 5" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="VIPCustomer">
+          <mxGeometry as="geometry" x="10" y="49" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="VIPCustomerr1" value="+applyDiscount(cents: int): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="VIPCustomer">
+          <mxGeometry as="geometry" x="10" y="76" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="CriticCustomer" value="CriticCustomer" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="945" y="520" width="420" height="106" />
+        </mxCell>
+        <mxCell id="CriticCustomerr0" value="#waitingLossPerTurn(): int = 12" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="CriticCustomer">
+          <mxGeometry as="geometry" x="10" y="49" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="CriticCustomerr1" value="+chooseItem(menu: Menu): MenuItem" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="CriticCustomer">
+          <mxGeometry as="geometry" x="10" y="76" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="inh0" edge="1" parent="1" source="RegularCustomer" target="Customer" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.14;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="inh1" edge="1" parent="1" source="VIPCustomer" target="Customer" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.46;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="inh2" edge="1" parent="1" source="CriticCustomer" target="Customer" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.78;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="poly" value="Polymorphism: loseWaitingSatisfaction() calls the overridden waitingLossPerTurn(). The controller uses Customer, not VIP/Critic type checks. Critic assumes Pasta exists in the supported menu." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="710" width="1320" height="85" />
+        </mxCell>
+        <mxCell id="CustomerRecovery" value="+recoverWaitingSatisfaction(n: int)&lt;br/&gt;: void {final}" style="text;html=1;whiteSpace=wrap;align=left;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="184.0" width="455.0" height="52" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Lifecycle and input values" id="p3">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Stage 3 — explicit status and action values" style="text;html=1;align=center;fontSize=25;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="15" width="1280" height="40" />
+        </mxCell>
+        <mxCell id="subtitle" value="Selected members shown; complete declarations remain in source. Java visibility: + public, - private, # protected, ~ package-private." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="60" width="1280" height="48" />
+        </mxCell>
+        <mxCell id="CustomerStatus" value="CustomerStatus" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="150" width="360" height="268" />
+        </mxCell>
+        <mxCell id="CustomerStatusr0" value="«enumeration»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="10" y="49" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatusr1" value="WAITING" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="10" y="76" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatusr2" value="SEATED" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="10" y="103" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatusr3" value="WAITING_FOR_FOOD" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="10" y="130" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatusr4" value="SERVED" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="10" y="157" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatusr5" value="READY_TO_PAY" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="10" y="184" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatusr6" value="PAID" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="10" y="211" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="CustomerStatusr7" value="LEFT" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="CustomerStatus">
+          <mxGeometry as="geometry" x="10" y="238" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="OrderStatus" value="OrderStatus" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="510" y="150" width="360" height="241" />
+        </mxCell>
+        <mxCell id="OrderStatusr0" value="«enumeration»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="OrderStatus">
+          <mxGeometry as="geometry" x="10" y="49" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="OrderStatusr1" value="PLACED" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="OrderStatus">
+          <mxGeometry as="geometry" x="10" y="76" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="OrderStatusr2" value="PREPARING" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="OrderStatus">
+          <mxGeometry as="geometry" x="10" y="103" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="OrderStatusr3" value="READY" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="OrderStatus">
+          <mxGeometry as="geometry" x="10" y="130" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="OrderStatusr4" value="SERVED" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="OrderStatus">
+          <mxGeometry as="geometry" x="10" y="157" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="OrderStatusr5" value="PAID" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="OrderStatus">
+          <mxGeometry as="geometry" x="10" y="184" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="OrderStatusr6" value="CANCELLED" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="OrderStatus">
+          <mxGeometry as="geometry" x="10" y="211" width="340.0" height="26" />
+        </mxCell>
+        <mxCell id="WaiterAction" value="WaiterAction" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="960" y="150" width="420" height="241" />
+        </mxCell>
+        <mxCell id="WaiterActionr0" value="«record»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="WaiterAction">
+          <mxGeometry as="geometry" x="10" y="49" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="WaiterActionr1" value="+type: Type" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="WaiterAction">
+          <mxGeometry as="geometry" x="10" y="76" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="WaiterActionr2" value="+targetId: int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="WaiterAction">
+          <mxGeometry as="geometry" x="10" y="103" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="WaiterActionr3" value="+seat(id): WaiterAction {static}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="WaiterAction">
+          <mxGeometry as="geometry" x="10" y="130" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="WaiterActionr4" value="+order(id): WaiterAction {static}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="WaiterAction">
+          <mxGeometry as="geometry" x="10" y="157" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="WaiterActionr5" value="+serve(id): WaiterAction {static}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="WaiterAction">
+          <mxGeometry as="geometry" x="10" y="184" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="WaiterActionr6" value="+waitAction(): WaiterAction {static}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="WaiterAction">
+          <mxGeometry as="geometry" x="10" y="211" width="400.0" height="26" />
+        </mxCell>
+        <mxCell id="Type" value="Type" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="980" y="630" width="380" height="106" />
+        </mxCell>
+        <mxCell id="Typer0" value="«nested enumeration»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Type">
+          <mxGeometry as="geometry" x="10" y="49" width="360.0" height="26" />
+        </mxCell>
+        <mxCell id="Typer1" value="SEAT / ORDER / SERVE / WAIT" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Type">
+          <mxGeometry as="geometry" x="10" y="76" width="360.0" height="26" />
+        </mxCell>
+        <mxCell id="type" edge="1" parent="1" source="WaiterAction" target="Type" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="typelabel" value="typed choice" style="text;html=1;align=center;whiteSpace=wrap;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1188.0" y="497.5" width="120" height="25" />
+        </mxCell>
+        <mxCell id="status" value="Customer owns customer status; Order owns order status. WAIT actions use target0; all other actions require a positive ID. Order CANCELLED records departure without payment." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="800" width="1320" height="90" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

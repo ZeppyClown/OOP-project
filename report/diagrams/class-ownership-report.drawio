@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Restaurant ownership" id="p1">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Stage 3 — restaurant membership and table ownership" style="text;html=1;align=center;fontSize=25;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="15" width="1280" height="40" />
+        </mxCell>
+        <mxCell id="subtitle" value="Selected members shown; complete declarations remain in source. Java visibility: + public, - private, # protected, ~ package-private." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="60" width="1280" height="48" />
+        </mxCell>
+        <mxCell id="Restaurant" value="Restaurant" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="450" y="130" width="490" height="187" />
+        </mxCell>
+        <mxCell id="Restaurantr0" value="-customers: List&amp;lt;Customer&amp;gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="10" y="49" width="470.0" height="26" />
+        </mxCell>
+        <mxCell id="Restaurantr1" value="-tables: List&amp;lt;Table&amp;gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="10" y="76" width="470.0" height="26" />
+        </mxCell>
+        <mxCell id="Restaurantr2" value="-menu: Menu" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="10" y="103" width="470.0" height="26" />
+        </mxCell>
+        <mxCell id="Restaurantr3" value="+registerArrival(c): void" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="10" y="130" width="470.0" height="26" />
+        </mxCell>
+        <mxCell id="Restaurantr4" value="+collectPayment(c, turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Restaurant">
+          <mxGeometry as="geometry" x="10" y="157" width="470.0" height="26" />
+        </mxCell>
+        <mxCell id="Customer" value="Customer" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="570" width="400" height="133" />
+        </mxCell>
+        <mxCell id="Customerr0" value="-restaurant: Restaurant" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="49" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Customerr1" value="~bindTo(r: Restaurant): void" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="76" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Customerr2" value="+getId(): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Customer">
+          <mxGeometry as="geometry" x="10" y="103" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Table" value="Table" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="520" y="570" width="400" height="133" />
+        </mxCell>
+        <mxCell id="Tabler0" value="-occupant: Customer" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="10" y="49" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Tabler1" value="~seat(c): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="10" y="76" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Tabler2" value="~release(): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Table">
+          <mxGeometry as="geometry" x="10" y="103" width="380.0" height="26" />
+        </mxCell>
+        <mxCell id="Menu" value="Menu" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1030" y="570" width="370" height="106" />
+        </mxCell>
+        <mxCell id="Menur0" value="-choices: List&amp;lt;MenuItem&amp;gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Menu">
+          <mxGeometry as="geometry" x="10" y="49" width="350.0" height="26" />
+        </mxCell>
+        <mxCell id="Menur1" value="+getItems(): List&amp;lt;MenuItem&amp;gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Menu">
+          <mxGeometry as="geometry" x="10" y="76" width="350.0" height="26" />
+        </mxCell>
+        <mxCell id="members" edge="1" parent="1" source="Restaurant" target="Customer" style="html=1;rounded=0;strokeWidth=1.4;endArrow=none;exitX=0;exitY=0.5;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="220" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="memberslabel" value="registered customers" style="text;html=1;align=center;whiteSpace=wrap;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="238.0" y="392.0" width="192" height="25" />
+        </mxCell>
+        <mxCell id="memberssource" value="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="402.0" y="231.5" width="42" height="24" />
+        </mxCell>
+        <mxCell id="memberstarget" value="0..*" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="165.0" y="538.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="tables" edge="1" parent="1" source="Restaurant" target="Table" style="html=1;rounded=0;strokeWidth=1.4;startArrow=diamond;startFill=1;endArrow=none;exitX=0.5;exitY=1;entryX=0.44;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="tableslabel" value="tables" style="text;html=1;align=center;whiteSpace=wrap;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="713.5" y="430.5" width="66" height="25" />
+        </mxCell>
+        <mxCell id="tablessource" value="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="640.0" y="325.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="tablestarget" value="2" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="641.0" y="538.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="menu" edge="1" parent="1" source="Restaurant" target="Menu" style="html=1;rounded=0;strokeWidth=1.4;endArrow=none;exitX=1;exitY=0.5;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1215" y="240" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="menulabel" value="injected menu" style="text;html=1;align=center;whiteSpace=wrap;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1233.0" y="392.0" width="129" height="25" />
+        </mxCell>
+        <mxCell id="menusource" value="0..*" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="949.0" y="231.5" width="42" height="24" />
+        </mxCell>
+        <mxCell id="menutarget" value="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1160.0" y="538.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="ownership" value="Composition: Restaurant constructs exactly two tables. Membership: registerArrival binds customer identity and rejects duplicate IDs or ownership by another restaurant. These associations are shown here instead of repeating the corresponding fields on every view." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="800" width="1340" height="100" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -214,7 +214,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel4_label" value="Restaurant → Host [0..* : 1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel4_label" value="Restaurant → Host" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="941.5" y="1364" width="850" height="28" />
         </mxCell>
         <mxCell id="rel5" value="" style="html=1;rounded=0;endArrow=open;endFill=0;exitX=0.13214285714285715;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Restaurant" target="Waiter">
@@ -227,7 +227,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel5_label" value="Restaurant → Waiter [0..* : 1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel5_label" value="Restaurant → Waiter" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="1579.5" y="1410" width="460" height="28" />
         </mxCell>
         <mxCell id="rel6" value="" style="html=1;rounded=0;endArrow=open;endFill=0;exitX=0.175;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Restaurant" target="Chef">
@@ -240,7 +240,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel6_label" value="Restaurant → Chef [0..* : 1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel6_label" value="Restaurant → Chef" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="522.5" y="1456" width="850" height="28" />
         </mxCell>
         <mxCell id="rel7" value="" style="html=1;rounded=0;endArrow=open;endFill=0;exitX=0.21785714285714286;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Restaurant" target="Cashier">
@@ -253,7 +253,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel7_label" value="Restaurant → Cashier [0..* : 1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel7_label" value="Restaurant → Cashier" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="965.5" y="1502" width="850" height="28" />
         </mxCell>
         <mxCell id="rel8" value="" style="html=1;rounded=0;endArrow=open;endFill=0;dashed=1;exitX=0.08928571428571429;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Host" target="Table">
@@ -329,6 +329,46 @@
         </mxCell>
         <mxCell id="note2" value="&lt;b&gt;Waiter&lt;/b&gt;&lt;br&gt;Restaurant supplies its own customer, menu choice and&lt;br/&gt;quote. Waiter checks local state, timing and capacity,&lt;br/&gt;not the global turn phase." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="1820" y="2081" width="560" height="150" />
+        </mxCell>
+        <mxCell id="rel4_label-1" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel4">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel4_label1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel4">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel5_label-1" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel5">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel5_label1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel5">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel6_label-1" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel6">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel6_label1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel6">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel7_label-1" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel7">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel7_label1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel7">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

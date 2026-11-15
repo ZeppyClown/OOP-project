@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Turn 15 — Burger becomes READY — panel 1" id="p1">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="turnloop" value="loop" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="10" y="215" width="930" height="805" />
+        </mxCell>
+        <mxCell id="title" value="Turn 15 — Burger becomes READY — panel 1" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="15" y="10" width="925" height="45" />
+        </mxCell>
+        <mxCell id="legend" value="Calls: solid filled head. Returns: dashed open head. Human input/output: solid open head. Participants repeat across continued pages." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="55" width="910" height="50" />
+        </mxCell>
+        <mxCell id="lifeG" value="gc:GameController" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="115" width="190" height="930.0" />
+        </mxCell>
+        <mxCell id="lifeR" value="r:Restaurant" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="235" y="115" width="190" height="930.0" />
+        </mxCell>
+        <mxCell id="lifeChef" value="chef:Chef" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="445" y="115" width="190" height="930.0" />
+        </mxCell>
+        <mxCell id="lifeO" value="o5:Order" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="655" y="115" width="190" height="930.0" />
+        </mxCell>
+        <mxCell id="loopguard" value="[for turn = 1..18; detail: turn 15 Chef completion]" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="110" y="218" width="815" height="45" />
+        </mxCell>
+        <mxCell id="n1" value="Expansion of the preparation action identified in the preceding detail. This is the same Chef action, not a second preparation in the turn." style="shape=note;html=1;whiteSpace=wrap;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="35" y="285" width="880" height="70" />
+        </mxCell>
+        <mxCell id="m2" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="120" y="420" />
+            <mxPoint as="targetPoint" x="330" y="420" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label2" value="prepareOrder(o5,15)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="128" y="375" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m3" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="330" y="510" />
+            <mxPoint as="targetPoint" x="540" y="510" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label3" value="prepare(o5,15)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="338" y="465" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m4" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="605" />
+            <mxPoint as="targetPoint" x="750" y="605" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label4" value="advancePreparation(15)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="555" width="195" height="50" />
+        </mxCell>
+        <mxCell id="m5" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="700" />
+            <mxPoint as="targetPoint" x="540" y="700" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label5" value="null; status = READY; readyTurn = 15" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="650" width="195" height="50" />
+        </mxCell>
+        <mxCell id="m6" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="790" />
+            <mxPoint as="targetPoint" x="330" y="790" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label6" value="null; Chef task used" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="338" y="745" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m7" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="330" y="880" />
+            <mxPoint as="targetPoint" x="120" y="880" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label7" value="null" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="128" y="835" width="195" height="45" />
+        </mxCell>
+        <mxCell id="n8" value="Serving remains forbidden this turn: canBeServedAt(t) requires readyTurn &lt; t." style="shape=note;html=1;whiteSpace=wrap;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="35" y="925" width="880" height="70" />
+        </mxCell>
+        <mxCell id="cont" value="Continuation: other phases follow the controller order; omitted idle participants remain the same objects." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="1035" width="900" height="60" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

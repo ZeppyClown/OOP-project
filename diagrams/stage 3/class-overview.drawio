@@ -142,7 +142,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel4_label" value="GameController → PricingPolicy: selects one at order placement [1 : 2]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel4_label" value="GameController → PricingPolicy: selects one at order placement" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="542.5" y="479" width="850" height="28" />
         </mxCell>
         <mxCell id="rel5" value="" style="html=1;rounded=0;endArrow=open;endFill=0;exitX=0.08928571428571429;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Restaurant" target="Host">
@@ -181,7 +181,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel7_label" value="Restaurant → Customer: permanent registration [0..1 : 0..*]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel7_label" value="Restaurant → Customer: permanent registration" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="1053.0" y="916" width="651" height="28" />
         </mxCell>
         <mxCell id="rel8" value="" style="html=1;rounded=0;endArrow=open;endFill=0;startArrow=diamond;startFill=1;endArrow=none;exitX=0.08928571428571429;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Customer" target="Order">
@@ -194,7 +194,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel8_label" value="Customer → Order: guarded lifecycle [1 : 0..1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel8_label" value="Customer → Order: guarded lifecycle" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="490.5" y="962" width="850" height="28" />
         </mxCell>
         <mxCell id="rel9" value="" style="html=1;rounded=0;endArrow=open;endFill=0;exitX=0.08928571428571429;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Order" target="MenuItem">
@@ -241,6 +241,36 @@
         </mxCell>
         <mxCell id="note1" value="&lt;b&gt;Customer&lt;/b&gt;&lt;br&gt;Recovery includes READY food awaiting service. Served, ready-to-pay, paid and departed customers are excluded." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="950" y="1774" width="560" height="150" />
+        </mxCell>
+        <mxCell id="rel4_label-1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel4">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel4_label1" value="2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel4">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel7_label-1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel7">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel7_label1" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel7">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel8_label-1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel8">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel8_label1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel8">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

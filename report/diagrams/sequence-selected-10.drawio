@@ -1,0 +1,359 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Turn 18 — payment and final result — panel 1" id="p1">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="turnloop" value="loop" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="10" y="215" width="1770" height="535" />
+        </mxCell>
+        <mxCell id="title" value="Turn 18 — payment and final result — panel 1" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="15" y="10" width="1765" height="45" />
+        </mxCell>
+        <mxCell id="legend" value="Calls: solid filled head. Returns: dashed open head. Human input/output: solid open head. Participants repeat across continued pages." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="55" width="1750" height="50" />
+        </mxCell>
+        <mxCell id="lifeM" value="manager:Manager" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="115" width="190" height="660.0" />
+        </mxCell>
+        <mxCell id="lifeI" value="ui:ConsoleUI" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="235" y="115" width="190" height="660.0" />
+        </mxCell>
+        <mxCell id="lifeG" value="gc:GameController" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="445" y="115" width="190" height="660.0" />
+        </mxCell>
+        <mxCell id="lifeR" value="r:Restaurant" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="655" y="115" width="190" height="660.0" />
+        </mxCell>
+        <mxCell id="lifeCash" value="cashier:Cashier" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="865" y="115" width="190" height="660.0" />
+        </mxCell>
+        <mxCell id="lifeC5" value="c5:RegularCustomer" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1075" y="115" width="190" height="660.0" />
+        </mxCell>
+        <mxCell id="lifeO5" value="o5:Order" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1285" y="115" width="190" height="660.0" />
+        </mxCell>
+        <mxCell id="lifeT" value="table:Table" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1495" y="115" width="190" height="660.0" />
+        </mxCell>
+        <mxCell id="loopguard" value="[for turn = 1..18; detail: turn 18, then exit loop]" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="110" y="218" width="1655" height="45" />
+        </mxCell>
+        <mxCell id="n1" value="Start/activation/Host/Waiter/Chef repeat with wait choices (B activation answer no). C5 is now eligible. After automatic phases, all18 turns are complete." style="shape=note;html=1;whiteSpace=wrap;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="35" y="285" width="1720" height="70" />
+        </mxCell>
+        <mxCell id="m2" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="420" />
+            <mxPoint as="targetPoint" x="750" y="420" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label2" value="advanceEating(18)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="375" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m3" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="515" />
+            <mxPoint as="targetPoint" x="750" y="515" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label3" value="oldestEligiblePayer(18)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="465" width="195" height="50" />
+        </mxCell>
+        <mxCell id="m4" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="610" />
+            <mxPoint as="targetPoint" x="540" y="610" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label4" value="c5 [readyToPayTurn17 &amp;lt;18]" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="560" width="195" height="50" />
+        </mxCell>
+        <mxCell id="m5" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="700" />
+            <mxPoint as="targetPoint" x="750" y="700" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label5" value="collectPayment(c5,18)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="655" width="195" height="45" />
+        </mxCell>
+        <mxCell id="cont" value="Continuation: other phases follow the controller order; omitted idle participants remain the same objects." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="765" width="1740" height="60" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Turn 18 — payment and final result — panel 2" id="p2">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="turnloop" value="loop" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="10" y="215" width="1770" height="620" />
+        </mxCell>
+        <mxCell id="title" value="Turn 18 — payment and final result — panel 2" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="15" y="10" width="1765" height="45" />
+        </mxCell>
+        <mxCell id="legend" value="Calls: solid filled head. Returns: dashed open head. Human input/output: solid open head. Participants repeat across continued pages." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="55" width="1750" height="50" />
+        </mxCell>
+        <mxCell id="lifeM" value="manager:Manager" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="lifeI" value="ui:ConsoleUI" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="235" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="lifeG" value="gc:GameController" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="445" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="lifeR" value="r:Restaurant" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="655" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="lifeCash" value="cashier:Cashier" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="865" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="lifeC5" value="c5:RegularCustomer" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1075" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="lifeO5" value="o5:Order" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1285" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="lifeT" value="table:Table" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1495" y="115" width="190" height="745.0" />
+        </mxCell>
+        <mxCell id="loopguard" value="[for turn = 1..18; detail: turn 18, then exit loop] [continued]" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="110" y="218" width="1655" height="45" />
+        </mxCell>
+        <mxCell id="m1" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="330" />
+            <mxPoint as="targetPoint" x="960" y="330" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label1" value="collect(c5,18)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="758" y="285" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m2" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="960" y="420" />
+            <mxPoint as="targetPoint" x="1170" y="420" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label2" value="pay(18)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="968" y="375" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m3" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="510" />
+            <mxPoint as="targetPoint" x="1380" y="510" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label3" value="markPaid(18)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1178" y="465" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m4" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="1170" y="605" />
+            <mxPoint as="targetPoint" x="960" y="605" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label4" value="null; paid satisfaction stored" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="968" y="555" width="195" height="50" />
+        </mxCell>
+        <mxCell id="m5" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="960" y="695" />
+            <mxPoint as="targetPoint" x="750" y="695" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label5" value="null" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="758" y="650" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m6" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="785" />
+            <mxPoint as="targetPoint" x="1590" y="785" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label6" value="release()" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="758" y="740" width="825" height="45" />
+        </mxCell>
+        <mxCell id="cont" value="Continuation: other phases follow the controller order; omitted idle participants remain the same objects." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="850" width="1740" height="60" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Turn 18 — payment and final result — panel 3" id="p3">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="turnloop" value="loop" style="shape=umlFrame;html=1;fillColor=none;tabWidth=85;tabHeight=32;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="10" y="215" width="1770" height="445" />
+        </mxCell>
+        <mxCell id="title" value="Turn 18 — payment and final result — panel 3" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="15" y="10" width="1765" height="45" />
+        </mxCell>
+        <mxCell id="legend" value="Calls: solid filled head. Returns: dashed open head. Human input/output: solid open head. Participants repeat across continued pages." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="55" width="1750" height="50" />
+        </mxCell>
+        <mxCell id="lifeM" value="manager:Manager" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="115" width="190" height="725.0" />
+        </mxCell>
+        <mxCell id="lifeI" value="ui:ConsoleUI" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="235" y="115" width="190" height="725.0" />
+        </mxCell>
+        <mxCell id="lifeG" value="gc:GameController" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="445" y="115" width="190" height="725.0" />
+        </mxCell>
+        <mxCell id="lifeR" value="r:Restaurant" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="655" y="115" width="190" height="725.0" />
+        </mxCell>
+        <mxCell id="lifeCash" value="cashier:Cashier" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="865" y="115" width="190" height="725.0" />
+        </mxCell>
+        <mxCell id="lifeC5" value="c5:RegularCustomer" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1075" y="115" width="190" height="725.0" />
+        </mxCell>
+        <mxCell id="lifeO5" value="o5:Order" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1285" y="115" width="190" height="725.0" />
+        </mxCell>
+        <mxCell id="lifeT" value="table:Table" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1495" y="115" width="190" height="725.0" />
+        </mxCell>
+        <mxCell id="loopguard" value="[for turn = 1..18; detail: turn 18, then exit loop] [continued]" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="110" y="218" width="1655" height="45" />
+        </mxCell>
+        <mxCell id="m1" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="330" />
+            <mxPoint as="targetPoint" x="540" y="330" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label1" value="null" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="285" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m2" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="420" />
+            <mxPoint as="targetPoint" x="750" y="420" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label2" value="applyWaitingLoss()" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="375" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m3" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="515" />
+            <mxPoint as="targetPoint" x="330" y="515" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label3" value="showActionState(snapshot18)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="338" y="465" width="195" height="50" />
+        </mxCell>
+        <mxCell id="m4" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="610" />
+            <mxPoint as="targetPoint" x="330" y="610" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label4" value="showTurnEnd(summary18)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="338" y="560" width="195" height="50" />
+        </mxCell>
+        <mxCell id="d5" value="end loop [turn becomes19]; final result is outside the loop" style="text;html=1;align=center;fillColor=#e8ecdf;fontSize=19;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="655" width="1740" height="45" />
+        </mxCell>
+        <mxCell id="m6" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="765" />
+            <mxPoint as="targetPoint" x="750" y="765" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label6" value="evaluateResult()" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="720" width="195" height="45" />
+        </mxCell>
+        <mxCell id="cont" value="Continuation: other phases follow the controller order; omitted idle participants remain the same objects." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="830" width="1740" height="60" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Turn 18 — payment and final result — panel 4" id="p4">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Turn 18 — payment and final result — panel 4" style="text;html=1;align=center;fontSize=24;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="15" y="10" width="1765" height="45" />
+        </mxCell>
+        <mxCell id="legend" value="Calls: solid filled head. Returns: dashed open head. Human input/output: solid open head. Participants repeat across continued pages." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="55" width="1750" height="50" />
+        </mxCell>
+        <mxCell id="lifeM" value="manager:Manager" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="115" width="190" height="570.0" />
+        </mxCell>
+        <mxCell id="lifeI" value="ui:ConsoleUI" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="235" y="115" width="190" height="570.0" />
+        </mxCell>
+        <mxCell id="lifeG" value="gc:GameController" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="445" y="115" width="190" height="570.0" />
+        </mxCell>
+        <mxCell id="lifeR" value="r:Restaurant" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="655" y="115" width="190" height="570.0" />
+        </mxCell>
+        <mxCell id="lifeCash" value="cashier:Cashier" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="865" y="115" width="190" height="570.0" />
+        </mxCell>
+        <mxCell id="lifeC5" value="c5:RegularCustomer" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1075" y="115" width="190" height="570.0" />
+        </mxCell>
+        <mxCell id="lifeO5" value="o5:Order" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1285" y="115" width="190" height="570.0" />
+        </mxCell>
+        <mxCell id="lifeT" value="table:Table" style="shape=umlLifeline;html=1;size=65;whiteSpace=wrap;collapsible=0;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1495" y="115" width="190" height="570.0" />
+        </mxCell>
+        <mxCell id="loopguard" value="After turn18: finalReport() [outside the completed loop]" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="110" y="218" width="1655" height="45" />
+        </mxCell>
+        <mxCell id="m1" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="750" y="330" />
+            <mxPoint as="targetPoint" x="540" y="330" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label1" value="A:VICTORY / B:DEFEAT" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="548" y="285" width="195" height="45" />
+        </mxCell>
+        <mxCell id="m2" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=1;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="540" y="425" />
+            <mxPoint as="targetPoint" x="330" y="425" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label2" value="showFinalResult(finalReport)" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="338" y="375" width="195" height="50" />
+        </mxCell>
+        <mxCell id="m3" edge="1" parent="1" style="html=1;rounded=0;strokeWidth=1.4;endArrow=open;endFill=0;">
+          <mxGeometry as="geometry" relative="1">
+            <mxPoint as="sourcePoint" x="330" y="520" />
+            <mxPoint as="targetPoint" x="120" y="520" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="label3" value="A:4 paid,$49.50,67.3 / B:4 paid,$56.10,57.8" style="text;html=1;whiteSpace=wrap;verticalAlign=bottom;align=center;fillColor=#ffffff;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="128" y="470" width="195" height="50" />
+        </mxCell>
+        <mxCell id="n4" value="Thresholds: paid≥4, revenue≥4500 cents, paid satisfaction sum≥60×paid. Both paths clear paid/revenue; only A clears satisfaction. EOF at any choice exits with an interruption instead of this final result." style="shape=note;html=1;whiteSpace=wrap;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="35" y="565" width="1720" height="70" />
+        </mxCell>
+        <mxCell id="cont" value="Continuation: other phases follow the controller order; omitted idle participants remain the same objects." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="675" width="1740" height="60" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

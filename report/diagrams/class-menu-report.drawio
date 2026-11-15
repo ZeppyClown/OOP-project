@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Menu values" id="p1">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Stage 3 — menu ownership and shared combo components" style="text;html=1;align=center;fontSize=25;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="15" width="1280" height="40" />
+        </mxCell>
+        <mxCell id="subtitle" value="Selected members shown; complete declarations remain in source. Java visibility: + public, - private, # protected, ~ package-private." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="60" width="1280" height="48" />
+        </mxCell>
+        <mxCell id="Menu" value="Menu" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="150" width="390" height="133" />
+        </mxCell>
+        <mxCell id="Menur0" value="-choices: List&amp;lt;MenuItem&amp;gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Menu">
+          <mxGeometry as="geometry" x="10" y="49" width="370.0" height="26" />
+        </mxCell>
+        <mxCell id="Menur1" value="+Menu(includeCombo: boolean)" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Menu">
+          <mxGeometry as="geometry" x="10" y="76" width="370.0" height="26" />
+        </mxCell>
+        <mxCell id="Menur2" value="+getItems(): List&amp;lt;MenuItem&amp;gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Menu">
+          <mxGeometry as="geometry" x="10" y="103" width="370.0" height="26" />
+        </mxCell>
+        <mxCell id="MenuItem" value="MenuItem" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="880" y="150" width="490" height="214" />
+        </mxCell>
+        <mxCell id="MenuItemr0" value="-name: String {final}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="MenuItem">
+          <mxGeometry as="geometry" x="10" y="49" width="470.0" height="26" />
+        </mxCell>
+        <mxCell id="MenuItemr1" value="-priceCents: int {final}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="MenuItem">
+          <mxGeometry as="geometry" x="10" y="76" width="470.0" height="26" />
+        </mxCell>
+        <mxCell id="MenuItemr2" value="-preparationUnits: int {final}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="MenuItem">
+          <mxGeometry as="geometry" x="10" y="103" width="470.0" height="26" />
+        </mxCell>
+        <mxCell id="MenuItemr3" value="+getName(): String {final}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="MenuItem">
+          <mxGeometry as="geometry" x="10" y="130" width="470.0" height="26" />
+        </mxCell>
+        <mxCell id="MenuItemr4" value="+getPriceCents(): int {final}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="MenuItem">
+          <mxGeometry as="geometry" x="10" y="157" width="470.0" height="26" />
+        </mxCell>
+        <mxCell id="MenuItemr5" value="+getPreparationUnits(): int {final}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="MenuItem">
+          <mxGeometry as="geometry" x="10" y="184" width="470.0" height="26" />
+        </mxCell>
+        <mxCell id="ComboMeal" value="ComboMeal" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="590" width="480" height="187" />
+        </mxCell>
+        <mxCell id="ComboMealr0" value="" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="ComboMeal">
+          <mxGeometry as="geometry" x="10" y="49" width="460.0" height="26" />
+        </mxCell>
+        <mxCell id="ComboMealr1" value="" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="ComboMeal">
+          <mxGeometry as="geometry" x="10" y="76" width="460.0" height="26" />
+        </mxCell>
+        <mxCell id="ComboMealr2" value="+getComponents(): List&amp;lt;MenuItem&amp;gt;" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="ComboMeal">
+          <mxGeometry as="geometry" x="10" y="103" width="460.0" height="26" />
+        </mxCell>
+        <mxCell id="ComboMealr3" value="" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="ComboMeal">
+          <mxGeometry as="geometry" x="10" y="130" width="460.0" height="26" />
+        </mxCell>
+        <mxCell id="ComboMealr4" value="" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="ComboMeal">
+          <mxGeometry as="geometry" x="10" y="157" width="460.0" height="26" />
+        </mxCell>
+        <mxCell id="owns" edge="1" parent="1" source="Menu" target="MenuItem" style="html=1;rounded=0;strokeWidth=1.4;startArrow=diamond;startFill=1;endArrow=none;exitX=1;exitY=0.5;entryX=0;entryY=0.3;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="645" y="220" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ownslabel" value="offered items" style="text;html=1;align=center;whiteSpace=wrap;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="698.0" y="184.1" width="129" height="25" />
+        </mxCell>
+        <mxCell id="ownssource" value="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="419.0" y="224.5" width="42" height="24" />
+        </mxCell>
+        <mxCell id="ownstarget" value="3..4" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="832.0" y="222.2" width="42" height="24" />
+        </mxCell>
+        <mxCell id="subtype" edge="1" parent="1" source="ComboMeal" target="MenuItem" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=0;exitX=1;exitY=0.35;entryX=0.32;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="firstComponent" edge="1" parent="1" source="ComboMeal" target="MenuItem" style="html=1;rounded=0;strokeWidth=1.4;startArrow=diamond;startFill=0;endArrow=none;exitX=1;exitY=0.75;entryX=0.7;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1220" y="730" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="firstComponentlabel" value="first" style="text;html=1;align=center;whiteSpace=wrap;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="809.0" y="697.125" width="102" height="25" />
+        </mxCell>
+        <mxCell id="firstComponentsource" value="0..*" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="509.0" y="738.25" width="42" height="24" />
+        </mxCell>
+        <mxCell id="firstComponenttarget" value="1" style="text;html=1;align=center;fillColor=none;strokeColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1168.0" y="372.0" width="42" height="24" />
+        </mxCell>
+        <mxCell id="notes" value="Composition: Menu creates its offered values. Shared aggregation: ComboMeal refers to two existing MenuItems; it does not exclusively own their lifetime. ComboMeal is a MenuItem, so Order/Chef need no combo-specific branch." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="870" width="1320" height="95" />
+        </mxCell>
+        <mxCell id="secondComponent" edge="1" parent="1" source="ComboMeal" target="MenuItem" style="html=1;rounded=0;strokeWidth=1.4;startArrow=diamond;startFill=0;endArrow=none;exitX=1;exitY=0.9;entryX=0.9;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="550" y="810" />
+              <mxPoint x="1321" y="810" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="secondComponentlabel" value="second" style="text;html=1;align=center;fillColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="750.0" y="780.0" width="90" height="25" />
+        </mxCell>
+        <mxCell id="secondComponentsource" value="0..*" style="text;html=1;align=center;fillColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="492.0" y="808.0" width="42" height="25" />
+        </mxCell>
+        <mxCell id="secondComponenttarget" value="1" style="text;html=1;align=center;fillColor=none;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1262.0" y="390.0" width="42" height="25" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Pricing policy" id="p2">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Stage 3 — quotation through a focused interface" style="text;html=1;align=center;fontSize=25;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="15" width="1280" height="40" />
+        </mxCell>
+        <mxCell id="subtitle" value="Selected members shown; complete declarations remain in source. Java visibility: + public, - private, # protected, ~ package-private." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="60" width="1280" height="48" />
+        </mxCell>
+        <mxCell id="PricingPolicy" value="PricingPolicy" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="430" y="140" width="520" height="106" />
+        </mxCell>
+        <mxCell id="PricingPolicyr0" value="«interface»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="PricingPolicy">
+          <mxGeometry as="geometry" x="10" y="49" width="500.0" height="26" />
+        </mxCell>
+        <mxCell id="PricingPolicyr1" value="+priceFor(c: Customer, item: MenuItem): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="PricingPolicy">
+          <mxGeometry as="geometry" x="10" y="76" width="500.0" height="26" />
+        </mxCell>
+        <mxCell id="StandardPricingPolicy" value="StandardPricingPolicy" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="520" width="480" height="106" />
+        </mxCell>
+        <mxCell id="StandardPricingPolicyr0" value="+priceFor(c, item): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="StandardPricingPolicy">
+          <mxGeometry as="geometry" x="10" y="49" width="460.0" height="26" />
+        </mxCell>
+        <mxCell id="StandardPricingPolicyr1" value="delegates customer discount" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="StandardPricingPolicy">
+          <mxGeometry as="geometry" x="10" y="76" width="460.0" height="26" />
+        </mxCell>
+        <mxCell id="HappyHourPricingPolicy" value="HappyHourPricingPolicy" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="860" y="520" width="500" height="133" />
+        </mxCell>
+        <mxCell id="HappyHourPricingPolicyr0" value="+priceFor(c, item): int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="HappyHourPricingPolicy">
+          <mxGeometry as="geometry" x="10" y="49" width="480.0" height="26" />
+        </mxCell>
+        <mxCell id="HappyHourPricingPolicyr1" value="customer discount, then 80%" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="HappyHourPricingPolicy">
+          <mxGeometry as="geometry" x="10" y="76" width="480.0" height="26" />
+        </mxCell>
+        <mxCell id="HappyHourPricingPolicyr2" value="half-up rounding at each step" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="HappyHourPricingPolicy">
+          <mxGeometry as="geometry" x="10" y="103" width="480.0" height="26" />
+        </mxCell>
+        <mxCell id="std" edge="1" parent="1" source="StandardPricingPolicy" target="PricingPolicy" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.2;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="happy" edge="1" parent="1" source="HappyHourPricingPolicy" target="PricingPolicy" style="html=1;rounded=0;strokeWidth=1.4;dashed=1;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.8;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="policy" value="Policy choice remains in GameController, using HappyHour.isActiveAt(turn). Restaurant supplies the selected policy to the quote call. The bill is stored once on Order; expiry cannot reprice it. VIP Salad: 900 → 810 → 648 cents during Happy Hour." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="770" width="1320" height="90" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

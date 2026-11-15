@@ -294,7 +294,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel0_label" value="Restaurant → Table [1 : 2]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel0_label" value="Restaurant → Table" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="522.5" y="827" width="850" height="28" />
         </mxCell>
         <mxCell id="rel1" value="" style="html=1;rounded=0;endArrow=open;endFill=0;startArrow=open;startFill=0;exitX=0.13214285714285715;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Restaurant" target="Customer">
@@ -307,7 +307,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel1_label" value="Restaurant → Customer: exclusive permanent registration [0..1 : 0..*]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel1_label" value="Restaurant → Customer: exclusive permanent registration" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="159.0" y="873" width="723" height="28" />
         </mxCell>
         <mxCell id="rel2" value="" style="html=1;rounded=0;endArrow=open;endFill=0;startArrow=block;startFill=0;endArrow=none;exitX=0.08928571428571429;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Customer" target="RegularCustomer">
@@ -359,7 +359,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel5_label" value="Customer → Order: creates once [1 : 0..1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel5_label" value="Customer → Order: creates once" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="103.5" y="1057" width="850" height="28" />
         </mxCell>
         <mxCell id="rel6" value="" style="html=1;rounded=0;endArrow=open;endFill=0;exitX=0.08928571428571429;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Order" target="Customer">
@@ -372,7 +372,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel6_label" value="Order → Customer: customer [0..1 : 1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel6_label" value="Order → Customer: customer" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="135.0" y="2231" width="707" height="28" />
         </mxCell>
         <mxCell id="rel7" value="" style="html=1;rounded=0;endArrow=open;endFill=0;exitX=0.08928571428571429;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Table" target="Customer">
@@ -385,7 +385,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel7_label" value="Table → Customer: current occupant [0..1 : 0..1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel7_label" value="Table → Customer: current occupant" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="929.5" y="1606" width="850" height="28" />
         </mxCell>
         <mxCell id="rel8" value="" style="html=1;rounded=0;endArrow=open;endFill=0;exitX=0.26071428571428573;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="Customer" target="CustomerStatus">
@@ -444,6 +444,56 @@
         </mxCell>
         <mxCell id="note5" value="&lt;b&gt;Order&lt;/b&gt;&lt;br&gt;billCents is final. READY must predate serving. Eating&lt;br/&gt;and payment each require a later turn. Unserved&lt;br/&gt;departure cancels the order." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="1820" y="2916" width="560" height="150" />
+        </mxCell>
+        <mxCell id="rel0_label-1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel0">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel0_label1" value="2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel0">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel1_label-1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel1">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel1_label1" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel1">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel5_label-1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel5">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel5_label1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel5">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel6_label-1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel6">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel6_label1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel6">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel7_label-1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel7">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel7_label1" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel7">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

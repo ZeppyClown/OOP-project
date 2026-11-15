@@ -147,7 +147,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel0_label" value="Menu → MenuItem: creates and offers [1 : 3..4]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel0_label" value="Menu → MenuItem: creates and offers" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="135.0" y="407" width="755" height="28" />
         </mxCell>
         <mxCell id="rel1" value="" style="html=1;rounded=0;endArrow=open;endFill=0;startArrow=block;startFill=0;endArrow=none;exitX=0.08928571428571429;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="MenuItem" target="ComboMeal">
@@ -173,7 +173,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel2_label" value="ComboMeal → MenuItem: first [0..* : 1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel2_label" value="ComboMeal → MenuItem: first" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="949.5" y="499" width="850" height="28" />
         </mxCell>
         <mxCell id="rel3" value="" style="html=1;rounded=0;endArrow=open;endFill=0;startArrow=diamond;startFill=0;endArrow=none;exitX=0.13214285714285715;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="ComboMeal" target="MenuItem">
@@ -186,7 +186,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel3_label" value="ComboMeal → MenuItem: second [0..* : 1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel3_label" value="ComboMeal → MenuItem: second" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="957.5" y="545" width="850" height="28" />
         </mxCell>
         <mxCell id="rel4" value="" style="html=1;rounded=0;endArrow=open;endFill=0;dashed=1;startArrow=block;startFill=0;endArrow=none;exitX=0.08928571428571429;exitY=1;entryX=0.5;entryY=0;exitPerimeter=0;entryPerimeter=0;" edge="1" parent="1" source="PricingPolicy" target="StandardPricingPolicy">
@@ -303,7 +303,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel12_label" value="Order → MenuItem: selected component or combo [0..* : 1]" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
+        <mxCell id="rel12_label" value="Order → MenuItem: selected component or combo" style="text;html=1;whiteSpace=wrap;align=center;fillColor=#ffffff;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="909.5" y="1529" width="850" height="28" />
         </mxCell>
         <mxCell id="note0" value="&lt;b&gt;ComboMeal&lt;/b&gt;&lt;br&gt;Two actual references, immutable list, first and second may alias. Price is 90 percent of summed cents; preparation is summed units. Null and overflow rejected." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
@@ -320,6 +320,46 @@
         </mxCell>
         <mxCell id="note4" value="&lt;b&gt;Order&lt;/b&gt;&lt;br&gt;Final billCents freezes the policy quote at placement, including payment after expiry." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=12;fontFamily=Helvetica;fontSize=14;" vertex="1" parent="1">
           <mxGeometry as="geometry" x="950" y="2140" width="560" height="150" />
+        </mxCell>
+        <mxCell id="rel0_label-1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel0">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel0_label1" value="3..4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel0">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel2_label-1" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel2">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel2_label1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel2">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel3_label-1" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel3">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel3_label1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel3">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel12_label-1" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel12">
+          <mxGeometry as="geometry" x="-0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="rel12_label1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;labelBackgroundColor=#ffffff;fontSize=16;" vertex="1" connectable="0" parent="rel12">
+          <mxGeometry as="geometry" x="0.87" y="-12" relative="1">
+            <mxPoint as="offset" x="0" y="0" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

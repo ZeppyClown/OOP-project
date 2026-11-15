@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="Staff capacity" id="p1">
+    <mxGraphModel page="0" background="#ffffff" grid="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Stage 3 — separate role capacity, shared Staff rule" style="text;html=1;align=center;fontSize=25;fontStyle=1;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="15" width="1280" height="40" />
+        </mxCell>
+        <mxCell id="subtitle" value="Selected members shown; complete declarations remain in source. Java visibility: + public, - private, # protected, ~ package-private." style="text;html=1;whiteSpace=wrap;align=center;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="60" width="1280" height="48" />
+        </mxCell>
+        <mxCell id="Staff" value="Staff" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="455" y="130" width="480" height="187" />
+        </mxCell>
+        <mxCell id="Staffr0" value="«abstract»" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Staff">
+          <mxGeometry as="geometry" x="10" y="49" width="460.0" height="26" />
+        </mxCell>
+        <mxCell id="Staffr1" value="-taskTurn: int" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Staff">
+          <mxGeometry as="geometry" x="10" y="76" width="460.0" height="26" />
+        </mxCell>
+        <mxCell id="Staffr2" value="+canAct(turn: int): boolean {final}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Staff">
+          <mxGeometry as="geometry" x="10" y="103" width="460.0" height="26" />
+        </mxCell>
+        <mxCell id="Staffr3" value="#availabilityReason(turn): String {final}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Staff">
+          <mxGeometry as="geometry" x="10" y="130" width="460.0" height="26" />
+        </mxCell>
+        <mxCell id="Staffr4" value="#markTaskUsed(turn): void {final}" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Staff">
+          <mxGeometry as="geometry" x="10" y="157" width="460.0" height="26" />
+        </mxCell>
+        <mxCell id="Host" value="Host" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="20" y="520" width="330" height="79" />
+        </mxCell>
+        <mxCell id="Hostr0" value="~seat(c, table, turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Host">
+          <mxGeometry as="geometry" x="10" y="49" width="310.0" height="26" />
+        </mxCell>
+        <mxCell id="inh0" edge="1" parent="1" source="Host" target="Staff" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.12;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="Waiter" value="Waiter" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="370" y="520" width="330" height="133" />
+        </mxCell>
+        <mxCell id="Waiterr0" value="~seat(c, table, turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Waiter">
+          <mxGeometry as="geometry" x="10" y="49" width="310.0" height="26" />
+        </mxCell>
+        <mxCell id="Waiterr1" value="+takeOrder(c, item, bill, turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Waiter">
+          <mxGeometry as="geometry" x="10" y="76" width="310.0" height="26" />
+        </mxCell>
+        <mxCell id="Waiterr2" value="+serve(c, turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Waiter">
+          <mxGeometry as="geometry" x="10" y="103" width="310.0" height="26" />
+        </mxCell>
+        <mxCell id="inh1" edge="1" parent="1" source="Waiter" target="Staff" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.37;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="Chef" value="Chef" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="720" y="520" width="330" height="79" />
+        </mxCell>
+        <mxCell id="Chefr0" value="+prepare(order, turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Chef">
+          <mxGeometry as="geometry" x="10" y="49" width="310.0" height="26" />
+        </mxCell>
+        <mxCell id="inh2" edge="1" parent="1" source="Chef" target="Staff" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.62;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="Cashier" value="Cashier" style="swimlane;html=1;startSize=45;horizontal=1;collapsible=0;fontSize=21;fontStyle=1;fontFamily=Helvetica;fillColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1070" y="520" width="330" height="79" />
+        </mxCell>
+        <mxCell id="Cashierr0" value="~collect(c, turn): String" style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fillColor=#ffffff;fontFamily=Helvetica;fontSize=18;" vertex="1" parent="Cashier">
+          <mxGeometry as="geometry" x="10" y="49" width="310.0" height="26" />
+        </mxCell>
+        <mxCell id="inh3" edge="1" parent="1" source="Cashier" target="Staff" style="html=1;rounded=0;strokeWidth=1.4;endArrow=block;endFill=0;exitX=0.5;exitY=0;entryX=0.87;entryY=1;exitPerimeter=0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            </mxGeometry>
+        </mxCell>
+        <mxCell id="capacity" value="Inheritance reuses the availability guard; each role instance owns its own task timestamp. Refusals preserve capacity because markTaskUsed() is called only after success. Main injects Waiter/Chef/Cashier; Restaurant creates a default Host unless one is supplied." style="shape=note;html=1;whiteSpace=wrap;align=left;spacing=10;fillColor=#fffbe7;fontSize=18;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="735" width="1340" height="100" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
