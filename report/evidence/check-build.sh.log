@@ -1,0 +1,4 @@
+PASS copied-source tests, seven replays, duration/prompt counts, stdin and four-role EOF: plain-source
+PASS copied-source tests, seven replays, duration/prompt counts, stdin and four-role EOF: source with spaces and "quotes" \ backslash
+PASS installed JDK selection on PATH without JAVA_HOME
+PASS invalid JAVA_HOME gives an actionable error

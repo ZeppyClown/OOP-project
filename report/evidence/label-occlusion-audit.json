@@ -1,0 +1,10 @@
+{
+  "issues": [],
+  "checks": [
+    "label rectangles versus class boxes",
+    "label rectangles versus each other",
+    "label rectangles versus connector segments",
+    "child member width versus class width"
+  ],
+  "scope": "geometric check; raster/print inspection remains required"
+}

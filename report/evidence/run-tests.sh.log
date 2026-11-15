@@ -1,0 +1,87 @@
+PASS Console: parses seat/order/serve/wait
+PASS Console: trims and ignores case
+PASS Console: rejects malformed Waiter commands
+PASS Console: parses Happy Hour and Host commands
+PASS Console: new roles retry syntax and propagate EOF
+PASS Console: displays Happy Hour duration and Host options
+PASS Console: parses Chef ID or wait
+PASS Console: rejects malformed Chef commands
+PASS Console: re-prompts on syntax error in the same request
+PASS Console: EOF throws instead of choosing Wait
+PASS Console: overrides every GameIO default method
+PASS Console: start-of-turn display shows every required field
+PASS Console: Stage 2 header and supplied subtype labels
+PASS Console: no paid customers shows N/A and free tables
+PASS Console: end-of-turn and final result lines
+PASS Console: defeat verdict prints FAIL targets
+PASS Console: lists every Waiter verb and Chef order with IDs
+PASS Console: mid-turn state update, invalid action and interruption lines
+PASS Console: accepts large IDs and rejects null Chef input
+PASS Fixtures: four retry-free files are 18 valid Stage 3 turns
+PASS Fixtures: invalid-input file reaches the same choices via retries
+PASS Scripted: strict Stage 3 roles and duration observations
+PASS Scripted: Stage 3 fixture completeness and activation grammar
+PASS Scripted: returns choices in order
+PASS Scripted: exhausted script throws, never Waits
+PASS Scripted: role mismatch throws
+PASS Scripted: records displays and checks completion
+PASS Scripted: alternating rejects bad fixture lines with line number
+TestGameIOTests: 9 passed
+PASS TestGameIO self-tests
+PASS Customer domain
+PASS Restaurant domain
+PASS Order domain
+PASS Staff domain
+PASS Restaurant ordering: takeOrder quotes with the supplied policy
+PASS Restaurant ordering: serveOrder and prepareOrder advance the order
+PASS Restaurant ordering: refusals keep capacity and reject foreign objects
+PASS Restaurant ordering: refusal text equals the direct Waiter/Chef text
+PASS WaiterAction.seat targets the customer
+PASS WaiterAction.order targets the customer
+PASS WaiterAction.serve targets the order
+PASS WaiterAction.waitAction uses target 0
+PASS WaiterAction rejects a null type
+PASS WaiterAction rejects WAIT with a non-zero target
+PASS WaiterAction rejects zero target for SEAT, ORDER and SERVE
+PASS WaiterAction rejects negative targets
+PASS WaiterAction has value equality
+PASS WaiterAction.Type has exactly four actions
+PASS InputEndedException keeps its message
+PASS InputEndedException is unchecked
+PASS CustomerLine stores its fields
+PASS TableLine allows a null occupant for a free table
+PASS OrderLine stores progress and bill
+PASS TurnState copies its lists so later changes do not leak in
+PASS TurnState lists are unmodifiable
+PASS TurnState rejects null lists
+PASS TurnState keeps scalar values
+PASS TurnSummary stores running totals
+PASS FinalReport copies and locks its targets
+PASS TargetLine records whether a target was met
+PASS GameIO display hooks default to doing nothing
+PASS GameIO implementations signal EOF with InputEndedException
+PASS GameIO chef choice 0 means Wait
+25 passed, 0 failed, 25 total
+PASS Control records and GameIO
+TurnTests: 18 passed
+PASS Controller turns (Regular-only regression)
+PASS Exact percentage pricing
+PASS Customer subtype dispatch and shared guards
+Stage2ControllerTests: 9 passed
+PASS Stage 2 controller and VIP priorities
+LauncherTests: 11 passed (17 subprocesses; /tmp/oop-launcher-tests-12069892297374063689)
+PASS Launcher arguments and script errors
+PASS Stage 3 recovery eligibility
+PASS Stage 3 Host/combo/pricing components
+Stage3ControllerTests: 18 passed
+PASS Stage 3 controller timing and policies
+PASS Replay: reference victory
+PASS Replay: syntax and semantic retries preserve victory
+PASS Replay: all-Wait defeat
+PASS Replay: ordered scripted victory and departure timing
+PASS Replay: inherited Regular-only fixtures retain original totals
+PASS Replay: VIP priority changes payment timing and satisfaction
+PASS Replay: Happy Hour on turn 13 flips defeat to victory
+PASS Replay: same script without Happy Hour fails the satisfaction target
+PASS Replay: EOF interrupts without final result
+55 passed, 0 failed, 55 total

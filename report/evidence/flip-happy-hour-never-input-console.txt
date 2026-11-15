@@ -1,0 +1,993 @@
+Happy Hour: turn 1 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 1 | remaining 0 | used false
+
+Stage 3 - Turn 1 / 18
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C1 Regular (satisfaction 100, WAITING)
+Table 1: free
+Table 2: free
+Orders: none
+Host options: C1
+Waiter options: seat C1 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 1
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C1 Regular (satisfaction 100, WAITING)
+Table 1: free
+Table 2: free
+Orders: none
+Host: choice completed for this turn
+Waiter options: seat C1 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 1
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C1 Regular (satisfaction 100, WAITING)
+Table 1: free
+Table 2: free
+Orders: none
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 1
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C1 Regular (satisfaction 92, WAITING)
+Table 1: free
+Table 2: free
+Orders: none
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 1 --
+Served: 0
+Paid: 0
+Unhappy departures: 0
+Revenue: $0.00
+Average satisfaction of paid customers: N/A
+Turns used: 1 / 18
+Happy Hour: turn 2 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 2 | remaining 0 | used false
+
+Stage 3 - Turn 2 / 18
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C1 Regular (satisfaction 92, WAITING)
+Table 1: free
+Table 2: free
+Orders: none
+Host options: C1
+Waiter options: seat C1 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 2
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C1 Regular (satisfaction 92, WAITING)
+Table 1: free
+Table 2: free
+Orders: none
+Host: choice completed for this turn
+Waiter options: seat C1 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 2
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C1 Regular (satisfaction 92, WAITING)
+Table 1: free
+Table 2: free
+Orders: none
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 2
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C1 Regular (satisfaction 84, WAITING)
+Table 1: free
+Table 2: free
+Orders: none
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 2 --
+Served: 0
+Paid: 0
+Unhappy departures: 0
+Revenue: $0.00
+Average satisfaction of paid customers: N/A
+Turns used: 2 / 18
+Happy Hour: turn 3 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 3 | remaining 0 | used false
+
+Stage 3 - Turn 3 / 18
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C1 Regular (satisfaction 84, WAITING)
+Table 1: free
+Table 2: free
+Orders: none
+Host options: C1
+Waiter options: seat C1 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 3
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: none
+Table 1: C1 Regular (satisfaction 84, SEATED)
+Table 2: free
+Orders: none
+Host: choice completed for this turn
+Waiter options: order C1 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 3
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: none
+Table 1: C1 Regular (satisfaction 84, WAITING_FOR_FOOD)
+Table 2: free
+O1: Burger | $15.00 locked | 0/1 units | PLACED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: O1
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 3
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: none
+Table 1: C1 Regular (satisfaction 76, WAITING_FOR_FOOD)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | READY
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 3 --
+Served: 0
+Paid: 0
+Unhappy departures: 0
+Revenue: $0.00
+Average satisfaction of paid customers: N/A
+Turns used: 3 / 18
+Happy Hour: turn 4 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 4 | remaining 0 | used false
+
+Stage 3 - Turn 4 / 18
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C2 VIP (satisfaction 100, WAITING)
+Table 1: C1 Regular (satisfaction 76, WAITING_FOR_FOOD)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | READY
+Host options: C2
+Waiter options: seat C2 | serve O1 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 4
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C2 VIP (satisfaction 100, WAITING)
+Table 1: C1 Regular (satisfaction 76, WAITING_FOR_FOOD)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | READY
+Host: choice completed for this turn
+Waiter options: seat C2 | serve O1 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 4
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C2 VIP (satisfaction 100, WAITING)
+Table 1: C1 Regular (satisfaction 76, SERVED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 4
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C2 VIP (satisfaction 95, WAITING)
+Table 1: C1 Regular (satisfaction 76, SERVED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 4 --
+Served: 1
+Paid: 0
+Unhappy departures: 0
+Revenue: $0.00
+Average satisfaction of paid customers: N/A
+Turns used: 4 / 18
+Happy Hour: turn 5 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 5 | remaining 0 | used false
+
+Stage 3 - Turn 5 / 18
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C2 VIP (satisfaction 95, WAITING)
+Table 1: C1 Regular (satisfaction 76, SERVED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | SERVED
+Host options: C2
+Waiter options: seat C2 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 5
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C2 VIP (satisfaction 95, WAITING)
+Table 1: C1 Regular (satisfaction 76, SERVED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: seat C2 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 5
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C2 VIP (satisfaction 95, WAITING)
+Table 1: C1 Regular (satisfaction 76, SERVED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 5
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C2 VIP (satisfaction 90, WAITING)
+Table 1: C1 Regular (satisfaction 76, READY_TO_PAY)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 5 --
+Served: 1
+Paid: 0
+Unhappy departures: 0
+Revenue: $0.00
+Average satisfaction of paid customers: N/A
+Turns used: 5 / 18
+Happy Hour: turn 6 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 6 | remaining 0 | used false
+
+Stage 3 - Turn 6 / 18
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C2 VIP (satisfaction 90, WAITING)
+Table 1: C1 Regular (satisfaction 76, READY_TO_PAY)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | SERVED
+Host options: C2
+Waiter options: seat C2 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 6
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C2 VIP (satisfaction 90, WAITING)
+Table 1: C1 Regular (satisfaction 76, READY_TO_PAY)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: seat C2 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 6
+Revenue: $0.00 | Paid: 0 | Average paid satisfaction: N/A
+Waiting: C2 VIP (satisfaction 90, WAITING)
+Table 1: C1 Regular (satisfaction 76, READY_TO_PAY)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 6
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C2 VIP (satisfaction 85, WAITING)
+Table 1: free
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, collected $15.00 from C1; customer and order PAID, table released
+-- End of turn 6 --
+Served: 1
+Paid: 1
+Unhappy departures: 0
+Revenue: $15.00
+Average satisfaction of paid customers: 76.0
+Turns used: 6 / 18
+Happy Hour: turn 7 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 7 | remaining 0 | used false
+
+Stage 3 - Turn 7 / 18
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C2 VIP (satisfaction 85, WAITING), C3 Critic (satisfaction 100, WAITING)
+Table 1: free
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+Host options: C2, C3
+Waiter options: seat C2, C3 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 7
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C2 VIP (satisfaction 85, WAITING), C3 Critic (satisfaction 100, WAITING)
+Table 1: free
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+Host: choice completed for this turn
+Waiter options: seat C2, C3 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 7
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C2 VIP (satisfaction 85, WAITING), C3 Critic (satisfaction 100, WAITING)
+Table 1: free
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 7
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C2 VIP (satisfaction 80, WAITING), C3 Critic (satisfaction 88, WAITING)
+Table 1: free
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 7 --
+Served: 1
+Paid: 1
+Unhappy departures: 0
+Revenue: $15.00
+Average satisfaction of paid customers: 76.0
+Turns used: 7 / 18
+Happy Hour: turn 8 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 8 | remaining 0 | used false
+
+Stage 3 - Turn 8 / 18
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C2 VIP (satisfaction 80, WAITING), C3 Critic (satisfaction 88, WAITING)
+Table 1: free
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+Host options: C2, C3
+Waiter options: seat C2, C3 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 8
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 88, WAITING)
+Table 1: C2 VIP (satisfaction 80, SEATED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+Host: choice completed for this turn
+Waiter options: seat C3 | order C2 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 8
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 88, WAITING)
+Table 1: C2 VIP (satisfaction 80, WAITING_FOR_FOOD)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 0/1 units | PLACED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: O2
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 8
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 76, WAITING)
+Table 1: C2 VIP (satisfaction 75, WAITING_FOR_FOOD)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | READY
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 8 --
+Served: 1
+Paid: 1
+Unhappy departures: 0
+Revenue: $15.00
+Average satisfaction of paid customers: 76.0
+Turns used: 8 / 18
+Happy Hour: turn 9 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 9 | remaining 0 | used false
+
+Stage 3 - Turn 9 / 18
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 76, WAITING)
+Table 1: C2 VIP (satisfaction 75, WAITING_FOR_FOOD)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | READY
+Host options: C3
+Waiter options: seat C3 | serve O2 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 9
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 76, WAITING)
+Table 1: C2 VIP (satisfaction 75, WAITING_FOR_FOOD)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | READY
+Host: choice completed for this turn
+Waiter options: seat C3 | serve O2 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 9
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 76, WAITING)
+Table 1: C2 VIP (satisfaction 75, SERVED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 9
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 64, WAITING)
+Table 1: C2 VIP (satisfaction 75, SERVED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 9 --
+Served: 2
+Paid: 1
+Unhappy departures: 0
+Revenue: $15.00
+Average satisfaction of paid customers: 76.0
+Turns used: 9 / 18
+Happy Hour: turn 10 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 10 | remaining 0 | used false
+
+Stage 3 - Turn 10 / 18
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 64, WAITING), C4 Regular (satisfaction 100, WAITING)
+Table 1: C2 VIP (satisfaction 75, SERVED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | SERVED
+Host options: C3, C4
+Waiter options: seat C3, C4 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 10
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 64, WAITING), C4 Regular (satisfaction 100, WAITING)
+Table 1: C2 VIP (satisfaction 75, SERVED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: seat C3, C4 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 10
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 64, WAITING), C4 Regular (satisfaction 100, WAITING)
+Table 1: C2 VIP (satisfaction 75, SERVED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 10
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 52, WAITING), C4 Regular (satisfaction 92, WAITING)
+Table 1: C2 VIP (satisfaction 75, READY_TO_PAY)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 10 --
+Served: 2
+Paid: 1
+Unhappy departures: 0
+Revenue: $15.00
+Average satisfaction of paid customers: 76.0
+Turns used: 10 / 18
+Happy Hour: turn 11 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 11 | remaining 0 | used false
+
+Stage 3 - Turn 11 / 18
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 52, WAITING), C4 Regular (satisfaction 92, WAITING)
+Table 1: C2 VIP (satisfaction 75, READY_TO_PAY)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | SERVED
+Host options: C3, C4
+Waiter options: seat C3, C4 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 11
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 52, WAITING), C4 Regular (satisfaction 92, WAITING)
+Table 1: C2 VIP (satisfaction 75, READY_TO_PAY)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: seat C3, C4 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 11
+Revenue: $15.00 | Paid: 1 | Average paid satisfaction: 76.0
+Waiting: C3 Critic (satisfaction 52, WAITING), C4 Regular (satisfaction 92, WAITING)
+Table 1: C2 VIP (satisfaction 75, READY_TO_PAY)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 11
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C3 Critic (satisfaction 40, WAITING), C4 Regular (satisfaction 84, WAITING)
+Table 1: free
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, collected $8.10 from C2; customer and order PAID, table released
+-- End of turn 11 --
+Served: 2
+Paid: 2
+Unhappy departures: 0
+Revenue: $23.10
+Average satisfaction of paid customers: 75.5
+Turns used: 11 / 18
+Happy Hour: turn 12 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 12 | remaining 0 | used false
+
+Stage 3 - Turn 12 / 18
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C3 Critic (satisfaction 40, WAITING), C4 Regular (satisfaction 84, WAITING)
+Table 1: free
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+Host options: C3, C4
+Waiter options: seat C3, C4 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 12
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 84, WAITING)
+Table 1: C3 Critic (satisfaction 40, SEATED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+Host: choice completed for this turn
+Waiter options: seat C4 | order C3 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 12
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 84, WAITING)
+Table 1: C3 Critic (satisfaction 40, SEATED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 12
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 76, WAITING)
+Table 1: C3 Critic (satisfaction 28, SEATED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 12 --
+Served: 2
+Paid: 2
+Unhappy departures: 0
+Revenue: $23.10
+Average satisfaction of paid customers: 75.5
+Turns used: 12 / 18
+Happy Hour: turn 13 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 13 | remaining 0 | used false
+
+Stage 3 - Turn 13 / 18
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 76, WAITING), C5 Regular (satisfaction 100, WAITING)
+Table 1: C3 Critic (satisfaction 28, SEATED)
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+Host options: C4, C5
+Waiter options: seat C4, C5 | order C3 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 13
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 76, WAITING)
+Table 1: C3 Critic (satisfaction 28, SEATED)
+Table 2: C5 Regular (satisfaction 100, SEATED)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+Host: choice completed for this turn
+Waiter options: order C3, C5 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 13
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 76, WAITING)
+Table 1: C3 Critic (satisfaction 28, WAITING_FOR_FOOD)
+Table 2: C5 Regular (satisfaction 100, SEATED)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 0/2 units | PLACED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: O3
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 13
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 68, WAITING)
+Table 1: C3 Critic (satisfaction 16, WAITING_FOR_FOOD)
+Table 2: C5 Regular (satisfaction 92, SEATED)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 1/2 units | PREPARING
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 13 --
+Served: 2
+Paid: 2
+Unhappy departures: 0
+Revenue: $23.10
+Average satisfaction of paid customers: 75.5
+Turns used: 13 / 18
+Happy Hour: turn 14 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 14 | remaining 0 | used false
+
+Stage 3 - Turn 14 / 18
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 68, WAITING)
+Table 1: C3 Critic (satisfaction 16, WAITING_FOR_FOOD)
+Table 2: C5 Regular (satisfaction 92, SEATED)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 1/2 units | PREPARING
+Host options: wait
+Waiter options: order C5 | wait
+Chef options: O3
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 14
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 68, WAITING)
+Table 1: C3 Critic (satisfaction 16, WAITING_FOR_FOOD)
+Table 2: C5 Regular (satisfaction 92, SEATED)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 1/2 units | PREPARING
+Host: choice completed for this turn
+Waiter options: order C5 | wait
+Chef options: O3
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 14
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 68, WAITING)
+Table 1: C3 Critic (satisfaction 16, WAITING_FOR_FOOD)
+Table 2: C5 Regular (satisfaction 92, WAITING_FOR_FOOD)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 1/2 units | PREPARING
+O5: Burger | $15.00 locked | 0/1 units | PLACED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: O3, O5
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 14
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 60, WAITING)
+Table 1: C3 Critic (satisfaction 4, WAITING_FOR_FOOD)
+Table 2: C5 Regular (satisfaction 84, WAITING_FOR_FOOD)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | READY
+O5: Burger | $15.00 locked | 0/1 units | PLACED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 14 --
+Served: 2
+Paid: 2
+Unhappy departures: 0
+Revenue: $23.10
+Average satisfaction of paid customers: 75.5
+Turns used: 14 / 18
+Happy Hour: turn 15 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 15 | remaining 0 | used false
+
+Stage 3 - Turn 15 / 18
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 60, WAITING)
+Table 1: C3 Critic (satisfaction 4, WAITING_FOR_FOOD)
+Table 2: C5 Regular (satisfaction 84, WAITING_FOR_FOOD)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | READY
+O5: Burger | $15.00 locked | 0/1 units | PLACED
+Host options: wait
+Waiter options: serve O3 | wait
+Chef options: O5
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 15
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 60, WAITING)
+Table 1: C3 Critic (satisfaction 4, WAITING_FOR_FOOD)
+Table 2: C5 Regular (satisfaction 84, WAITING_FOR_FOOD)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | READY
+O5: Burger | $15.00 locked | 0/1 units | PLACED
+Host: choice completed for this turn
+Waiter options: serve O3 | wait
+Chef options: O5
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 15
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 60, WAITING)
+Table 1: C3 Critic (satisfaction 4, SERVED)
+Table 2: C5 Regular (satisfaction 84, WAITING_FOR_FOOD)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | SERVED
+O5: Burger | $15.00 locked | 0/1 units | PLACED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: O5
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 15
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 52, WAITING)
+Table 1: C3 Critic (satisfaction 4, SERVED)
+Table 2: C5 Regular (satisfaction 76, WAITING_FOR_FOOD)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | SERVED
+O5: Burger | $15.00 locked | 1/1 units | READY
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 15 --
+Served: 3
+Paid: 2
+Unhappy departures: 0
+Revenue: $23.10
+Average satisfaction of paid customers: 75.5
+Turns used: 15 / 18
+Happy Hour: turn 16 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 16 | remaining 0 | used false
+
+Stage 3 - Turn 16 / 18
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 52, WAITING), C6 Regular (satisfaction 100, WAITING)
+Table 1: C3 Critic (satisfaction 4, SERVED)
+Table 2: C5 Regular (satisfaction 76, WAITING_FOR_FOOD)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | SERVED
+O5: Burger | $15.00 locked | 1/1 units | READY
+Host options: wait
+Waiter options: serve O5 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 16
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 52, WAITING), C6 Regular (satisfaction 100, WAITING)
+Table 1: C3 Critic (satisfaction 4, SERVED)
+Table 2: C5 Regular (satisfaction 76, WAITING_FOR_FOOD)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | SERVED
+O5: Burger | $15.00 locked | 1/1 units | READY
+Host: choice completed for this turn
+Waiter options: serve O5 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 16
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 52, WAITING), C6 Regular (satisfaction 100, WAITING)
+Table 1: C3 Critic (satisfaction 4, SERVED)
+Table 2: C5 Regular (satisfaction 76, SERVED)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | SERVED
+O5: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 16
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 44, WAITING), C6 Regular (satisfaction 92, WAITING)
+Table 1: C3 Critic (satisfaction 4, READY_TO_PAY)
+Table 2: C5 Regular (satisfaction 76, SERVED)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | SERVED
+O5: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, no eligible payment this turn
+-- End of turn 16 --
+Served: 4
+Paid: 2
+Unhappy departures: 0
+Revenue: $23.10
+Average satisfaction of paid customers: 75.5
+Turns used: 16 / 18
+Happy Hour: turn 17 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 17 | remaining 0 | used false
+
+Stage 3 - Turn 17 / 18
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 44, WAITING), C6 Regular (satisfaction 92, WAITING)
+Table 1: C3 Critic (satisfaction 4, READY_TO_PAY)
+Table 2: C5 Regular (satisfaction 76, SERVED)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | SERVED
+O5: Burger | $15.00 locked | 1/1 units | SERVED
+Host options: wait
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 17
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 44, WAITING), C6 Regular (satisfaction 92, WAITING)
+Table 1: C3 Critic (satisfaction 4, READY_TO_PAY)
+Table 2: C5 Regular (satisfaction 76, SERVED)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | SERVED
+O5: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 17
+Revenue: $23.10 | Paid: 2 | Average paid satisfaction: 75.5
+Waiting: C4 Regular (satisfaction 44, WAITING), C6 Regular (satisfaction 92, WAITING)
+Table 1: C3 Critic (satisfaction 4, READY_TO_PAY)
+Table 2: C5 Regular (satisfaction 76, SERVED)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | SERVED
+O5: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 17
+Revenue: $41.10 | Paid: 3 | Average paid satisfaction: 51.7
+Waiting: C4 Regular (satisfaction 36, WAITING), C6 Regular (satisfaction 84, WAITING)
+Table 1: free
+Table 2: C5 Regular (satisfaction 76, READY_TO_PAY)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | PAID
+O5: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, collected $18.00 from C3; customer and order PAID, table released
+-- End of turn 17 --
+Served: 4
+Paid: 3
+Unhappy departures: 0
+Revenue: $41.10
+Average satisfaction of paid customers: 51.7
+Turns used: 17 / 18
+Happy Hour: turn 18 | remaining 0 | used false
+Happy Hour (yes/no)> Happy Hour: turn 18 | remaining 0 | used false
+
+Stage 3 - Turn 18 / 18
+Revenue: $41.10 | Paid: 3 | Average paid satisfaction: 51.7
+Waiting: C4 Regular (satisfaction 36, WAITING), C6 Regular (satisfaction 84, WAITING)
+Table 1: free
+Table 2: C5 Regular (satisfaction 76, READY_TO_PAY)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | PAID
+O5: Burger | $15.00 locked | 1/1 units | SERVED
+Host options: C4, C6
+Waiter options: seat C4, C6 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Host (<customer ID> or wait)> State update for turn 18
+Revenue: $41.10 | Paid: 3 | Average paid satisfaction: 51.7
+Waiting: C4 Regular (satisfaction 36, WAITING), C6 Regular (satisfaction 84, WAITING)
+Table 1: free
+Table 2: C5 Regular (satisfaction 76, READY_TO_PAY)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | PAID
+O5: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: seat C4, C6 | wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Waiter (seat <C>, order <C>, serve <O>, wait)> State update for turn 18
+Revenue: $41.10 | Paid: 3 | Average paid satisfaction: 51.7
+Waiting: C4 Regular (satisfaction 36, WAITING), C6 Regular (satisfaction 84, WAITING)
+Table 1: free
+Table 2: C5 Regular (satisfaction 76, READY_TO_PAY)
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | PAID
+O5: Burger | $15.00 locked | 1/1 units | SERVED
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, available; payments follow staff choices
+Chef (<order ID> or wait)> State update for turn 18
+Revenue: $56.10 | Paid: 4 | Average paid satisfaction: 57.8
+Waiting: C4 Regular (satisfaction 28, WAITING), C6 Regular (satisfaction 76, WAITING)
+Table 1: free
+Table 2: free
+O1: Burger | $15.00 locked | 1/1 units | PAID
+O2: Salad | $8.10 locked | 1/1 units | PAID
+O3: Pasta | $18.00 locked | 2/2 units | PAID
+O5: Burger | $15.00 locked | 1/1 units | PAID
+Host: choice completed for this turn
+Waiter options: wait
+Chef options: wait
+Cashier: automatic, collected $15.00 from C5; customer and order PAID, table released
+-- End of turn 18 --
+Served: 4
+Paid: 4
+Unhappy departures: 0
+Revenue: $56.10
+Average satisfaction of paid customers: 57.8
+Turns used: 18 / 18
+
+===== DEFEAT =====
+Served: 4
+Paid: 4
+Unhappy departures: 0
+Revenue: $56.10
+Average satisfaction of paid customers: 57.8
+Turns used: 18 / 18
+[PASS] Paid customers: required 4, actual 4
+[PASS] Revenue: required $45.00, actual $56.10
+[FAIL] Average paid satisfaction: required 60, actual 57.8

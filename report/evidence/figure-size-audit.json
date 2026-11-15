@@ -1,0 +1,752 @@
+[
+  {
+    "figure": "class-history-report-1.png",
+    "number": "1",
+    "caption": "Stage 1 control",
+    "image_size": [
+      2148,
+      1706
+    ],
+    "placed_points": [
+      585.8,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.36
+  },
+  {
+    "figure": "class-history-report-2.png",
+    "number": "2",
+    "caption": "Stage 2 customer extension",
+    "image_size": [
+      2066,
+      1219
+    ],
+    "placed_points": [
+      771.9,
+      455.4
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 10.09
+  },
+  {
+    "figure": "class-control-report-1.png",
+    "number": "3",
+    "caption": "Stage 3 controller collaboration",
+    "image_size": [
+      2345,
+      1249
+    ],
+    "placed_points": [
+      771.9,
+      411.1
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.89
+  },
+  {
+    "figure": "class-control-report-2.png",
+    "number": "3b",
+    "caption": "Interaction contract",
+    "image_size": [
+      1969,
+      1534
+    ],
+    "placed_points": [
+      597.2,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.19
+  },
+  {
+    "figure": "class-entities-report-1.png",
+    "number": "4",
+    "caption": "Customer, order and table",
+    "image_size": [
+      2075,
+      1399
+    ],
+    "placed_points": [
+      690.1,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.98
+  },
+  {
+    "figure": "class-entities-report-3.png",
+    "number": "4b",
+    "caption": "Status and action values",
+    "image_size": [
+      2089,
+      1361
+    ],
+    "placed_points": [
+      714.2,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 9.23
+  },
+  {
+    "figure": "class-ownership-report.png",
+    "number": "4c",
+    "caption": "Restaurant ownership",
+    "image_size": [
+      2120,
+      1376
+    ],
+    "placed_points": [
+      716.8,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 9.13
+  },
+  {
+    "figure": "class-staff-report.png",
+    "number": "5",
+    "caption": "Staff capacity",
+    "image_size": [
+      2120,
+      1279
+    ],
+    "placed_points": [
+      771.2,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 9.82
+  },
+  {
+    "figure": "class-support-report-2.png",
+    "number": "5b",
+    "caption": "Restaurant staff references",
+    "image_size": [
+      2203,
+      1421
+    ],
+    "placed_points": [
+      721.3,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.84
+  },
+  {
+    "figure": "class-menu-report-1.png",
+    "number": "6",
+    "caption": "Menu and shared combo components",
+    "image_size": [
+      2075,
+      1474
+    ],
+    "placed_points": [
+      655.0,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.52
+  },
+  {
+    "figure": "class-menu-report-2.png",
+    "number": "6b",
+    "caption": "Pricing strategies",
+    "image_size": [
+      2060,
+      1316
+    ],
+    "placed_points": [
+      728.3,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 9.55
+  },
+  {
+    "figure": "class-support-report-1.png",
+    "number": "7",
+    "caption": "Money, results and EOF",
+    "image_size": [
+      2180,
+      1451
+    ],
+    "placed_points": [
+      699.0,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.66
+  },
+  {
+    "figure": "sequence-selected-01.png",
+    "number": "S01.1",
+    "caption": "Turn 13: scheduled arrival \u2014 panel 1",
+    "image_size": [
+      1445,
+      1390
+    ],
+    "placed_points": [
+      483.7,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 9.04
+  },
+  {
+    "figure": "sequence-selected-02-1.png",
+    "number": "S02.1",
+    "caption": "Turn 13: activation and recovery alternatives \u2014 panel 1",
+    "image_size": [
+      2390,
+      1398
+    ],
+    "placed_points": [
+      771.9,
+      451.5
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.72
+  },
+  {
+    "figure": "sequence-selected-02-2.png",
+    "number": "S02.2",
+    "caption": "Turn 13: activation and recovery alternatives \u2014 panel 2",
+    "image_size": [
+      2390,
+      1390
+    ],
+    "placed_points": [
+      771.9,
+      448.9
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.72
+  },
+  {
+    "figure": "sequence-selected-02-3.png",
+    "number": "S02.3",
+    "caption": "Turn 13: activation and recovery alternatives \u2014 panel 3",
+    "image_size": [
+      2390,
+      1360
+    ],
+    "placed_points": [
+      771.9,
+      439.2
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.72
+  },
+  {
+    "figure": "sequence-selected-02-4.png",
+    "number": "S02.4",
+    "caption": "Turn 13: activation and recovery alternatives \u2014 panel 4",
+    "image_size": [
+      2390,
+      1113
+    ],
+    "placed_points": [
+      771.9,
+      359.5
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.72
+  },
+  {
+    "figure": "sequence-selected-03-1.png",
+    "number": "S03.1",
+    "caption": "Turn 13: Host seating and retries \u2014 panel 1",
+    "image_size": [
+      2390,
+      1390
+    ],
+    "placed_points": [
+      771.9,
+      448.9
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.72
+  },
+  {
+    "figure": "sequence-selected-03-2.png",
+    "number": "S03.2",
+    "caption": "Turn 13: Host seating and retries \u2014 panel 2",
+    "image_size": [
+      2390,
+      1398
+    ],
+    "placed_points": [
+      771.9,
+      451.5
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.72
+  },
+  {
+    "figure": "sequence-selected-03-3.png",
+    "number": "S03.3",
+    "caption": "Turn 13: Host seating and retries \u2014 panel 3",
+    "image_size": [
+      2390,
+      1390
+    ],
+    "placed_points": [
+      771.9,
+      448.9
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.72
+  },
+  {
+    "figure": "sequence-selected-04-1.png",
+    "number": "S04.1",
+    "caption": "Turn 13: Pasta order and price lock \u2014 panel 1",
+    "image_size": [
+      2705,
+      1398
+    ],
+    "placed_points": [
+      771.9,
+      398.9
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-04-2.png",
+    "number": "S04.2",
+    "caption": "Turn 13: Pasta order and price lock \u2014 panel 2",
+    "image_size": [
+      2705,
+      1270
+    ],
+    "placed_points": [
+      771.9,
+      362.4
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-04-3.png",
+    "number": "S04.3",
+    "caption": "Turn 13: Pasta order and price lock \u2014 panel 3",
+    "image_size": [
+      2705,
+      1390
+    ],
+    "placed_points": [
+      771.9,
+      396.6
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-04-4.png",
+    "number": "S04.4",
+    "caption": "Turn 13: Pasta order and price lock \u2014 panel 4",
+    "image_size": [
+      2705,
+      1120
+    ],
+    "placed_points": [
+      771.9,
+      319.6
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-05-1.png",
+    "number": "S05.1",
+    "caption": "Turn 13: first preparation unit \u2014 panel 1",
+    "image_size": [
+      2075,
+      1398
+    ],
+    "placed_points": [
+      690.6,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.99
+  },
+  {
+    "figure": "sequence-selected-05-2.png",
+    "number": "S05.2",
+    "caption": "Turn 13: first preparation unit \u2014 panel 2",
+    "image_size": [
+      2075,
+      1270
+    ],
+    "placed_points": [
+      760.2,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 9.89
+  },
+  {
+    "figure": "sequence-selected-05-3.png",
+    "number": "S05.3",
+    "caption": "Turn 13: first preparation unit \u2014 panel 3",
+    "image_size": [
+      2075,
+      1405
+    ],
+    "placed_points": [
+      687.2,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.94
+  },
+  {
+    "figure": "sequence-selected-05-4.png",
+    "number": "S05.4",
+    "caption": "Turn 13: first preparation unit \u2014 panel 4",
+    "image_size": [
+      2075,
+      858
+    ],
+    "placed_points": [
+      771.9,
+      319.2
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 10.04
+  },
+  {
+    "figure": "sequence-selected-06-1.png",
+    "number": "S06.1",
+    "caption": "Turn 14: Burger order and second recovery \u2014 panel 1",
+    "image_size": [
+      2705,
+      1390
+    ],
+    "placed_points": [
+      771.9,
+      396.6
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-06-2.png",
+    "number": "S06.2",
+    "caption": "Turn 14: Burger order and second recovery \u2014 panel 2",
+    "image_size": [
+      2705,
+      1390
+    ],
+    "placed_points": [
+      771.9,
+      396.6
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-06-3.png",
+    "number": "S06.3",
+    "caption": "Turn 14: Burger order and second recovery \u2014 panel 3",
+    "image_size": [
+      2705,
+      1390
+    ],
+    "placed_points": [
+      771.9,
+      396.6
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-06-4.png",
+    "number": "S06.4",
+    "caption": "Turn 14: Burger order and second recovery \u2014 panel 4",
+    "image_size": [
+      2705,
+      985
+    ],
+    "placed_points": [
+      771.9,
+      281.1
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-06b-ready.png",
+    "number": "S06b-ready.1",
+    "caption": "Turn 14: Pasta becomes READY \u2014 panel 1",
+    "image_size": [
+      1445,
+      1675
+    ],
+    "placed_points": [
+      401.4,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.5
+  },
+  {
+    "figure": "sequence-selected-07-1.png",
+    "number": "S07.1",
+    "caption": "Turn 15: serving Pasta and kitchen choice \u2014 panel 1",
+    "image_size": [
+      2705,
+      1390
+    ],
+    "placed_points": [
+      771.9,
+      396.6
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-07-2.png",
+    "number": "S07.2",
+    "caption": "Turn 15: serving Pasta and kitchen choice \u2014 panel 2",
+    "image_size": [
+      2705,
+      1390
+    ],
+    "placed_points": [
+      771.9,
+      396.6
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-07-3.png",
+    "number": "S07.3",
+    "caption": "Turn 15: serving Pasta and kitchen choice \u2014 panel 3",
+    "image_size": [
+      2705,
+      1270
+    ],
+    "placed_points": [
+      771.9,
+      362.4
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-07-4.png",
+    "number": "S07.4",
+    "caption": "Turn 15: serving Pasta and kitchen choice \u2014 panel 4",
+    "image_size": [
+      2705,
+      1390
+    ],
+    "placed_points": [
+      771.9,
+      396.6
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-07-5.png",
+    "number": "S07.5",
+    "caption": "Turn 15: serving Pasta and kitchen choice \u2014 panel 5",
+    "image_size": [
+      2705,
+      850
+    ],
+    "placed_points": [
+      771.9,
+      242.6
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-07b-ready.png",
+    "number": "S07b-ready.1",
+    "caption": "Turn 15: Burger becomes READY \u2014 panel 1",
+    "image_size": [
+      1445,
+      1675
+    ],
+    "placed_points": [
+      401.4,
+      465.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.5
+  },
+  {
+    "figure": "sequence-selected-08-1.png",
+    "number": "S08.1",
+    "caption": "Turn 16: serving Burger and eating \u2014 panel 1",
+    "image_size": [
+      2705,
+      1390
+    ],
+    "placed_points": [
+      771.9,
+      396.6
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-08-2.png",
+    "number": "S08.2",
+    "caption": "Turn 16: serving Burger and eating \u2014 panel 2",
+    "image_size": [
+      2705,
+      1390
+    ],
+    "placed_points": [
+      771.9,
+      396.6
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-08-3.png",
+    "number": "S08.3",
+    "caption": "Turn 16: serving Burger and eating \u2014 panel 3",
+    "image_size": [
+      2705,
+      1398
+    ],
+    "placed_points": [
+      771.9,
+      398.9
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-08-4.png",
+    "number": "S08.4",
+    "caption": "Turn 16: serving Burger and eating \u2014 panel 4",
+    "image_size": [
+      2705,
+      1270
+    ],
+    "placed_points": [
+      771.9,
+      362.4
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-09-1.png",
+    "number": "S09.1",
+    "caption": "Turn 17: payment and table release \u2014 panel 1",
+    "image_size": [
+      2390,
+      1405
+    ],
+    "placed_points": [
+      771.9,
+      453.8
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.72
+  },
+  {
+    "figure": "sequence-selected-09-2.png",
+    "number": "S09.2",
+    "caption": "Turn 17: payment and table release \u2014 panel 2",
+    "image_size": [
+      2390,
+      1398
+    ],
+    "placed_points": [
+      771.9,
+      451.5
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.72
+  },
+  {
+    "figure": "sequence-selected-09-3.png",
+    "number": "S09.3",
+    "caption": "Turn 17: payment and table release \u2014 panel 3",
+    "image_size": [
+      2390,
+      1255
+    ],
+    "placed_points": [
+      771.9,
+      405.3
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 8.72
+  },
+  {
+    "figure": "sequence-selected-10-1.png",
+    "number": "S10.1",
+    "caption": "Turn 18: payment and final result \u2014 panel 1",
+    "image_size": [
+      2705,
+      1270
+    ],
+    "placed_points": [
+      771.9,
+      362.4
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-10-2.png",
+    "number": "S10.2",
+    "caption": "Turn 18: payment and final result \u2014 panel 2",
+    "image_size": [
+      2705,
+      1398
+    ],
+    "placed_points": [
+      771.9,
+      398.9
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-10-3.png",
+    "number": "S10.3",
+    "caption": "Turn 18: payment and final result \u2014 panel 3",
+    "image_size": [
+      2705,
+      1368
+    ],
+    "placed_points": [
+      771.9,
+      390.4
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.7
+  },
+  {
+    "figure": "sequence-selected-10-4.png",
+    "number": "S10.4",
+    "caption": "Turn 18: payment and final result \u2014 panel 4",
+    "image_size": [
+      2695,
+      1135
+    ],
+    "placed_points": [
+      771.9,
+      325.1
+    ],
+    "minimum_source_font_px": 18,
+    "nominal_minimum_pdf_font_pt": 7.73
+  }
+]
