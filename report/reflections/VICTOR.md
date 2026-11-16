@@ -65,7 +65,7 @@ I also learned to distinguish a correct set of member files from a correct merge
 
 In the controller area, Happy Hour is represented by one activation timestamp. That lets the active window be derived instead of maintaining separate flags and counters. Activation on turn 13 means turns 13 and 14 are active, and turn 15 is outside the window. The controller coordinates recovery before Host, Waiter and Chef choices, and selects the pricing policy when an order is taken.
 
-I used the Restaurant wrappers when explaining the final call flow. The controller coordinates the action, while Restaurant checks ownership and delegates to the appropriate staff and domain objects. The policies, customers and menu classes are shared dependencies from the team's other areas; they are not all my individual contribution.
+I used the Restaurant wrappers when explaining the final call flow. The controller coordinates the action, while Restaurant checks ownership and delegates to the appropriate staff and domain objects. The policies, customers and menu classes are shared dependencies from the team's other areas; these are the team’s shared contributions.
 
 ### What challenged me?
 
@@ -77,6 +77,6 @@ The selected sequence needed to explain a real consequence of a manager choice, 
 
 I followed the scenario from turn 13 through payment on turns 17 and 18. Activating Happy Hour gives four paid customers, $49.50 revenue and average satisfaction 67.3, producing victory. Never activating gives four paid customers, $56.10 and 57.8, producing defeat. Both runs clear the paid-count and revenue targets. Explaining why the lower-revenue run wins helped me connect pricing, recovery and the result calculation.
 
-For the integration issue, I requested a comparison of the saved handoffs with the branches and main, followed by an independent Claude review. After that review confirmed the restored version, I authorised focused repair commits and verification of the completed tree. The automated checks passed 55 registered checks and all four build checks before the restoration reached main. Those repairs restored the team's existing work; they do not establish sole authorship of that code.
+For the integration issue, I requested a comparison of the saved handoffs with the branches and main, followed by an independent Claude review. After that review confirmed the restored version, I authorised focused repair commits and verification of the completed tree. The automated checks passed 55 registered checks and all four build checks before the restoration reached main.
 
 The main lesson I take from Stage 3 is to test the version that will actually be submitted, not just the individual pieces. Clear interfaces help, but they do not remove the need to review merge results and rerun complete scenarios.
